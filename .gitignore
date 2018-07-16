@@ -1,0 +1,37 @@
+# Logs
+logs
+*.log
+
+# OS generated files #
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Dist #
+/dist
+/public/__build__/
+/src/*/__build__/
+/__build__/**
+/public/dist/
+/src/*/dist/
+/dist/**
+/.awcache
+/compiled/
+dll/
+temp
+tmp
+build-cache
+
+# Doc #
+/doc/
+/documentation/
+
+# IDE #
+.idea/
+*.swp
+.vscode
+.history
+
+# Tools
+.vagrant
