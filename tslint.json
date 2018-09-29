@@ -1,23 +1,55 @@
 {
-  "rulesDirectory": [
-    "node_modules/codelyzer"
+  "defaultSeverity": "error",
+  "extends": [
+    "angular-tslint-rules",
+    "tslint-immutable"
   ],
   "rules": {
+    "array-type": [
+      true,
+      "array"
+    ],
     "arrow-return-shorthand": true,
+    "brace-style": [
+      "error",
+      "stroustrup"
+    ],
     "callable-types": true,
     "class-name": true,
     "comment-format": [
       true,
       "check-space"
     ],
+    "component-class-suffix": [
+      true,
+      "Component",
+      "Container"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      [
+        "component",
+        "container"
+      ],
+      "kebab-case"
+    ],
     "curly": true,
-    "deprecation": {
-      "severity": "warn"
-    },
+    "directive-class-suffix": [
+      true,
+      "Directive"
+    ],
+    "directive-selector": [
+      true,
+      "attribute",
+      "camelCase"
+    ],
     "eofline": true,
     "forin": true,
+    "i18n": false,
     "import-blacklist": [
       true,
+      "rxjs",
       "rxjs/Rx"
     ],
     "import-spacing": true,
@@ -59,19 +91,23 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
+    "no-floating-promises": true,
     "no-inferrable-types": [
       true,
       "ignore-params"
     ],
+    "no-input-rename": true,
     "no-misused-new": true,
     "no-non-null-assertion": true,
-    "no-redundant-jsdoc": true,
+    "no-output-rename": true,
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
+    "no-unnecessary-class": false,
     "no-unnecessary-initializer": true,
+    "no-unused-css": false,
     "no-unused-expression": true,
     "no-use-before-declare": true,
     "no-var-keyword": true,
@@ -79,11 +115,10 @@
     "one-line": [
       true,
       "check-open-brace",
-      "check-catch",
-      "check-else",
       "check-whitespace"
     ],
     "prefer-const": true,
+    "promise-function-async": true,
     "quotemark": [
       true,
       "single"
@@ -91,8 +126,9 @@
     "radix": true,
     "semicolon": [
       true,
-      "always"
+      "never"
     ],
+    "trackBy-function": false,
     "triple-equals": [
       true,
       "allow-null-check"
@@ -107,7 +143,13 @@
         "variable-declaration": "nospace"
       }
     ],
+    "typeof-compare": true,
     "unified-signatures": true,
+    "use-host-property-decorator": true,
+    "use-input-property-decorator": true,
+    "use-life-cycle-interface": true,
+    "use-output-property-decorator": true,
+    "use-pipe-transform-interface": true,
     "variable-name": false,
     "whitespace": [
       true,
@@ -116,16 +158,9 @@
       "check-operator",
       "check-separator",
       "check-type"
-    ],
-    "no-output-on-prefix": true,
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": true,
-    "no-input-rename": true,
-    "no-output-rename": true,
-    "use-life-cycle-interface": true,
-    "use-pipe-transform-interface": true,
-    "component-class-suffix": true,
-    "directive-class-suffix": true
-  }
+    ]
+  },
+  "rulesDirectory": [
+    "../node_modules/codelyzer"
+  ]
 }
