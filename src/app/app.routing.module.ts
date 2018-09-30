@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { AddComponent } from "./inventory/add/add.component";
-import { ShowComponent } from "./inventory/show/show.component";
-import { LoginPageComponent } from "./login-page/login-page.component";
-import { RegisterComponent } from "./register/register.component";
-import { SidebarComponent } from "./sidebar/sidebar.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AddComponent } from './inventory/add/add.component';
+import { ShowComponent } from './inventory/show/show.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { RegisterComponent } from './register/register.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 const routes: Routes = [
     {
