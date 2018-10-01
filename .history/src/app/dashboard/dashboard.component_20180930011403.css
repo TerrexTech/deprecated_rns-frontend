@@ -1,0 +1,8 @@
+.main-content{
+    position: relative;
+    float: right;
+    background-color: #f4f3ef;
+    padding: 0 30px 30px;
+    min-height: calc(100vh - 123px);
+    margin-top: 93px;
+}

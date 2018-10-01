@@ -1,0 +1,9 @@
+.full-page-background{
+    background-image: url('/assets/bg.jpg')
+}
+
+.card{
+    margin: auto;
+    background-color: white
+
+}
