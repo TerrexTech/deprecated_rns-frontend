@@ -3,14 +3,10 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { InventoryRoutingModule } from './inventory.routing'
+import { InventoryRoutes } from './inventory.routing'
 import { AddComponent } from './add/add.component'
 import { ShowComponent } from './show/show.component'
 import { Inventory } from "../models/inventory"
-// import { InvDashComponent } from './inv-dash/inv-dash.component'
-// import { AlertService } from '../_services'
-// import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component'
 
 
 import {
@@ -35,7 +31,6 @@ import {
 import { DialogDataDialog } from './dialog-data/dialog-data.component'
 @NgModule({
     imports: [
-        BrowserAnimationsModule,
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
@@ -55,7 +50,8 @@ import { DialogDataDialog } from './dialog-data/dialog-data.component'
         MatSortModule,
         MatTableModule,
         MatTabsModule,
-        MatToolbarModule
+        MatToolbarModule,
+        RouterModule.forChild(InventoryRoutes),
     ],
     declarations: [
         AddComponent,

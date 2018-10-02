@@ -1,7 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpHeaders, HttpClient } from '@angular/common/http'
 import { AuthResponse } from '../models/auth-response'
 

@@ -30,8 +30,8 @@ export const ROUTES: RouteInfo[] = [{
         type: 'sub',
         icontype: 'nc-icon nc-box-2',
         children: [
-            {path: 'show-inv', title: 'Show Inventory', ab: 'SH'},
-            {path: 'add-inv', title: 'Add Inventory', ab: 'AD'},
+            {path: 'show', title: 'Show Inventory', ab: 'SH'},
+            {path: 'add', title: 'Add Inventory', ab: 'AD'},
         ]
     }, {
         path: '/monitoring',
@@ -152,7 +152,8 @@ export const ROUTES: RouteInfo[] = [{
 })
 
 export class SidebarComponent implements OnInit{
-
+    public isCollapsed = true;
+    public profileCollapsed = true;
     role: string
     global: any
     name: string

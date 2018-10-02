@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 import { SidebarComponent } from './sidebar.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCollapseModule } from "@ng-bootstrap/ng-bootstrap/collapse/collapse.module";
 import { TokenExtraction } from '../helpers'
 
 @NgModule({

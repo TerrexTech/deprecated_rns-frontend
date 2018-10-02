@@ -5,19 +5,18 @@ import { AddComponent } from './add/add.component'
 import { ShowComponent } from './show/show.component'
 import { AuthGuard } from '../guards'
 
-const routes: Routes = [
+export const InventoryRoutes: Routes = [
     {
-        path: 'add',
-        component: AddComponent
-    },
-    {
-        path: 'show',
-        component: ShowComponent
+        path: '',
+        children: [{
+            path: 'show',
+            component: ShowComponent
+        },
+        {
+            path: 'add',
+            component: AddComponent
+        },
+    ]
     }
 ]
 
-@NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
-})
-export class InventoryRoutingModule { }
