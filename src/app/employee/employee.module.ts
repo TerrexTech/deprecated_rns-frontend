@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 // Material Components
 import {
+  MatDialogModule,
   MatCardModule,
   MatFormFieldModule,
   MatIconModule,
@@ -16,17 +17,15 @@ import {
 } from '@angular/material'
 
 import { EmployeeRoutes } from "./employee.routing.module";
-import { ManageUserMainComponent } from './manage-user-main/manage-user-main.component'
 import { UserAddComponent } from './user-add/user-add.component'
 import { UserTableComponent } from './user-table/user-table.component'
-import { UserUpdateComponent } from './user-update/user-update.component'
+import { DialogDataDialog } from './dialog-data/dialog-data.component'
 
 @NgModule({
   declarations: [
-    ManageUserMainComponent,
+    DialogDataDialog,
     UserAddComponent,
     UserTableComponent,
-    UserUpdateComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +33,7 @@ import { UserUpdateComponent } from './user-update/user-update.component'
     ReactiveFormsModule,
     NgbModule.forRoot(),
     // Material Components
+    MatDialogModule,
     MatCardModule,
     MatFormFieldModule,
     MatIconModule,
@@ -45,7 +45,6 @@ import { UserUpdateComponent } from './user-update/user-update.component'
   ],
   providers: [],
   exports: [
-    ManageUserMainComponent
   ]
 })
 export class EmployeeModule {}

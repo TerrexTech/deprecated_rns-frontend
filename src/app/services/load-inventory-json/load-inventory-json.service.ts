@@ -12,12 +12,13 @@ export class LoadInventoryJsonService {
 
   public getJSON(): any {
 
-
+    var date = []
     var sendDate = new SendDate()
     sendDate.end_date = this.getDays(2)[0]
+    date = [{"end_date": sendDate.end_date}]
     console.log("}}}}}}}}}}}}}}}}}}}}")
-    console.log(sendDate)
-    return this.http.post(environment.apiUrl + '/load-table', sendDate, {
+    console.log(date)
+    return this.http.post(environment.apiUrl + '/load-table', date, {
       headers: {
         "Content-Type": "application/json"
       }
@@ -39,14 +40,14 @@ export class LoadInventoryJsonService {
 
   public getSearchJSON(query, field): any {
 
-    var search = {
+    var search = [{
           search_key: field,
           search_val: query
-    }
+    }]
 
     console.log("}}}}}}}}}}}}}}}}}}}}")
     console.log(search)
-    return this.http.post(environment.apiUrl + '/search-table', search, {
+    return this.http.post(environment.apiUrl + '/search-inv', search, {
       headers: {
         "Content-Type": "application/json"
       }
@@ -71,7 +72,7 @@ export class LoadInventoryJsonService {
 
     console.log("}}}}}}}}}}}}}}}}}}}}")
     console.log(obj)
-    this.http.post(environment.apiUrl + '/update-product', obj)
+    return this.http.post(environment.apiUrl + '/up-inv', obj)
       .toPromise()
       .then((data: any) => {
         console.log(data)

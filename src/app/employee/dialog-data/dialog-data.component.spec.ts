@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageUserUpdateComponent } from './manage-user-update.component';
+import { DialogDataComponent } from './dialog-data.component';
 
-describe('ManageUserUpdateComponent', () => {
-  let component: ManageUserUpdateComponent;
-  let fixture: ComponentFixture<ManageUserUpdateComponent>;
+describe('DialogDataComponent', () => {
+  let component: DialogDataComponent;
+  let fixture: ComponentFixture<DialogDataComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageUserUpdateComponent ]
+      declarations: [ DialogDataComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ManageUserUpdateComponent);
+    fixture = TestBed.createComponent(DialogDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

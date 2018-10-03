@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatSort, MatSortable, MatTableDataSource } from '@angular/material'
+import { Employee } from "../../models/employee";
 
 @Component({
   selector: 'component-user-table',
@@ -30,7 +31,24 @@ export class UserTableComponent implements OnInit {
     }
   ]
   dataSource = new MatTableDataSource(this.ELEMENT_DATA)
-  title = 'Manage Employees'
+
+  curField: any
+  populateFields(e): Employee {
+    console.log(e)
+    if (e != null) {
+      this.curField = Food.find(() => e)
+      this.dialog.open(DialogDataDialog, {
+        data: {
+          data: this.curField
+        }
+      });
+      console.log(this.curField)
+      console.log(this.curField.date_arrived)
+      // this.formDate.nativeElement.value = this.curField.date_arrived
+      console.log()
+    }
+    return e
+  }
 
   @ViewChild(MatSort) sort: MatSort
 

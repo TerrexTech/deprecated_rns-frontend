@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { AuthenticationService } from '../../services'
-// import swal from 'sweetalert2'
 import { LoadInventoryJsonService } from "../../services/load-inventory-json/load-inventory-json.service"
+import
 
 export interface Inventory {
   item_id: number
@@ -30,6 +30,16 @@ export class AddComponent implements OnInit {
   error: string
   returnUrl: string
   loading = false
+  upc:number;
+  sku:number;
+  id: number;
+  name:string
+  origin:string
+  date:NgbDateStruct
+  weight:number
+  price:number
+  devId:string
+  location:string
 
   constructor(
     private formBuilder: FormBuilder,
@@ -42,24 +52,43 @@ export class AddComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      item_id: [null, [Validators.required, Validators.minLength(1)]],
-      name: [null, [Validators.required, Validators.minLength(1)]],
-      origin: [null, [Validators.required, Validators.minLength(1)]],
-      date_arrived: [null, [Validators.required, Validators.minLength(1)]],
-      total_weight: [null, [Validators.required, Validators.minLength(1)]],
-      price: [null, [Validators.required, Validators.minLength(1)]],
-      device_id: [null, [Validators.required, Validators.minLength(1)]],
-      location: [null, [Validators.required, Validators.minLength(1)]]
+      upc: ['', [Validators.required, Validators.minLength(1)]],
+      sku: ['', [Validators.required, Validators.minLength(1)]],
+      item_id: ['', [Validators.required, Validators.minLength(1)]],
+      name: ['', [Validators.required, Validators.minLength(1)]],
+      origin: ['', [Validators.required, Validators.minLength(1)]],
+      date_arrived: ['', [Validators.required, Validators.minLength(1)]],
+      total_weight: ['', [Validators.required, Validators.minLength(1)]],
+      price: ['', [Validators.required, Validators.minLength(1)]],
+      devId: ['', [Validators.required, Validators.minLength(1)]],
+      location: ['', [Validators.required, Validators.minLength(1)]]
     })
 
-    this.returnUrl = this.route.snapshot.queryParams['add-inv']
+    this.returnUrl = this.route.snapshot.queryParams[''] || '/'
   }
 
   // convenience getter for easy access to form fields
-f() { return this.form.controls }
+f(): any {
+    return this.form.controls
+  }
 
+  generate()
+  {
+    this.upc = 5;
+    this.sku = 4;
+    this.id = 10;
+    this.name = 'Banana';
+    this.origin = 'Canada';
+    // this.date = NgbDateStruct = { day: 14, month: 7, year: 1789 };
+    this.weight = 10;
+    this.price = 11;
+    this.devId = "31";
+    this.location = "Aisle 1";
+  }
 
   onSubmit() {
+    this.formSubmitAttempt = true
+    if (this.form.valid){
     const month = new Array()
     month[0] = "January"
     month[1] = "February"
@@ -73,16 +102,17 @@ f() { return this.form.controls }
     month[9] = "October"
     month[10] = "November"
     month[11] = "December"
-    this.formSubmitAttempt = true
       const origDate = this.form.value.date_arrived
        this.form.value.date_arrived = Math.floor(Date.parse(`${origDate.year}/${month[origDate.month]}/${origDate.day}`) / 1000)
-      this.loadJsonData.addProd(this.form.value)
-    //  this.reset()
+       console.log(JSON.stringify(this.form.value))
+       swal("Record successfully inserted!");
+        this.reset()
+    }
   }
 
   reset() {
     this.form.reset()
-    //this.formSubmitAttempt = false
+    this.formSubmitAttempt = false
   }
 
   // showMessage(type: string) {
