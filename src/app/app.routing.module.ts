@@ -27,8 +27,8 @@ export const routes: Routes = [{
             canActivate: [AuthGuard]
         },
         {
-            path: 'register',
-            loadChildren: './register/register.module#RegisterModule',
+            path: 'employee',
+            loadChildren: './employee/employee.module#EmployeeModule',
             canActivate: [AuthGuard]
         }
     ]
@@ -52,8 +52,8 @@ export const routes: Routes = [{
             canActivate: [AuthGuard]
         },
         {
-            path: 'register',
-            loadChildren: './register/register.module#RegisterModule',
+            path: 'employee',
+            loadChildren: './employee/employee.module#EmployeeModule',
             canActivate: [AuthGuard]
         }
 

@@ -60,7 +60,8 @@ export const ROUTES: RouteInfo[] = [{
         type: 'sub',
         icontype: 'nc-icon nc-user-run',
         children: [
-            {path: 'register', title: 'Register', ab: 'ET'}
+            {path: 'show-employees', title: 'Show Employees', ab: ''},
+            { path: 'add-employees', title: 'Add Employees', ab: '' },
         ]
     },
     // {
