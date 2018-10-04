@@ -12,7 +12,7 @@
 </div>
 
 
-<div class="sidebar-wrapper">
+<div class="sidebar-wrapper no-overflow">
 
   <div class="user">
     <div class="photo">
@@ -68,7 +68,7 @@
                 </a>
 
                 <!--Display the submenu items-->
-                <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" *ngIf="menuitem.type === 'sub'">
+                <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" class="collapse" *ngIf="menuitem.type === 'sub'">
                     <ul class="nav">
                       <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
                         <a routerLink="{{menuitem.path}}/{{childitem.path}}">

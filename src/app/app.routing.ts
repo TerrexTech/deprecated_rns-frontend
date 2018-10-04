@@ -60,9 +60,6 @@ export const AppRoutes: Routes = [{
             path: '',
             component: AuthLayoutComponent,
             children: [{
-                path: 'pages',
-                loadChildren: './pages/pages.module#PagesModule'
-            },{
                 path: '',
                 canActivate: [AuthGuard],
                 loadChildren: './dashboard/dashboard.module#DashboardModule'

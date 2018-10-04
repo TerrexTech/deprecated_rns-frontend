@@ -47,12 +47,12 @@ export const ROUTES: RouteInfo[] = [{
     }, {
         path: '/history',
         title: 'History',
-        type: 'sub',
+        type: 'link',
         icontype: 'nc-icon nc-world-2',
     }, {
         path: '/flash-sale',
         title: 'Flash Sale',
-        type: 'sub',
+        type: 'link',
         icontype: 'nc-icon nc-user-run',
     }, {
         path: '/employee',
