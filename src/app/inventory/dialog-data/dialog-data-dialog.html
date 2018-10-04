@@ -1,4 +1,6 @@
-<mat-dialog-content>
+<h4 mat-dialog-title>
+    Update Item: #{{this.curField.data.sku}}, {{this.curField.data.name}}
+</h4>
     <form [formGroup]="form" #updateInventory="ngForm">
         <br>
 
@@ -6,12 +8,12 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> UPC </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="number" class="form-control" id="upc" formControlName="upc" required *ngIf="curField"
-                        [ngModel]="curField.data.upc" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().upc.errors }"
-                        disabled>
-                    <div *ngIf="formSubmitAttempt && f().upc.errors" class="invalid-feedback">
-                        <div *ngIf="f().upc.errors.required">Item number is required</div>
-                    </div>
+                    <input type="number" class="form-control" formControlName="upc" required
+                        [ngClass]="{'is-invalid': isFieldValid('upc')}"
+                        readonly>
+                    <span *ngIf="isFieldValid('upc')" class="invalid-feedback">
+                        UPC is required
+                    </span>
                 </div>
             </div>
         </div>
@@ -19,12 +21,12 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> SKU </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="number" class="form-control" id="sku" formControlName="sku" required *ngIf="curField"
-                        [ngModel]="curField.data.sku" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().sku.errors }"
-                        disabled>
-                    <div *ngIf="formSubmitAttempt && f().sku.errors" class="invalid-feedback">
-                        <div *ngIf="f().sku.errors.required">Item number is required</div>
-                    </div>
+                    <input type="number" class="form-control" formControlName="sku" required
+                        [ngClass]="{'is-invalid': isFieldValid('sku')}"
+                        readonly>
+                        <span *ngIf="isFieldValid('sku')" class="invalid-feedback">
+                            SKU is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -32,12 +34,12 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Item ID </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="string" class="form-control" id="item_id" formControlName="item_id" required *ngIf="curField"
-                        [ngModel]="curField.data.item_id" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().item_id.errors }"
-                        disabled>
-                    <div *ngIf="formSubmitAttempt && f().item_id.errors" class="invalid-feedback">
-                        <div *ngIf="f().item_id.errors.required">Item number is required</div>
-                    </div>
+                    <input type="string" class="form-control" formControlName="item_id" required
+                        [ngClass]="{'is-invalid': isFieldValid('item_id')}"
+                        readonly>
+                        <span *ngIf="isFieldValid('item_id')" class="invalid-feedback">
+                            Item ID is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -45,11 +47,11 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Item Name </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="text" id="name" class="form-control" formControlName="name" required *ngIf="curField"
-                        [ngModel]="curField.data.name" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().name.errors }">
-                    <div *ngIf="formSubmitAttempt && f().name.errors" class="invalid-feedback">
-                        <div *ngIf="f().name.errors.required">Item name is required</div>
-                    </div>
+                    <input type="text" class="form-control" formControlName="name" required
+                        [ngClass]="{'is-invalid': isFieldValid('name')}">
+                        <span *ngIf="isFieldValid('name')" class="invalid-feedback">
+                            Name is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -57,11 +59,11 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Origin of Product </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="text" class="form-control" id="productOrigin" formControlName="origin" placeholder="State, Country (E.g. ON, Canada)"
-                        *ngIf="curField" [ngModel]="curField.data.origin" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().origin.errors }">
-                    <div *ngIf="formSubmitAttempt && f().origin.errors" class="invalid-feedback">
-                        <div *ngIf="f().origin.errors.required">Product origin is required</div>
-                    </div>
+                    <input type="text" class="form-control" formControlName="origin" placeholder="State, Country (E.g. ON, Canada)"
+                        [ngClass]="{'is-invalid': isFieldValid('origin')}">
+                        <span *ngIf="isFieldValid('origin')" class="invalid-feedback">
+                            Origin is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -69,12 +71,8 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Date of Arrival </label>
                 <div class="col-sm-8 mx-auto">
-                    <mat-form-field>
-                        <input matInput type="text" [matDatepicker]="picker" placeholder="Choose a date" type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitAttempt &&
-                        f().date_arrived.errors }" [ngModel]="curField.data.date_arrived" formControlName="date_arrived" id="date_arrived" required>
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
-                    </mat-form-field>
+                    <input #date type="string" class="form-control" [ngClass]="{'is-invalid': isFieldValid('date_arrived')}"
+                        formControlName="date_arrived" required name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
                 </div>
             </div>
         </div>
@@ -82,11 +80,11 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Weight </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="number" class="form-control" id="totalWeight" formControlName="total_weight" required
-                        *ngIf="curField" [ngModel]="curField.data.total_weight" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().total_weight.errors }">
-                    <div *ngIf="formSubmitAttempt && f().total_weight.errors" class="invalid-feedback">
-                        <div *ngIf="f().total_weight.errors.required">Total weight is required</div>
-                    </div>
+                    <input type="number" class="form-control" formControlName="total_weight" required
+                        [ngClass]="{'is-invalid': isFieldValid('total_weight')}">
+                        <span *ngIf="isFieldValid('total_weight')" class="invalid-feedback">
+                            Weight is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -94,11 +92,11 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Price </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="text" class="form-control" id="price" formControlName="price" required *ngIf="curField"
-                        [ngModel]="curField.data.price" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().price.errors }">
-                    <div *ngIf="formSubmitAttempt && f().price.errors" class="invalid-feedback">
-                        <div *ngIf="f().price.errors.required">Price is required</div>
-                    </div>
+                    <input type="text" class="form-control" formControlName="price" required
+                        [ngClass]="{'is-invalid': isFieldValid('price')}">
+                        <span *ngIf="isFieldValid('price')" class="invalid-feedback">
+                            Price is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -106,11 +104,11 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Device ID </label>
                 <div class="col-sm-8 mx-auto">
-                    <input type="text" class="form-control" id="monitoredBy" formControlName="device_id" required disabled
-                        *ngIf="curField" [ngModel]="curField.data.device_id" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().device_id.errors }">
-                    <div *ngIf="formSubmitAttempt && f().device_id.errors" class="invalid-feedback">
-                        <div *ngIf="f().device_id.errors.required">Monitored By is required</div>
-                    </div>
+                    <input type="text" class="form-control" formControlName="device_id" required readonly
+                        [ngClass]="{'is-invalid': isFieldValid('device_id')}">
+                        <span *ngIf="isFieldValid('device_id')" class="invalid-feedback">
+                            Device ID is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -119,10 +117,10 @@
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Location </label>
                 <div class="col-sm-8 mx-auto">
                     <input type="text" class="form-control" id="location" formControlName="location" placeholder="Aisle No."
-                        required *ngIf="curField" [ngModel]="curField.data.location" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().location.errors }">
-                    <div *ngIf="formSubmitAttempt && f().location.errors" class="invalid-feedback">
-                        <div *ngIf="f().location.errors.required">Location is required</div>
-                    </div>
+                        required [ngClass]="{'is-invalid': isFieldValid('location')}">
+                        <span *ngIf="isFieldValid('location')" class="invalid-feedback">
+                            Location is required
+                        </span>
                 </div>
             </div>
         </div>
@@ -136,9 +134,3 @@
             <button type="submit" id="cancelProduct" class="btn btn-danger btn-fill col-sm-6 col-md-6" (click)="reset()">Reset</button> -->
         </div>
     </form>
-</mat-dialog-content>
-<!-- <mat-dialog-actions>
-  <button mat-button mat-dialog-close>Update</button>
-  The mat-dialog-close directive optionally accepts a value as a result for the dialog.
-  <button mat-button [mat-dialog-close]="true">Close</button>
-</mat-dialog-actions> -->

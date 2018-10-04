@@ -51,6 +51,13 @@ th.mat-sort-header-sorted {
     top:7px
   }
 
-.title{
-  text-align:center
+.mat-sort-header- {
+  padding-left: 24px;
 }
+
+td.mat-cell {
+  padding: 0 24px 0 24px;
+      font-size: 14px;
+      /* text-align: center; */
+      border-right: 1px solid rgb(224, 224, 224);
+  }

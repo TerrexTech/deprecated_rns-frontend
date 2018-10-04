@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Inject, OnInit } from '@angular/core'
+import { Component, Inject, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router'
@@ -10,6 +10,7 @@ import swal from "sweetalert";
   templateUrl: 'dialog-data-dialog.html',
 })
 export class DialogDataDialog implements OnInit {
+  @ViewChild('date') dateSel: ElementRef
   form: FormGroup
   formSubmitAttempt: boolean
   curField: any
@@ -33,7 +34,21 @@ export class DialogDataDialog implements OnInit {
     })
     this.returnUrl = this.route.snapshot.queryParams[''] || '/'
     this.curField = this.data
-    console.log(this.curField.data)
+    this.form.get('upc').setValue(this.curField.data.upc);
+    this.form.get('sku').setValue(this.curField.data.sku);
+    this.form.get('item_id').setValue(this.curField.data.item_id);
+    this.form.get('name').setValue(this.curField.data.name);
+    this.form.get('origin').setValue(this.curField.data.origin);
+    // this.form.get('date_arrived').setValue(new Date(this.curField.data.date_arrived * 1000).toJSON().split("T")[0]);
+    // this.dateSel.nativeElement.value = new Date(this.curField.data.date_arrived * 1000).toJSON().split("T")[0]
+    this.form.get('total_weight').setValue(this.curField.data.total_weight);
+    this.form.get('price').setValue(this.curField.data.price);
+    this.form.get('device_id').setValue(this.curField.data.device_id);
+    this.form.get('location').setValue(this.curField.data.location);
+  }
+
+  isFieldValid(field: string) {
+    return this.formSubmitAttempt && this.form.controls[field].status == 'INVALID'
   }
 
   f() { return this.form.controls }
@@ -59,9 +74,6 @@ export class DialogDataDialog implements OnInit {
     this.form.value.date_arrived = Math.floor(Date.parse(`${origDate.year}/${month[origDate.month]}/${origDate.day}`) / 1000)
     console.log("submitted");
      this.loadInv.updateRow(this.form.value)
-    // this.loadInv.getJSON();
-    // alert('Your Inventory has been updated.')
-    // $('#myModal').modal('hide')
     swal("Record successfully inserted!");
   }
 }

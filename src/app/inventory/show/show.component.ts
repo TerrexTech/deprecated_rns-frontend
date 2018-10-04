@@ -1,21 +1,13 @@
-import { Component, OnInit, ViewChild, Input, ElementRef, Inject } from '@angular/core'
-import { FormBuilder, FormGroup, Validators, FormControl, FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms'
-import { MatPaginator, MatSort, MatTableDataSource, MatDialog, MAT_DIALOG_DATA } from '@angular/material'
-import { Http, Response, Headers, RequestOptions } from '@angular/http'
-// import { Observable } from 'rxjs/Observable'
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material'
+import { Http } from '@angular/http'
 import { LoadInventoryJsonService } from '../../services/load-inventory-json/load-inventory-json.service'
 import { Inventory } from "../../models/inventory"
-import { Query } from "../../models/query"
 import { SelectionModel } from '@angular/cdk/collections'
-import { HttpClient, HttpHeaderResponse } from '@angular/common/http'
-import { environment } from '../../../config'
 import { DialogDataDialog } from "../dialog-data/dialog-data.component";
 import swal from "sweetalert";
 
-
 var Food: Inventory[] = []
-const initialSelection = []
-const allowMultiSelect = true
 
 @Component({
   selector: 'app-show',
@@ -26,7 +18,8 @@ const allowMultiSelect = true
 export class ShowComponent implements OnInit {
   food: Inventory
   //add device ID to shown rows
-  displayedColumns: string[] = ['select','upc', 'sku', 'name', 'origin' ,'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight', 'modify']
+  displayedColumns: string[] =
+  ['select','upc', 'sku', 'name', 'origin' ,'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight', 'modify']
   dataSource = new MatTableDataSource()
   today: number = Date.now()
   @ViewChild(MatPaginator) paginator: MatPaginator
@@ -38,10 +31,6 @@ export class ShowComponent implements OnInit {
   selection = new SelectionModel<Inventory>(true, [])
 
   constructor(private http: Http, private loadInventoryJsonService: LoadInventoryJsonService, public dialog: MatDialog) {
-  }
-
-  openDialog() {
-
   }
 
   ngOnInit(): void{
@@ -57,6 +46,15 @@ export class ShowComponent implements OnInit {
 
   getData(): void {
     this.loadInventoryJsonService.getJSON()
+      .subscribe(data => {
+        console.log(data)
+        this.dataSource.data = data
+        Food = data
+      })
+  }
+
+  getSearchData(query, field) {
+    this.loadInventoryJsonService.getSearchJSON(query, field)
       .subscribe(data => {
         console.log(data)
         this.dataSource.data = data
@@ -87,15 +85,8 @@ export class ShowComponent implements OnInit {
         if (!willDelete) {
           this.selection.selected.forEach(item => {
             let index: number = Food.findIndex(d => d === item)
-            console.log(index)
-            console.log(item.item_id)
-
             console.log("++++++++++++++++++==")
              this.loadInventoryJsonService.deleteRow(item.item_id)
-            //   .subscribe(console.log)
-            // this.dataSource.data.splice(index, 1)
-
-            // this.dataSource = new MatTableDataSource<Inventory>(Food)
           })
           swal("Poof! Your imaginary file has been deleted!", {
             icon: "success",
@@ -104,25 +95,27 @@ export class ShowComponent implements OnInit {
           swal("Inventory not removed");
         }
       });
-
-    // this.selection.selected.forEach(item => {
-    //   let index: number = Food.findIndex(d => d === item)
-    //   console.log(index)
-    //   console.log(item.item_id)
-
-    //   console.log("++++++++++++++++++==")
-    //   // this.loadInventoryJsonService.deleteRow(item.item_id)
-    //   //   .subscribe(console.log)
-    //   // this.dataSource.data.splice(index, 1)
-
-    //   // this.dataSource = new MatTableDataSource<Inventory>(Food)
-    // })
-    //this.selection = new SelectionModel<Inventory>(true, [])
   }
 
-  applyFilter(filterValue: string): void {
-    this.dataSource.filter = filterValue.trim()
-      .toLowerCase()
+  populateFields(e): Inventory {
+    console.log(e)
+    if (e != null) {
+      this.curField = Food.filter(i => i.item_id === e)[0]
+      this.dialog.open(DialogDataDialog, {
+        width: '500px',
+        data: {
+          data: this.curField
+        }
+      }).afterClosed().subscribe(result => {
+        this.loadInventoryJsonService.getJSON()
+          .subscribe(data => {
+            console.log(data)
+            this.dataSource.data = data
+            Food = data
+          })
+      })
+    }
+    return e
   }
 
   onSearch() {
@@ -131,40 +124,7 @@ export class ShowComponent implements OnInit {
     this.getSearchData(query, field)
   }
 
-  getSearchData(query, field) {
-    this.loadInventoryJsonService.getSearchJSON(query, field)
-      .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
-
-  }
-
-  curField: any
-
- populateFields(e): Inventory {
-   console.log(e)
-   if (e != null) {
-     this.curField = Food.filter(i => i.item_id === e)[0]
-      console.log(this.curField.item_id)
-      console.log(e)
-      this.dialog.open(DialogDataDialog, {
-       width: "700",
-       data: {
-         data: this.curField
-       }
-     }).afterClosed().subscribe(result=>{
-       this.loadInventoryJsonService.getJSON()
-         .subscribe(data => {
-           console.log(data)
-           this.dataSource.data = data
-           Food = data
-         })
-     })
-     }
-   return e
-}
+ curField: any
 
   isAllSelected() {
     const numSelected = this.selection.selected.length
