@@ -1,93 +1,192 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 main-content card">
-            <div class="row card-header">
-                <div class="col-sm-12 card-title">
-                    <h4 class="">Add Product</h4>
-                    <button class="ml-auto" (click)="generate()">Generate</button>
+  <div class="row">
+    <div
+     class="col-md-10 offset-md-1
+            col-lg-8 offset-lg-2
+            col-xl-6 offset-xl-3
+            main-content card"
+    >
+      <div class="row card-header">
+        <div class="card-title">
+          <h4 class="">Add Product</h4>
+          <button class="ml-auto" (click)="generate()">Generate</button>
+        </div>
+      </div>
+
+      <div class="row card-body">
+        <div class="col-sm-12">
+          <form [formGroup]="form" #addInventory="ngForm">
+
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">UPC</label>
                 </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="upc"
+                   class="form-control"
+                   [ngModel]="upc"
+                   [ngClass]="{'is-invalid': isFieldValid('upc')}"
+                   formControlName="upc"
+                   disabled
+                   required
+                  >
+
+                  <span *ngIf="isFieldValid('upc')" class="invalid-feedback">
+                    UPC is required
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <div class="row card-body">
-                <div class="col-sm-12">
-                    <form [formGroup]="form" #addInventory="ngForm">
-                        <div class="row">
-                            <div class="form-group col-md-8">
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                        <label>UPC</label>
-                                    </div>
-                                    <div class="col-sm-8">
-                                        <input #uuid type="string" id="upc" [ngModel]="upc" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().upc.errors }"
-                                            class="form-control" formControlName="upc" required disabled>
-                                        <!-- <div *ngIf="formSubmitAttempt && f().upc.errors" class="invalid-feedback">
-                                    <div *ngIf="f().upc.errors.required">Item number is required</div>
-                                </div> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-2 col-md-3 control-label mx-auto"> SKU </label>
-                            <div class="col-sm-8 mx-auto">
-                                <input #uuid type="string" id="sku" [ngModel]="sku" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().sku.errors }"
-                                    class="form-control" id="sku" formControlName="sku" required disabled>
-                                <div *ngIf="formSubmitAttempt && f().sku.errors" class="invalid-feedback">
-                                    <div *ngIf="f().sku.errors.required">Item number is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-2 col-md-3 control-label mx-auto"> Item ID </label>
-                            <div class="col-sm-8 mx-auto">
-                                <input #uuid type="string" id="item_id" [ngModel]="id" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().item_id.errors }"
-                                    class="form-control" formControlName="item_id" required disabled>
-                                <div *ngIf="formSubmitAttempt && f().item_id.errors" class="invalid-feedback">
-                                    <div *ngIf="f().item_id.errors.required">Item number is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-2 col-md-3 control-label mx-auto"> Item Name </label>
-                            <div class="col-sm-8 mx-auto">
-                                <input type="text" id="name" class="form-control" [ngModel]="name" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().name.errors }"
-                                    formControlName="name" required>
-                                <div *ngIf="formSubmitAttempt && f().name.errors" class="invalid-feedback">
-                                    <div *ngIf="f().name.errors.required">Item name is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <label class="col-sm-2 col-md-3 control-label mx-auto"> Origin of Product </label>
-                            <div class="col-sm-8 mx-auto">
-                                <input type="text" class="form-control" id="productOrigin" [ngModel]="origin" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().origin.errors }"
-                                    formControlName="origin" placeholder="State, Country (E.g. ON, Canada)">
-                                <div *ngIf="formSubmitAttempt && f().origin.errors" class="invalid-feedback">
-                                    <div *ngIf="f().origin.errors.required">Product origin is required</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                                    <div class="row">
-                                        <label class="col-sm-2 col-md-3 control-label mx-auto"> Date of Arrival </label>
-                                        <div class="col-sm-8 mx-auto">
-                                            <input #formDate type="text" class="form-control" [(ngModel)]="date" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().date_arrived.errors }" formControlName="date_arrived" id="date_arrived"
-                                                required >
-                                            <div *ngIf="formSubmitAttempt && f().date_arrived.errors" class="invalid-feedback">
-                                                <div *ngIf="f().date_arrived.errors.required">Arrival date is required</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    <div class="form-group">
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">SKU</label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="sku"
+                   class="form-control"
+                   [ngModel]="sku"
+                   [ngClass]="{'is-invalid': isFieldValid('sku')}"
+                   formControlName="sku"
+                   disabled
+                   required
+                  >
+
+                  <span *ngIf="isFieldValid('sku')" class="invalid-feedback">
+                    SKU is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">Item ID</label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="item_id"
+                   class="form-control"
+                   [ngModel]="id"
+                   [ngClass]="{'is-invalid': isFieldValid('item_id')}"
+                   formControlName="item_id"
+                   required
+                  >
+
+                  <span *ngIf="isFieldValid('item_id')" class="invalid-feedback">
+                    Item ID is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">Item Name</label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="name"
+                   class="form-control"
+                   [ngModel]="name"
+                   [ngClass]="{'is-invalid': isFieldValid('name')}"
+                   formControlName="name" required
+                  >
+
+                  <span *ngIf="isFieldValid('name')" class="invalid-feedback">
+                    Item Name is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">Item Origin</label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="productOrigin"
+                   class="form-control"
+                   [ngModel]="origin"
+                   [ngClass]="{'is-invalid': isFieldValid('origin')}"
+                   formControlName="origin"
+                   required
+                  >
+
+                  <span *ngIf="isFieldValid('origin')" class="invalid-feedback">
+                    Item Origin is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="row">
+                <div
+                 class="col-sm-2
+                        d-flex align-items-center
+                        justify-content-sm-end"
+                >
+                  <label class="form-label">Arrival Date</label>
+                </div>
+
+                <div class="col-sm-10">
+                  <input
+                   type="string"
+                   id="date_arrived"
+                   class="form-control"
+                   [ngModel]="date"
+                   [ngClass]="{'is-invalid': isFieldValid('date_arrived')}"
+                   formControlName="date_arrived" required>
+
+                  <span *ngIf="isFieldValid('date_arrived')" class="invalid-feedback">
+                    Arrival Date is required
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!--<div class="form-group">
                         <div class="row">
                             <label class="col-sm-2 col-md-3 control-label mx-auto"> Date of Arrival </label>
                             <div class="col-sm-8 mx-auto">
@@ -149,16 +248,35 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer mx-auto">
-                        <button type="submit" id="addProduct" class="btn btn-info btn-fill col-sm-6 col-md-3" (click)="onSubmit()">Add
-                            Product</button>
-                        <button type="submit" id="cancelProduct" class="btn btn-danger btn-fill col-sm-6 col-md-3"
-                            (click)="reset()">Reset</button>
-                    </div> -->
-                    </form>
-                </div>
+                    </div>-->
+
+            <div class="row">
+              <div class="col-sm-4 offset-sm-3">
+                <button
+                 type="submit"
+                 id="addProduct"
+                 class="btn btn-info btn-fill w-100"
+                 (click)="onSubmit()"
+                >
+                 Add Product
+                </button>
+              </div>
+
+              <div class="col-sm-4 offset-sm-0">
+                <button
+                 type="submit"
+                 id="cancelProduct"
+                 class="btn btn-danger btn-fill w-100"
+                 (click)="reset()"
+                >
+                  Reset
+                </button>
+              </div>
             </div>
+
+          </form>
         </div>
+      </div>
     </div>
+  </div>
 </div>

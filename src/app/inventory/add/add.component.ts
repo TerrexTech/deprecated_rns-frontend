@@ -68,11 +68,6 @@ export class AddComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams[''] || '/'
   }
 
-  // convenience getter for easy access to form fields
-f(): any {
-    return this.form.controls
-  }
-
   generate()
   {
     this.upc = 5;
@@ -88,6 +83,7 @@ f(): any {
   }
 
   onSubmit() {
+    console.log(this.form.controls)
     this.formSubmitAttempt = true
     if (this.form.valid){
     const month = new Array()
@@ -114,6 +110,11 @@ f(): any {
   reset() {
     this.form.reset()
     this.formSubmitAttempt = false
+  }
+
+  isFieldValid(field: string) {
+    console.log(field, this.form.controls, this.form.controls[field])
+    return this.formSubmitAttempt && this.form.controls[field].status == 'INVALID'
   }
 
   // showMessage(type: string) {

@@ -1,46 +1,4 @@
-.control-label.required:after {
-    color: #d00;
-    content: "*";
-    position: absolute;
-    margin-left: 5px;
-    top:7px
-  }
-
-  .add-on .input-group-btn > .btn {
-  border-left-width:0;left:-2px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+.form-label {
+  margin-bottom: -1px;
+  text-align: right;
 }
-
-.control-label.required:after {
-    color: #d00;
-    content: "*";
-    top:7px;
-  }
-
-  .control-label-container {
-    text-align: right;
-  }
-
-  .register-page-container {
-    /* margin-top: 138px; */
-   margin:auto;
-
-
-
-  }
-
-  .selectpicker {
-    width: 100%;
-  }
-
-  .control-label {
-    top: 50%;
-    position: relative;
-    transform: translateY(-50%)
-  }
-
-  .err-msg {
-    text-align: center;
-    color: red;
-  }
