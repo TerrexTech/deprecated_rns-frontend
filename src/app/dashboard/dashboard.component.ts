@@ -111,7 +111,7 @@ export class DashboardComponent implements OnInit {
 
     console.log('}}}}}}}}}}}}}}}}}}}}');
     console.log(sendDate);
-    return this.http.post(environment.apiUrl + '/perhr-sale', sendDates, {
+    return this.http.post(environment.apiUrl + '/sold-inv', sendDates, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -121,7 +121,7 @@ export class DashboardComponent implements OnInit {
   getDistJSON(): any {
 
 
-    return this.http.get(environment.apiUrl + '/dist-weight', {
+    return this.http.get(environment.apiUrl + '/dist-inv', {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -209,12 +209,21 @@ export class DashboardComponent implements OnInit {
       this.totalChart.data.datasets.forEach((dataset, index) =>
         dataset.data = dataset.data.concat(metrics[index])
       );
+
       this.totalChart.update();
 
       // Moving Graph
-      setInterval(() => {
+    });
+
+
+      setInterval(() =>{
         this.getToday()
           .subscribe(newDate => {
+            const newMetrics: any = [
+              [],
+              [],
+              []
+            ];
             console.log(newDate)
             Object.keys(newDate)
               .forEach(k => {
@@ -222,18 +231,18 @@ export class DashboardComponent implements OnInit {
                 const date = new Date(weights.dates * 1000).toDateString();
                 this.totalChart.data.labels.push(date);
                 this.total.nativeElement.innerHTML = weights.total_weight;
-                metrics[0].push(weights.total_weight);
-                metrics[1].push(weights.sold_weight);
-                metrics[2].push(weights.waste_weight);
+                newMetrics[0].push(weights.total_weight);
+                newMetrics[1].push(weights.sold_weight);
+                newMetrics[2].push(weights.waste_weight);
               });
           })
-        this.totalChart.data.datasets.forEach((dataset, index) => {
-          const metric = dataset.data.shift();
-          dataset.data.push(metric + 1);
-        });
-        this.totalChart.update();
-      }, 5000);
-    });
+          // this.totalChart.data.datasets.forEach((dataset, index) => {
+          //   console.log(index)
+          //   const metric = dataset.data.shift();
+          //   dataset.data.push(newMetrics[index]);
+          // });
+          this.totalChart.update();
+        }, 5000);
   }
 
   loadSoldGraph() {
@@ -288,7 +297,7 @@ export class DashboardComponent implements OnInit {
       // total_weight: 195, sold_weight: 58, waste_weight: 49
       Object.keys(dataArr).forEach(k => {
         const prods = dataArr[k];
-        const date = new Date(prods.dates).toDateString();
+        const date = new Date(prods.dates *1000).toDateString();
         this.soldChart.data.labels.push(date);
         metrics[0].push(prods.sold_weight);
       });
@@ -433,7 +442,7 @@ export class DashboardComponent implements OnInit {
       // total_weight: 195, sold_weight: 58, waste_weight: 49
       Object.keys(dataArr).forEach(k => {
         const donations = dataArr[k];
-        const date = new Date(donations.dates).toDateString();
+        const date = new Date(donations.dates *1000).toDateString();
         this.donationChart.data.labels.push(date);
         metrics[0].push(donations.donate_weight);
       });
@@ -450,7 +459,7 @@ export class DashboardComponent implements OnInit {
           dataset.data.push(metric + 1);
         });
         this.donationChart.update();
-      }, 5000);
+      }, 10000);
     });
   }
 
