@@ -58,25 +58,24 @@
             <li routerLinkActive="active" *ngFor="let menuitem of menuItems">
                 <!--If is a single link-->
                 <a routerLink="{{menuitem.path}}" *ngIf="menuitem.type === 'link'">
-                    <i class="{{menuitem.icontype}}"></i>
-                    <p>{{menuitem.title}}</p>
+                  <i class="{{menuitem.icontype}}"></i>
+                  <p>{{menuitem.title}}</p>
                 </a>
                 <!--If it have a submenu-->
-                <a (click)="isCollapsed = !isCollapsed"
-                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"
-                  *ngIf="menuitem.type === 'sub'">
-                    <i class="{{menuitem.icontype}}"></i>
-                    <p>{{menuitem.title}}<b class="caret"></b></p>
+                <a (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample" *ngIf="menuitem.type === 'sub'">
+                  <i class="{{menuitem.icontype}}"></i>
+                  <p>{{menuitem.title}}<b class="caret"></b></p>
                 </a>
 
                 <!--Display the submenu items-->
                 <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" *ngIf="menuitem.type === 'sub'">
                     <ul class="nav">
-                        <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
-                            <a routerLink="{{menuitem.path}}/{{childitem.path}}">
-                                <span class="sidebar-normal">{{childitem.title}}</span>
-                            </a>
-                        </li>
+                      <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
+                        <a routerLink="{{menuitem.path}}/{{childitem.path}}">
+                          <span class="sidebar-normal">{{childitem.ab}}</span>
+                          <span class="sidebar-title">{{childitem.title}}</span>
+                        </a>
+                      </li>
                     </ul>
                 </div>
             </li>

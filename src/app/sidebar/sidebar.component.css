@@ -14,3 +14,55 @@
 .empType {
     font-size: 12px
 }
+
+a.ng-star-inserted:after,
+a.ng-star-inserted:before,
+a:after,
+a:before {
+    display: none !important;
+}
+
+.collapse:not(.show) {
+    display: block;
+    height: 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0;
+}
+
+.ctest {
+    transition: all 500ms;
+    height: 100px;
+    opacity: 1;
+}
+
+.empName {
+    margin-top: -8px
+
+}
+
+.lineEmp {
+	background: white;
+    height:1px;
+    width: 130px;
+	overflow: hidden;
+    margin-left: 25px
+}
+
+.empType {
+    font-size: 12px
+}
+
+.sidebar-normal {
+    margin-left: 9px;
+    color: #fff;
+    opacity: 0.4;
+    font-family: Montserrat, "Helvetica Neue", Arial,sans-serif;
+}
+
+.sidebar-title {
+    color: #fff;
+    opacity: .6;
+    margin-left: 27px;
+    font-family: Montserrat, "Helvetica Neue", Arial,sans-serif;
+}
