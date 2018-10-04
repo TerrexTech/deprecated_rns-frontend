@@ -242,7 +242,7 @@ export class DashboardComponent implements OnInit {
           //   dataset.data.push(newMetrics[index]);
           // });
           this.totalChart.update();
-        }, 5000);
+        }, 60000);
   }
 
   loadSoldGraph() {
@@ -314,7 +314,7 @@ export class DashboardComponent implements OnInit {
           dataset.data.push(metric + 1);
         });
         this.soldChart.update();
-      }, 5000);
+      }, 40000);
     });
   }
 
@@ -459,7 +459,7 @@ export class DashboardComponent implements OnInit {
           dataset.data.push(metric + 1);
         });
         this.donationChart.update();
-      }, 10000);
+      }, 60000);
     });
   }
 
