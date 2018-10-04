@@ -68,5 +68,5 @@ a:before {
 }
 
 .no-overflow{
-    overflow: hidden;
+    overflow:unset;
 }

@@ -63,7 +63,7 @@ export class LoginPageComponent implements OnInit {
 
       this.loading = true
       console.log(this.http)
-      this.http.post('http://142.55.32.86:50281/api1', resource)
+      this.http.post('http://162.212.158.16:30653/api', resource)
         .toPromise()
         // .then(d => this.data)
         .then((data: any) => {

@@ -54,6 +54,7 @@
       </div>
     </div>
   </div>
+  <ng-scrollbar>
         <ul class="nav">
             <li routerLinkActive="active" *ngFor="let menuitem of menuItems">
                 <!--If is a single link-->
@@ -68,7 +69,7 @@
                 </a>
 
                 <!--Display the submenu items-->
-                <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" class="collapse" *ngIf="menuitem.type === 'sub'">
+                <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" *ngIf="menuitem.type === 'sub'">
                     <ul class="nav">
                       <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
                         <a routerLink="{{menuitem.path}}/{{childitem.path}}">
@@ -80,5 +81,6 @@
                 </div>
             </li>
         </ul>
+        </ng-scrollbar>
 
 </div>
