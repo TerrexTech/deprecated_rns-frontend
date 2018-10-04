@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 import * as jwt_decode from 'jwt-decode'
-import { AuthResponse } from "../models/auth-response"
+import { AuthResponse } from '../models/auth-response'
 
 
 // used to login and logout of the application, to login it posts the users

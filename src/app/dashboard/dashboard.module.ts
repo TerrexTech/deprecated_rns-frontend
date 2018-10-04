@@ -1,20 +1,15 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router'
-import { CommonModule } from '@angular/common'
-import { FormsModule } from '@angular/forms'
 
 import { DashboardComponent } from './dashboard.component'
 
-import { DashboardRoutes } from './dashboard.routing'
+import { NgModule } from '@angular/core';
 
 @NgModule({
     imports: [
-        CommonModule,
-        RouterModule.forChild(DashboardRoutes),
-        FormsModule
+        BrowserModule
     ],
-    declarations: [DashboardComponent],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [DashboardComponent]
 })
 
 export class DashboardModule {}

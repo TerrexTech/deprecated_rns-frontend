@@ -16,7 +16,6 @@ import {
   MatTabsModule
 } from '@angular/material'
 
-import { EmployeeRoutes } from "./employee.routing.module";
 import { UserAddComponent } from './user-add/user-add.component'
 import { UserTableComponent } from './user-table/user-table.component'
 import { DialogDataDialog } from './dialog-data/dialog-data.component'
@@ -41,7 +40,6 @@ import { DialogDataDialog } from './dialog-data/dialog-data.component'
     MatSelectModule,
     MatTableModule,
     MatTabsModule,
-    RouterModule.forChild(EmployeeRoutes)
   ],
   providers: [],
   exports: [

@@ -17,22 +17,23 @@ export class DashboardComponent implements OnInit {
   distChart: any
   donationChart: any
   date: any
+  combinationGraph = []
 
   @ViewChild('arrival') arrival: ElementRef
   @ViewChild('total') total: ElementRef
   @ViewChild('average') average: ElementRef
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-     this.loadTotalGraph()
-     this.loadSoldGraph()
-     this.loadDistGraph()
-     this.loadDonationGraph()
+    this.loadTotalGraph()
+    this.loadSoldGraph()
+    this.loadDistGraph()
+    this.loadDonationGraph()
   }
 
 
-  getDays(days?:number): Array<any>{
+  getDays(days?: number): Array<any> {
     let dates = []
     const end_date = Math.round((new Date().getTime() / 1000) + (86400 * days))
     const start_date = Math.round(new Date().getTime() / 1000) - (86400 * days)
@@ -176,7 +177,7 @@ export class DashboardComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Weight(KG)'
+              labelString: 'Weight(Kg)'
             },
             ticks: {
               beginAtZero: true
@@ -188,61 +189,70 @@ export class DashboardComponent implements OnInit {
 
     this.getJSON()
       .subscribe(dataArr => {
-      console.log(dataArr);
-      const metrics: any = [
-        [],
-        [],
-        []
-      ];
-      // total_weight: 195, sold_weight: 58, waste_weight: 49
-      Object.keys(dataArr)
-      .forEach(k => {
-        const weights = dataArr[k];
-        const date = new Date(weights.dates * 1000).toDateString();
-        this.totalChart.data.labels.push(date);
-        this.total.nativeElement.innerHTML = weights.total_weight;
-        metrics[0].push(weights.total_weight);
-        metrics[1].push(weights.sold_weight);
-        metrics[2].push(weights.waste_weight);
+        console.log(dataArr);
+        const metrics: any = [
+          [],
+          [],
+          []
+        ];
+        // total_weight: 195, sold_weight: 58, waste_weight: 49
+        Object.keys(dataArr)
+          .forEach(k => {
+            const weights = dataArr[k];
+            const date = new Date(weights.dates * 1000).toDateString();
+            this.totalChart.data.labels.push(date);
+            this.total.nativeElement.innerHTML = weights.total_weight;
+            metrics[0].push(weights.total_weight);
+            metrics[1].push(weights.sold_weight);
+            metrics[2].push(weights.waste_weight);
+          });
+
+        this.totalChart.data.datasets.forEach((dataset, index) =>
+          dataset.data = dataset.data.concat(metrics[index])
+        );
+
+        this.totalChart.update();
+        // metrics[0].shift()
+        // metrics[1].shift()
+
+        // Moving Graph
       });
 
-      this.totalChart.data.datasets.forEach((dataset, index) =>
-        dataset.data = dataset.data.concat(metrics[index])
-      );
 
-      this.totalChart.update();
+    setInterval(() => {
+      this.getToday()
+        .subscribe(newDate => {
+          const newMetrics: any = [
+            [],
+            [],
+            []
+          ];
+          console.log(newDate)
+          Object.keys(newDate)
+            .forEach(k => {
+              console.log(k)
+              const weights = newDate[k];
+              const date = new Date(weights.dates * 1000).toDateString();
+              this.totalChart.data.labels.push(date);
+              this.total.nativeElement.innerHTML = weights.total_weight;
 
-      // Moving Graph
-    });
+              this.totalChart.data.datasets.forEach((dataset  , index) => {
+                console.log(index)
+                const metric = dataset.data.shift();
+                dataset.data.push(newMetrics[index]);
+                console.log(dataset)
 
-
-      setInterval(() =>{
-        this.getToday()
-          .subscribe(newDate => {
-            const newMetrics: any = [
-              [],
-              [],
-              []
-            ];
-            console.log(newDate)
-            Object.keys(newDate)
-              .forEach(k => {
-                const weights = newDate[k];
-                const date = new Date(weights.dates * 1000).toDateString();
-                this.totalChart.data.labels.push(date);
-                this.total.nativeElement.innerHTML = weights.total_weight;
                 newMetrics[0].push(weights.total_weight);
                 newMetrics[1].push(weights.sold_weight);
                 newMetrics[2].push(weights.waste_weight);
               });
-          })
-          // this.totalChart.data.datasets.forEach((dataset, index) => {
-          //   console.log(index)
-          //   const metric = dataset.data.shift();
-          //   dataset.data.push(newMetrics[index]);
-          // });
-          this.totalChart.update();
-        }, 5000);
+              this.totalChart.update();
+            });
+
+        })
+
+
+    }, 5000);
   }
 
   loadSoldGraph() {
@@ -279,7 +289,7 @@ export class DashboardComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Weight'
+              labelString: 'Weight (Kg)'
             },
             ticks: {
               beginAtZero: true
@@ -297,7 +307,7 @@ export class DashboardComponent implements OnInit {
       // total_weight: 195, sold_weight: 58, waste_weight: 49
       Object.keys(dataArr).forEach(k => {
         const prods = dataArr[k];
-        const date = new Date(prods.dates *1000).toDateString();
+        const date = new Date(prods.dates * 1000).toDateString();
         this.soldChart.data.labels.push(date);
         metrics[0].push(prods.sold_weight);
       });
@@ -362,33 +372,35 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    this.getDistJSON().subscribe(dataArr => {
-      console.log(dataArr);
-      const metrics: any = [
-        []
-      ];
-      // total_weight: 195, sold_weight: 58, waste_weight: 49
-      Object.keys(dataArr).forEach(k => {
-        const prods = dataArr[k];
-        // const date = new Date(prods.dates).toDateString()
-        this.distChart.data.labels.push(prods.prod_name);
-        metrics[0].push(prods.prod_weight);
+    this.getDistJSON()
+      .subscribe(dataArr => {
+        console.log(dataArr);
+        const metrics: any = [
+          []
+        ];
+        // total_weight: 195, sold_weight: 58, waste_weight: 49
+        Object.keys(dataArr)
+          .forEach(k => {
+            const prods = dataArr[k];
+            // const date = new Date(prods.dates).toDateString()
+            this.distChart.data.labels.push(prods.prod_name);
+            metrics[0].push(prods.prod_weight);
+          });
+
+        this.distChart.data.datasets.forEach((dataset, index) =>
+          dataset.data = dataset.data.concat(metrics[index])
+        );
+        this.distChart.update();
+
+        // Moving Graph
+        // setInterval(() => {
+        //   this.distChart.data.datasets.forEach((dataset, index) => {
+        //     const metric = dataset.data.shift();
+        //     dataset.data.push(metric + 1);
+        //   });
+        //   this.distChart.update();
+        // }, 5000);
       });
-
-      this.distChart.data.datasets.forEach((dataset, index) =>
-        dataset.data = dataset.data.concat(metrics[index])
-      );
-      this.distChart.update();
-
-      // Moving Graph
-      // setInterval(() => {
-      //   this.distChart.data.datasets.forEach((dataset, index) => {
-      //     const metric = dataset.data.shift();
-      //     dataset.data.push(metric + 1);
-      //   });
-      //   this.distChart.update();
-      // }, 5000);
-    });
   }
 
   loadDonationGraph() {
@@ -398,9 +410,10 @@ export class DashboardComponent implements OnInit {
         labels: [],
         datasets: [
           {
-            label: 'Donation',
+            label: 'Average Products',
             data: [],
             backgroundColor: 'rgba(255, 99, 132, 1)',
+            fill: false
           }
         ]
       },
@@ -408,9 +421,6 @@ export class DashboardComponent implements OnInit {
         responsive: true,
         hover: {
           mode: 'dataset'
-        },
-        legend: {
-          display: true
         },
         scales: {
           xAxes: [{
@@ -434,33 +444,35 @@ export class DashboardComponent implements OnInit {
       }
     });
 
-    this.getJSON().subscribe(dataArr => {
-      console.log(dataArr);
-      const metrics: any = [
-        []
-      ];
-      // total_weight: 195, sold_weight: 58, waste_weight: 49
-      Object.keys(dataArr).forEach(k => {
-        const donations = dataArr[k];
-        const date = new Date(donations.dates *1000).toDateString();
-        this.donationChart.data.labels.push(date);
-        metrics[0].push(donations.donate_weight);
-      });
+    this.getJSON()
+      .subscribe(dataArr => {
+        console.log(dataArr);
+        const metrics: any = [
+          []
+        ];
+        // total_weight: 195, sold_weight: 58, waste_weight: 49
+        Object.keys(dataArr)
+          .forEach(k => {
+            const donations = dataArr[k];
+            const date = new Date(donations.dates * 1000).toDateString();
+            this.donationChart.data.labels.push(date);
+            metrics[0].push(donations.donate_weight);
+          });
 
-      this.donationChart.data.datasets.forEach((dataset, index) =>
-        dataset.data = dataset.data.concat(metrics[index])
-      );
-      this.donationChart.update();
-
-      // Moving Graph
-      setInterval(() => {
-        this.donationChart.data.datasets.forEach((dataset, index) => {
-          const metric = dataset.data.shift();
-          dataset.data.push(metric + 1);
-        });
+        this.donationChart.data.datasets.forEach((dataset, index) =>
+          dataset.data = dataset.data.concat(metrics[index])
+        );
         this.donationChart.update();
-      }, 10000);
-    });
+
+        // Moving Graph
+        setInterval(() => {
+          this.donationChart.data.datasets.forEach((dataset, index) => {
+            const metric = dataset.data.shift();
+            dataset.data.push(metric + 1);
+          });
+          this.donationChart.update();
+        }, 10000);
+      });
   }
 
 }
