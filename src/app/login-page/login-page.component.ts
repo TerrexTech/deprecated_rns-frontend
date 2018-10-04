@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-// import { AuthenticationService } from '../../_services'
-import { HttpHeaders, HttpClient } from '@angular/common/http'
+import { AuthenticationService } from '../services'
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    // private authenticationService: AuthenticationService,
+    private authenticationService: AuthenticationService,
     private http: HttpClient
   ) {
     this.http = http
@@ -35,8 +35,8 @@ export class LoginPageComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]]
     })
 
-    // reset login status
-    // this.authenticationService.logout()
+    this.authenticationService.logout()
+
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams[''] || '/'
   }

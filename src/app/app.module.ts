@@ -8,20 +8,27 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routes } from "./app.routing.module";
-import { TokenExtraction } from "./helpers";
 import { SidebarModule } from "./sidebar/sidebar.module";
 import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
-import { UserService } from "./services/user.service";
+import { UserService, AuthenticationService  } from "./services/";
+import { LoginPageModule } from "./login-page/login-page.module";
+import {
+  ErrorInterceptor,
+  fakeBackendProvider,
+  JwtInterceptor,
+  TokenExtraction
+} from './helpers'
+import { AuthGuard } from './guards/auth.guard'
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,8 +43,10 @@ import { UserService } from "./services/user.service";
     FixedPluginModule,
     FooterModule,
     NavbarModule,
+    LoginPageModule
   ],
-  providers: [TokenExtraction, UserService],
+  providers: [ErrorInterceptor, JwtInterceptor, TokenExtraction, UserService, AuthGuard, AuthenticationService, { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
