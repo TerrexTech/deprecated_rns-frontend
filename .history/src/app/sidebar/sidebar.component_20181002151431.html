@@ -1,0 +1,88 @@
+
+<div class="logo">
+	<a href="" class="simple-text logo-mini">
+        <div class="logo-image-small">
+            <img src="./assets/img/apple-icon.png"/>
+        </div>
+	</a>
+
+	<a href="#" class="simple-text logo-normal">
+		Ripe&Sense
+	</a>
+</div>
+
+
+<div class="sidebar-wrapper">
+
+  <div class="user">
+    <div class="photo">
+      <img src="./assets/img/placeholder.jpg" />
+    </div>
+    <div class="info">
+      <a (click)="profileCollapsed = !profileCollapsed"
+         [attr.aria-expanded]="!profileCollapsed" aria-controls="collapseExample" class="collapsed">
+        <span class="empName">
+          {{name}}
+          <b class="caret"></b>
+        </span>
+        <span class="lineEmp">
+                <b class="caret"></b>
+        </span>
+        <span class="empType" *ngIf="!!role">
+            {{role}}
+        </span>
+      </a>
+      <div class="clearfix"></div>
+      <div [ngbCollapse]="isCollapsed">
+        <ul class="nav">
+          <li>
+            <a href="#">
+              <span class="sidebar-mini-icon">MP</span>
+              <span class="sidebar-normal">My Profile</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span class="sidebar-mini-icon">S</span>
+              <span class="sidebar-normal">Settings</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="['/pages/login']">
+              <span class="sidebar-mini-icon">LO</span>
+              <span class="sidebar-normal">Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+        <ul class="nav">
+            <li routerLinkActive="active" *ngFor="let menuitem of menuItems">
+                <!--If is a single link-->
+                <a routerLink="{{menuitem.path}}" *ngIf="menuitem.type === 'link'">
+                    <i class="{{menuitem.icontype}}"></i>
+                    <p>{{menuitem.title}}</p>
+                </a>
+                <!--If it have a submenu-->
+                <a (click)="isCollapsed = !isCollapsed"
+                [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample"
+                  *ngIf="menuitem.type === 'sub'">
+                    <i class="{{menuitem.icontype}}"></i>
+                    <p>{{menuitem.title}}<b class="caret"></b></p>
+                </a>
+
+                <!--Display the submenu items-->
+                <div id="{{menuitem.title}}" [ngbCollapse]="isCollapsed" *ngIf="menuitem.type === 'sub'">
+                    <ul class="nav">
+                        <li routerLinkActive="active" *ngFor="let childitem of menuitem.children">
+                            <a routerLink="{{menuitem.path}}/{{childitem.path}}">
+                                <span class="sidebar-normal">{{childitem.title}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+</div>
