@@ -185,7 +185,13 @@ export class SidebarComponent implements OnInit{
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem)
         // this.userRole = 'Corporate'
+
     }
     ngAfterViewInit() {
+    }
+
+    test() {
+        console.log("clicked")
+        this.isCollapsed = !this.isCollapsed
     }
 }

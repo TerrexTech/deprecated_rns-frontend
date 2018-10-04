@@ -15,7 +15,8 @@ import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
-import { UserService } from "./services/user.service";
+import { UserService } from './services/user.service';
+import { MatExpansionModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { UserService } from "./services/user.service";
     FixedPluginModule,
     FooterModule,
     NavbarModule,
+    MatExpansionModule
   ],
   providers: [TokenExtraction, UserService],
   bootstrap: [AppComponent]

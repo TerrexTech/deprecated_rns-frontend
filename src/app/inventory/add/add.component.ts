@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { AuthenticationService } from '../../services'
-import { LoadInventoryJsonService } from "../../services/load-inventory-json/load-inventory-json.service"
-import
+import { LoadInventoryJsonService } from '../../services/load-inventory-json/load-inventory-json.service'
 
 export interface Inventory {
   item_id: number
@@ -35,7 +34,7 @@ export class AddComponent implements OnInit {
   id: number;
   name:string
   origin:string
-  date:NgbDateStruct
+  // date:NgbDateStruct
   weight:number
   price:number
   devId:string
