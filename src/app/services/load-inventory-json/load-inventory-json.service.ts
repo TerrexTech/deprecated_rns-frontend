@@ -61,11 +61,11 @@ export class LoadInventoryJsonService {
     }]
     console.log("}}}}}}}}}}}}}}}}}}}}")
     console.log(item)
-    return this.http.post(environment.apiUrl + '/delete-product', item, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
+    return this.http.post(environment.apiUrl + '/del-inv', item)
+      .toPromise()
+      .then((data: any) => {
+        console.log(data)
+      })
   }
 
   public updateRow(obj: any): any {
@@ -85,9 +85,10 @@ export class LoadInventoryJsonService {
 
     console.log("}}}}}}}}}}}}}}}}}}}}")
     console.log(obj)
-    this.http.post(environment.apiUrl+'/add-product', obj)
+    this.http.post(environment.apiUrl+'/add-inv', obj)
     .toPromise()
     .then((data: any) => {
+      console.log(data)
     })
   }
 

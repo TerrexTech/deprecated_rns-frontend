@@ -14,7 +14,7 @@
                   <label class="control-label required"> First name </label>
                 </div>
                 <div class="col-md-9">
-                  <input type="text" id="firstname" class="form-control" formControlName="firstname" ngModel [ngClass]="{ 'is-invalid': formSubmitAttempt && f().firstname.errors }">
+                  <input type="text" id="firstname" class="form-control" formControlName="firstname" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().firstname.errors }">
                   <div *ngIf="formSubmitAttempt && f().firstname.errors" class="invalid-feedback">
                     <div *ngIf="f().firstname.errors.required">
                       First name is required
@@ -27,7 +27,7 @@
                   <label class="control-label required"> Last name </label>
                 </div>
                 <div class="col-md-9">
-                  <input type="text" id="lastname" class="form-control" ngModel formControlName="lastname" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().lastname.errors }">
+                  <input type="text" id="lastname" class="form-control" formControlName="lastname" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().lastname.errors }">
                   <div *ngIf="formSubmitAttempt && f().lastname.errors" class="invalid-feedback">
                     <div *ngIf="f().lastname.errors.required">
                       Last name is required
@@ -40,7 +40,7 @@
                   <label class="control-label required"> Username </label>
                 </div>
                 <div class="col-md-9">
-                  <input type="text" class="form-control" ngModel formControlName="username" id="username" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().username.errors }">
+                  <input type="text" class="form-control" formControlName="username" id="username" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().username.errors }">
                   <div *ngIf="formSubmitAttempt && f().username.errors" class="invalid-feedback">
                     <div *ngIf="f().username.errors.required">
                       Username is required
@@ -53,7 +53,7 @@
                   <label class="control-label required"> Password </label>
                 </div>
                 <div class="col-md-9">
-                  <input type="password" id="password" class="form-control" ngModel formControlName="password" required
+                  <input type="password" id="password" class="form-control" formControlName="password" required
                     [ngClass]="{ 'is-invalid': formSubmitAttempt && f().password.errors }">
                   <div *ngIf="formSubmitAttempt && f().password.errors" class="invalid-feedback">
                     <div *ngIf="f().password.errors">
@@ -67,7 +67,7 @@
                   <label class="control-label required"> Email </label>
                 </div>
                 <div class="col-md-9">
-                  <input type="email" id="email" class="form-control" ngModel formControlName="email" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().email.errors }">
+                  <input type="email" id="email" class="form-control" formControlName="email" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().email.errors }">
                   <div *ngIf="formSubmitAttempt && f().email.errors" class="invalid-feedback">
                     <div *ngIf="!!f().email.errors">
                       Email is required

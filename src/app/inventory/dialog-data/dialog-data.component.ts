@@ -63,7 +63,6 @@ export class DialogDataDialog implements OnInit {
     // alert('Your Inventory has been updated.')
     // $('#myModal').modal('hide')
     swal("Record successfully inserted!");
-    this.loadInv.getJSON();
   }
 }
 }

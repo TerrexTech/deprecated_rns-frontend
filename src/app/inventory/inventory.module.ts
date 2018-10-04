@@ -25,8 +25,9 @@ import {
     MatSortModule,
     MatTableModule,
     MatTabsModule,
-    MatToolbarModule
-
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule
  } from "@angular/material";
 import { DialogDataDialog } from './dialog-data/dialog-data.component'
 @NgModule({
@@ -51,6 +52,8 @@ import { DialogDataDialog } from './dialog-data/dialog-data.component'
         MatTableModule,
         MatTabsModule,
         MatToolbarModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
         RouterModule.forChild(InventoryRoutes),
     ],
     declarations: [

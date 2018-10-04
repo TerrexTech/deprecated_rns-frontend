@@ -69,12 +69,12 @@
             <div class="row">
                 <label class="col-sm-2 col-md-3 control-label mx-auto"> Date of Arrival </label>
                 <div class="col-sm-8 mx-auto">
-                    <input #formDate type="date" class="form-control" formControlName="date_arrived" id="date_arrived"
-                        required name="dp1" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()" *ngIf="curField"
-                        [ngModel]="curField.data.date_arrived" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().date_arrived.errors }">
-                    <div *ngIf="formSubmitAttempt && f().date_arrived.errors" class="invalid-feedback">
-                        <div *ngIf="f().date_arrived.errors.required">Arrival date is required</div>
-                    </div>
+                    <mat-form-field>
+                        <input matInput type="text" [matDatepicker]="picker" placeholder="Choose a date" type="text" class="form-control" [ngClass]="{ 'is-invalid': formSubmitAttempt &&
+                        f().date_arrived.errors }" [ngModel]="curField.data.date_arrived" formControlName="date_arrived" id="date_arrived" required>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
                 </div>
             </div>
         </div>

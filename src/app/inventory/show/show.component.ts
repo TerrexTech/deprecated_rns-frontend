@@ -91,7 +91,7 @@ export class ShowComponent implements OnInit {
             console.log(item.item_id)
 
             console.log("++++++++++++++++++==")
-            // this.loadInventoryJsonService.deleteRow(item.item_id)
+             this.loadInventoryJsonService.deleteRow(item.item_id)
             //   .subscribe(console.log)
             // this.dataSource.data.splice(index, 1)
 
@@ -128,10 +128,7 @@ export class ShowComponent implements OnInit {
   onSearch() {
     var query = this.query.nativeElement.value
     var field = this.field.nativeElement.value
-
     this.getSearchData(query, field)
-
-    //post
   }
 
   getSearchData(query, field) {
@@ -141,6 +138,7 @@ export class ShowComponent implements OnInit {
         this.dataSource.data = data
         Food = data
       })
+
   }
 
   curField: any
@@ -156,9 +154,14 @@ export class ShowComponent implements OnInit {
        data: {
          data: this.curField
        }
-     });
-    //console.log(this.curField.item_id)
-    // this.formDate.nativeElement.value = this.curField.date_arrived
+     }).afterClosed().subscribe(result=>{
+       this.loadInventoryJsonService.getJSON()
+         .subscribe(data => {
+           console.log(data)
+           this.dataSource.data = data
+           Food = data
+         })
+     })
      }
    return e
 }

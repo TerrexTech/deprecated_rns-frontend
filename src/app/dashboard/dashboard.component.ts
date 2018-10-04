@@ -63,7 +63,24 @@ export class DashboardComponent implements OnInit {
     sendDates = [sendDate, sendDate2, sendDate3, sendDate4]
 
 
-    return this.http.post(environment.apiUrl + '/twsalewaste', sendDates, {
+    return this.http.post(environment.apiUrl + '/total-inv', sendDates, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+  }
+
+  getToday(): any {
+    var sendDates = []
+
+    const sendDate = new SendDate()
+    sendDate.end_date = this.getDays(1)[0]
+    // sendDate.start_date = this.getDays(0)[1]
+    console.log(sendDate)
+    sendDates = [sendDate]
+
+
+    return this.http.post(environment.apiUrl + '/total-inv', sendDates, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -116,7 +133,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  loadTotalGraph(): void {
+  loadTotalGraph() {
     this.totalChart = new Chart('totalChart', {
       type: 'bar',
       data: {
@@ -159,7 +176,7 @@ export class DashboardComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Weight'
+              labelString: 'Weight(KG)'
             },
             ticks: {
               beginAtZero: true
@@ -181,7 +198,7 @@ export class DashboardComponent implements OnInit {
       Object.keys(dataArr)
       .forEach(k => {
         const weights = dataArr[k];
-        const date = new Date(weights.dates).toDateString();
+        const date = new Date(weights.dates * 1000).toDateString();
         this.totalChart.data.labels.push(date);
         this.total.nativeElement.innerHTML = weights.total_weight;
         metrics[0].push(weights.total_weight);
@@ -196,6 +213,20 @@ export class DashboardComponent implements OnInit {
 
       // Moving Graph
       setInterval(() => {
+        this.getToday()
+          .subscribe(newDate => {
+            console.log(newDate)
+            Object.keys(newDate)
+              .forEach(k => {
+                const weights = newDate[k];
+                const date = new Date(weights.dates * 1000).toDateString();
+                this.totalChart.data.labels.push(date);
+                this.total.nativeElement.innerHTML = weights.total_weight;
+                metrics[0].push(weights.total_weight);
+                metrics[1].push(weights.sold_weight);
+                metrics[2].push(weights.waste_weight);
+              });
+          })
         this.totalChart.data.datasets.forEach((dataset, index) => {
           const metric = dataset.data.shift();
           dataset.data.push(metric + 1);
@@ -341,13 +372,13 @@ export class DashboardComponent implements OnInit {
       this.distChart.update();
 
       // Moving Graph
-      setInterval(() => {
-        this.distChart.data.datasets.forEach((dataset, index) => {
-          const metric = dataset.data.shift();
-          dataset.data.push(metric + 1);
-        });
-        this.distChart.update();
-      }, 5000);
+      // setInterval(() => {
+      //   this.distChart.data.datasets.forEach((dataset, index) => {
+      //     const metric = dataset.data.shift();
+      //     dataset.data.push(metric + 1);
+      //   });
+      //   this.distChart.update();
+      // }, 5000);
     });
   }
 

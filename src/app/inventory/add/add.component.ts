@@ -1,23 +1,12 @@
 import { UserService } from '../../services/user.service'
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router'
 import { AuthenticationService } from '../../services'
 import { LoadInventoryJsonService } from "../../services/load-inventory-json/load-inventory-json.service"
-import
-
-export interface Inventory {
-  item_id: number
-  item_name: string
-  status: string
-  product_origin: string
-  arrival_date: Date
-  expiry_date: Date
-  total_weight: number
-  price: number
-  monitored_by: string
-  location: string
-}
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpHeaderResponse } from '@angular/common/http'
+import { environment } from '../../../config'
 
 @Component({
   selector: 'app-add',
@@ -25,6 +14,7 @@ export interface Inventory {
   styleUrls: ['./add.component.css']
 })
 export class AddComponent implements OnInit {
+
   form: FormGroup
   formSubmitAttempt: boolean
   error: string
@@ -35,7 +25,7 @@ export class AddComponent implements OnInit {
   id: number;
   name:string
   origin:string
-  date:NgbDateStruct
+  date:Date
   weight:number
   price:number
   devId:string
@@ -47,7 +37,8 @@ export class AddComponent implements OnInit {
     private router: Router,
     private authenticationService: AuthenticationService,
     private userService: UserService,
-    private loadJsonData: LoadInventoryJsonService
+    private loadJsonData: LoadInventoryJsonService,
+    private http: HttpClient
     ) { }
 
   ngOnInit() {
@@ -60,7 +51,7 @@ export class AddComponent implements OnInit {
       date_arrived: ['', [Validators.required, Validators.minLength(1)]],
       total_weight: ['', [Validators.required, Validators.minLength(1)]],
       price: ['', [Validators.required, Validators.minLength(1)]],
-      devId: ['', [Validators.required, Validators.minLength(1)]],
+      device_id: ['', [Validators.required, Validators.minLength(1)]],
       location: ['', [Validators.required, Validators.minLength(1)]]
     })
 
@@ -74,16 +65,21 @@ f(): any {
 
   generate()
   {
-    this.upc = 5;
-    this.sku = 4;
-    this.id = 10;
-    this.name = 'Banana';
-    this.origin = 'Canada';
-    // this.date = NgbDateStruct = { day: 14, month: 7, year: 1789 };
-    this.weight = 10;
-    this.price = 11;
-    this.devId = "31";
-    this.location = "Aisle 1";
+    this.http.get(environment.apiUrl + '/gen-data')
+    .subscribe(data => {
+        console.log(data)
+        this.form.get('upc').setValue(data[0].upc);
+        this.form.get('sku').setValue(data[0].sku);
+        this.form.get('item_id').setValue(data[0].item_id);
+        this.form.get('name').setValue(data[0].name);
+        this.form.get('origin').setValue(data[0].origin);
+        this.form.get('date_arrived').setValue(new Date(data[0].date_arrived * 1000));
+        this.form.get('total_weight').setValue(data[0].total_weight);
+        this.form.get('price').setValue(data[0].price);
+        this.form.get('device_id').setValue(data[0].device_id);
+        this.form.get('location').setValue(data[0].location);
+    })
+
   }
 
   onSubmit() {
@@ -104,7 +100,8 @@ f(): any {
     month[11] = "December"
       const origDate = this.form.value.date_arrived
        this.form.value.date_arrived = Math.floor(Date.parse(`${origDate.year}/${month[origDate.month]}/${origDate.day}`) / 1000)
-       console.log(JSON.stringify(this.form.value))
+       console.log(this.form.value)
+       this.loadJsonData.addProd(this.form.value)
        swal("Record successfully inserted!");
         this.reset()
     }
