@@ -32,7 +32,23 @@ export class UserTableComponent implements OnInit {
   ]
   dataSource = new MatTableDataSource(this.ELEMENT_DATA)
 
-  curField: any
+  // curField: any
+  // populateFields(e): Employee {
+  //   console.log(e)
+  //   if (e != null) {
+  //     this.curField = Food.find(() => e)
+  //     this.dialog.open(DialogDataDialog, {
+  //       data: {
+  //         data: this.curField
+  //       }
+  //     });
+  //     console.log(this.curField)
+  //     console.log(this.curField.date_arrived)
+  //     // this.formDate.nativeElement.value = this.curField.date_arrived
+  //     console.log()
+  //   }
+  //   return e
+  // }
 
   @ViewChild(MatSort) sort: MatSort
 
