@@ -61,7 +61,7 @@ export class AddComponent implements OnInit {
       date_arrived: ['', [Validators.required, Validators.minLength(1)]],
       total_weight: ['', [Validators.required, Validators.minLength(1)]],
       price: ['', [Validators.required, Validators.minLength(1)]],
-      devId: ['', [Validators.required, Validators.minLength(1)]],
+      device_id: ['', [Validators.required, Validators.minLength(1)]],
       location: ['', [Validators.required, Validators.minLength(1)]]
     })
 
@@ -73,18 +73,18 @@ f(): any {
     return this.form.controls
   }
 
-  generate()
+ generate()
   {
-    this.upc = 5;
-    this.sku = 4;
-    this.id = 10;
-    this.name = 'Banana';
-    this.origin = 'Canada';
-    this.date = new Date();
-    this.weight = 10;
-    this.price = 11;
-    this.devId = "31";
-    this.location = "Aisle 1";
+    this.form.get('upc').setValue(5);
+    this.form.get('sku').setValue(4);
+    this.form.get('item_id').setValue(10);
+    this.form.get('name').setValue('Banana');
+    this.form.get('origin').setValue('Canada');
+    this.form.get('date_arrived').setValue(new Date());
+    this.form.get('total_weight').setValue(10);
+    this.form.get('price').setValue(11);
+    this.form.get('device_id').setValue("31");
+    this.form.get('location').setValue("Aisle 1");
   }
 
   onSubmit() {

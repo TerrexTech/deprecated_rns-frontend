@@ -18,8 +18,8 @@
                                         <label>UPC</label>
                                     </div>
                                     <div class="col-sm-8">
-                                        <input #uuid type="string" id="upc" [ngModel]="upc" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().upc.errors }"
-                                            class="form-control" formControlName="upc" required disabled>
+                                        <input #uuid type="string" id="upc" [ngClass]="{ 'is-invalid': formSubmitAttempt && f().upc.errors }"
+                                            class="form-control" formControlName="upc" required readonly>
                                         <!-- <div *ngIf="formSubmitAttempt && f().upc.errors" class="invalid-feedback">
                                     <div *ngIf="f().upc.errors.required">Item number is required</div>
                                 </div> -->
