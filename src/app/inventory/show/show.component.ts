@@ -16,7 +16,6 @@ var Food: Inventory[] = []
 })
 
 export class ShowComponent implements OnInit {
-  food: Inventory
   //add device ID to shown rows
   displayedColumns: string[] =
   ['select','upc', 'sku', 'name', 'origin' ,'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight', 'modify']
@@ -97,6 +96,8 @@ export class ShowComponent implements OnInit {
       });
   }
 
+  curField: any
+
   populateFields(e): Inventory {
     console.log(e)
     if (e != null) {
@@ -123,8 +124,6 @@ export class ShowComponent implements OnInit {
     var field = this.field.nativeElement.value
     this.getSearchData(query, field)
   }
-
- curField: any
 
   isAllSelected() {
     const numSelected = this.selection.selected.length

@@ -13,7 +13,10 @@ import {
   MatInputModule,
   MatSelectModule,
   MatTableModule,
-  MatTabsModule
+  MatTabsModule,
+  MatCheckboxModule,
+  MatPaginatorModule,
+  MatButtonModule
 } from '@angular/material'
 
 import { EmployeeRoutes } from "./employee.routing.module";
@@ -33,18 +36,22 @@ import { DialogDataDialog } from './dialog-data/dialog-data.component'
     ReactiveFormsModule,
     NgbModule.forRoot(),
     // Material Components
+    MatCheckboxModule,
     MatDialogModule,
     MatCardModule,
     MatFormFieldModule,
+    MatPaginatorModule,
     MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatTableModule,
     MatTabsModule,
+    MatButtonModule,
     RouterModule.forChild(EmployeeRoutes)
   ],
   providers: [],
   exports: [
-  ]
+  ],
+  entryComponents:[DialogDataDialog]
 })
 export class EmployeeModule {}
