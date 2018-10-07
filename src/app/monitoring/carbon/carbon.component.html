@@ -1,1 +1,21 @@
-<iframe src="http://24.150.99.33:3000/d-solo/1azxh5Kmk/bee-hive-monitoring-dashboard-detachedlabels?refresh=5s&orgId=1&panelId=14&theme=light" width="450" height="200" frameborder="0"></iframe>
+<div class="main-content">
+    <div class="container-fluid">
+       <app-overview></app-overview>
+        <div class="row">
+        <div class="col-sm-4">
+            <iframe src="http://24.150.99.33:3000/d-solo/1azxh5Kmk/bee-hive-monitoring-dashboard-detachedlabels?refresh=5s&orgId=1&panelId=14&theme=light" width="400" height="200" frameborder="0"></iframe>
+        <!--Try to find angular component that shows same as grafana-->
+        </div>
+        <div class="col-sm-8" style="border: 1px black solid">
+            Extra context info regarding selected gas
+            <!---->
+        </div>
+        </div>
+
+
+
+        <!--Make one column for table, one column for graph in this row -->
+            <app-data-table
+            [fields]="['First name', 'Last name', 'Username', 'Email', 'Role']"
+            [properties]="['first_name','last_name','username','email','role']"></app-data-table>
+        </div>

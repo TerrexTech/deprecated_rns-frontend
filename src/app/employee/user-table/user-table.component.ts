@@ -99,8 +99,3 @@ export class UserTableComponent implements OnInit {
     this.dataSource.sort = this.sort
   }
 }
-export interface Element {
-  username: String
-  name: String
-  accountType: String
-}

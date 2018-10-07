@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { AppRoutes } from './app.routing';
+import { routes } from './app.routing'
 import { AppComponent } from './app.component';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module';
@@ -23,7 +23,10 @@ import {
   JwtInterceptor,
   TokenExtraction
 } from './helpers'
-import { AuthGuard } from './guards/auth.guard'
+import { AuthGuard } from './guards/auth.guard';
+import { DataTableComponent } from './data-table/data-table.component'
+import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -37,14 +40,15 @@ import { AuthGuard } from './guards/auth.guard'
     FormsModule,
     SidebarModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoutes),
+    RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     HttpModule,
     HttpClientModule,
     FixedPluginModule,
     FooterModule,
     NavbarModule,
-    LoginPageModule
+    LoginPageModule,
+    DataTablesModule
   ],
   providers: [
     ErrorInterceptor,

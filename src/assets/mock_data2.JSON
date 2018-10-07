@@ -1,0 +1,20 @@
+[
+    {
+      "first_name": "Danny", "last_name": "Santhos", "username": "dsanthos", "email": "dsanthos@gmail.com", "role": "Corporate"
+    },
+    {
+      "first_name": "Bob", "last_name": "Santhos", "username": "bsanthos", "email": "bsanthos@gmail.com", "role": "Corporate"
+    },
+    {
+      "first_name": "Manny", "last_name": "Santhos", "username": "msanthos", "email": "msanthos@gmail.com", "role": "Corporate"
+    },
+    {
+      "first_name": "Nanny", "last_name": "Santhos", "username": "nsanthos", "email": "nsanthos@gmail.com", "role": "Corporate"
+    },
+    {
+      "first_name": "Tammy", "last_name": "Santhos", "username": "tsanthos", "email": "tsanthos@gmail.com", "role": "Corporate"
+    },
+    {
+      "first_name": "Nando", "last_name": "Santhos", "username": "nsanthos", "email": "nsanthos@gmail.com", "role": "Corporate"
+    }
+]

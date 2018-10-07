@@ -1,0 +1,16 @@
+<table dataTable class="row-border hover">
+  <thead>
+    <tr>
+      <th *ngFor="let field of fields">{{ field }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of data">
+      <td>{{ data[properties[0]] }}</td>
+      <td>{{ data[properties[1]] }}</td>
+      <td>{{ data[properties[2]] }}</td>
+      <td>{{ data[properties[3]] }}</td>
+      <td>{{ data[properties[4]] }}</td>
+    </tr>
+  </tbody>
+</table>
