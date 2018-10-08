@@ -24,8 +24,6 @@ import {
   TokenExtraction
 } from './helpers'
 import { AuthGuard } from './guards/auth.guard';
-import { DataTableComponent } from './data-table/data-table.component'
-import { DataTablesModule } from 'angular-datatables';
 import { SensorReportComponent } from './reports/sensor-report/sensor-report.component';
 import { InventoryReportComponent } from './reports/inventory-report/inventory-report.component';
 import { EthyleneReportComponent } from './reports/ethylene-report/ethylene-report.component';
@@ -61,8 +59,7 @@ import { ReportTemplateComponent } from './reports/report-template/report-templa
     FixedPluginModule,
     FooterModule,
     NavbarModule,
-    LoginPageModule,
-    DataTablesModule
+    LoginPageModule
   ],
   providers: [
     ErrorInterceptor,
