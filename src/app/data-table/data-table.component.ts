@@ -11,8 +11,6 @@ import 'rxjs/add/operator/map';
 })
 export class DataTableComponent implements OnInit {
 
-
-
   dtOptions: DataTables.Settings = {};
   data: any[] = [];
   // We use this trigger because fetching the list of persons can be quite long,

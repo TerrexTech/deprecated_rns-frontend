@@ -8,6 +8,7 @@ import { CarbonComponent } from './carbon/carbon.component';
 import { OverviewComponent } from "./overview/overview.component";
 import { DataTableComponent } from "../data-table/data-table.component";
 import { CdkTableModule } from '@angular/cdk/table';
+import { GaugeChartComponent } from 'angular-gauge-chart'
 
 import {
     MatDialogModule,
@@ -20,8 +21,11 @@ import {
     MatTabsModule,
     MatCheckboxModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatGridTile
 } from '@angular/material'
+import { SensorComponent } from './sensor/sensor.component';
 
 @NgModule({
     imports: [
@@ -42,12 +46,15 @@ import {
         MatTabsModule,
         MatCheckboxModule,
         MatPaginatorModule,
-        MatButtonModule
+        MatButtonModule,
+        MatGridListModule
     ],
     declarations: [
         CarbonComponent,
         OverviewComponent,
-        DataTableComponent
+        DataTableComponent,
+        SensorComponent,
+        GaugeChartComponent,
     ]
 })
 

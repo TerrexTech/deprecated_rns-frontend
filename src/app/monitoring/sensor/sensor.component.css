@@ -1,0 +1,15 @@
+mat-grid-tile {
+  background: lightblue;
+}
+
+.red{
+    background-color: red
+}
+
+.green{
+    background-color: green;
+}
+
+.sensor{
+    border: black 2px solid;
+}

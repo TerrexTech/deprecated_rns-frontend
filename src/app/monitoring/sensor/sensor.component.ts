@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./sensor.component.css']
 })
 export class SensorComponent implements OnInit {
-
+  row: number[] = [1,2,3,4]
+  count: number[] = [1,2,3,4]
   constructor() { }
 
   ngOnInit() {

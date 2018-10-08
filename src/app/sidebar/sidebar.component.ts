@@ -40,7 +40,8 @@ export const ROUTES: RouteInfo[] = [{
         icontype: 'nc-icon nc-tv-2',
         children: [
             // {path: 'ethylene', title: 'Ethylene', ab: 'ET'},
-            {path: 'carbon-report', title: 'Carbon Dioxide', ab: 'CO'}
+            {path: 'carbon-report', title: 'Carbon Dioxide', ab: 'CO'},
+            { path: 'sensor-report', title: 'Sensors', ab: 'SN' }
             // {path: 'saved', title: 'Amount Saved', ab: 'AS'},
             // {path: 'waste', title: 'Waste', ab: 'WA'}
         ]

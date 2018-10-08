@@ -26,6 +26,13 @@ import {
 import { AuthGuard } from './guards/auth.guard';
 import { DataTableComponent } from './data-table/data-table.component'
 import { DataTablesModule } from 'angular-datatables';
+import { SensorReportComponent } from './reports/sensor-report/sensor-report.component';
+import { InventoryReportComponent } from './reports/inventory-report/inventory-report.component';
+import { EthyleneReportComponent } from './reports/ethylene-report/ethylene-report.component';
+import { SavingsReportComponent } from './reports/savings-report/savings-report.component';
+import { WasteReportComponent } from './reports/waste-report/waste-report.component';
+import { FlashSaleReportComponent } from './reports/flash-sale-report/flash-sale-report.component';
+import { ReportTemplateComponent } from './reports/report-template/report-template.component';
 
 
 @NgModule({
@@ -33,6 +40,13 @@ import { DataTablesModule } from 'angular-datatables';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    SensorReportComponent,
+    InventoryReportComponent,
+    EthyleneReportComponent,
+    SavingsReportComponent,
+    WasteReportComponent,
+    FlashSaleReportComponent,
+    ReportTemplateComponent
   ],
   imports: [
     BrowserModule,

@@ -10,5 +10,9 @@ export const MonitoringRoutes: Routes = [{
     children: [{
         path: 'carbon-report',
         component: CarbonComponent
-    }]
+    },
+        {
+            path: 'sensor-report',
+            component: SensorComponent
+        }]
 }];
