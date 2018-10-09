@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ReportRoutes } from "./reports.routing";
-import { DataTableComponent } from "../data-table/data-table.component";
 import { CdkTableModule } from '@angular/cdk/table';
 import { GaugeChartComponent } from 'angular-gauge-chart'
 import { DataTablesModule } from 'angular-datatables';
@@ -14,7 +13,7 @@ import { InventoryReportComponent } from "./inventory-report/inventory-report.co
 import { SavingsReportComponent } from "./savings-report/savings-report.component";
 import { SensorReportComponent } from "./sensor-report/sensor-report.component";
 import { WasteReportComponent } from "./waste-report/waste-report.component";
-
+import { DataTableComponent } from "../data-table/data-table.component";
 import {
     MatDialogModule,
     MatCardModule,
