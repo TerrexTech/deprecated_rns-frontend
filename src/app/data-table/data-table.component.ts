@@ -36,6 +36,7 @@ export class DataTableComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit(): void {
+    console.log
     this.http.get('./assets/mock_data2.JSON')
       .map(res => res.json())
       .map(body => body.data || {})
@@ -43,7 +44,7 @@ export class DataTableComponent implements OnInit {
         this.data = data;
         console.log(data)
         this.dtTrigger.next();
-      });
+    });
 
     this.dtOptions = {
       // ajax: './assets/mock_data2.JSON',
@@ -55,12 +56,28 @@ export class DataTableComponent implements OnInit {
         data: 'firstName'
       }, {
         title: 'Last name',
-        data: 'lastName',
-        class: 'none'
+        data: 'lastName'
       }],
       // Use this attribute to enable the responsive extension
       responsive: true
-    };
+
+      //Allows for whole row to be clicked
+      // responsive: {
+      //       details: {
+      //         type: 'column',
+      //         target: 'tr',
+      //       },
+      //       responsive: true
+      //     },
+      //     columnDefs: [
+      //       {
+      //         className: 'control',
+      //         orderable: true,
+      //         targets: 0
+      //       }]
+      };
+
+
 
     // this.dataTable = {
     //   headerRow: this.fields,

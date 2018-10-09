@@ -46,6 +46,19 @@ export const ROUTES: RouteInfo[] = [{
             // {path: 'waste', title: 'Waste', ab: 'WA'}
         ]
     }, {
+        path: '/reports',
+        title: 'Reports',
+        type: 'sub',
+        icontype: 'nc-icon nc-box-2',
+        children: [
+            { path: 'ethylene-report', title: 'Ethylene Report', ab: 'SH' },
+            { path: 'flashsale-report', title: 'Flash Sale Report', ab: 'AD' },
+            { path: 'inventory-report', title: 'Inventory Report', ab: 'SH' },
+            { path: 'savings-report', title: 'Savings Report', ab: 'AD' },
+            { path: 'sensor-report', title: 'Sensor Report', ab: 'SH' },
+            { path: 'waste-report', title: 'Waste Report', ab: 'AD' },
+        ]
+    },{
         path: '/history',
         title: 'History',
         type: 'link',

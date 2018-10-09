@@ -35,6 +35,11 @@ export const routes: Routes = [{
             path: 'monitoring',
             loadChildren: './monitoring/monitoring.module#MonitoringModule',
             canActivate: [AuthGuard]
+        },
+        {
+            path: 'reports',
+            loadChildren: './reports/reports.module#ReportsModule',
+            canActivate: [AuthGuard]
         }
     ]
 },

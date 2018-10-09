@@ -1,15 +1,15 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core'
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../config'
 import { SendDate } from '../../models'
 import Chart from 'chart.js'
 
 @Component({
-  selector: 'app-waste-report',
-  templateUrl: './waste-report.component.html',
-  styleUrls: ['./waste-report.component.css']
+  selector: 'app-generic-graph',
+  templateUrl: './generic-graph.component.html',
+  styleUrls: ['./generic-graph.component.css']
 })
-export class WasteReportComponent implements OnInit {
+export class GenericGraphComponent implements OnInit {
 
   totalChart: any
   soldChart: any
@@ -19,6 +19,9 @@ export class WasteReportComponent implements OnInit {
   @ViewChild('arrival') arrival: ElementRef
   @ViewChild('total') total: ElementRef
   @ViewChild('average') average: ElementRef
+  @Input() chartName: string
+  @Input() type: string
+  @Input() url: string
 
   constructor(private http: HttpClient) { }
 
@@ -191,5 +194,4 @@ export class WasteReportComponent implements OnInit {
       end_date, start_date
     ]
   }
-
 }
