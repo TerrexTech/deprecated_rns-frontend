@@ -18,7 +18,7 @@ var Food: Inventory[] = []
 export class ShowComponent implements OnInit {
   //add device ID to shown rows
   displayedColumns: string[] =
-  ['select','upc', 'sku', 'name', 'origin' ,'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight', 'modify']
+  ['select','upc', 'sku', 'name', 'origin' ,'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight', 'lot', 'prod_quantity', 'modify']
   dataSource = new MatTableDataSource()
   today: number = Date.now()
   @ViewChild(MatPaginator) paginator: MatPaginator

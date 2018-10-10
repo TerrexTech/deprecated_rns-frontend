@@ -217,7 +217,7 @@
                 </div>
 
                 <div class="col-sm-10">
-                  <input type="string" class="form-control" [ngClass]="{'is-invalid': isFieldValid('prod_quantity')}" formControlName="prod_quantity"
+                  <input type="number" class="form-control" [ngClass]="{'is-invalid': isFieldValid('prod_quantity')}" formControlName="prod_quantity"
                     required>
 
                   <span *ngIf="isFieldValid('prod_quantity')" class="invalid-feedback">

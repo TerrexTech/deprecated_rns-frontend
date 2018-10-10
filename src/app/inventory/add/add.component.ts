@@ -30,6 +30,7 @@ export class AddComponent implements OnInit {
   price: number
   devId: string
   lot: string
+  prod_quanity: number
 
   constructor(
     private formBuilder: FormBuilder,

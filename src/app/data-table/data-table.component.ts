@@ -45,7 +45,7 @@ export class DataTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadInventoryJsonService.getJsonTest()
+    this.loadInventoryJsonService.getJSON()
       .subscribe(data => {
         console.log(data)
         this.dataSource.data = data

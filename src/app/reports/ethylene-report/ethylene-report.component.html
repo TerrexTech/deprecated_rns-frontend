@@ -5,6 +5,7 @@
         <app-search></app-search>
       </div>
     </div>
+    <div id="testCapture">
     <div class="row">
       <div class="col-lg-8 col-sm-8">
         <div class="card">
@@ -16,7 +17,7 @@
       </div>
       <div class="col-lg-4 col-sm-4">
         <div class="card report-info">
-          <div class="card-body">
+          <div class="card-body card-body2">
             <h6 class="big-title">Report Information</h6>
             <br>
             <div>
@@ -25,6 +26,10 @@
               <p>Product Name: </p>
               <br>
               <p>Date Generated: </p>
+              <br><br>
+              <div class="row">
+                <button mat-raised-button class="mx-auto" color="warn" (click)="captureScreen()">Convert Report to PDF</button>
+              </div>
             </div>
           </div>
         </div>
@@ -34,6 +39,7 @@
     [displayedColumns]="['select', 'sku', 'name', 'sensor', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
     [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"
     ></app-reports-table>
+    </div>
   </div>
 </div>
 

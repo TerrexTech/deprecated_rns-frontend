@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 
 @Component({
@@ -17,7 +17,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
   }
 
-   onSubmit() {
+  onSubmit() {
 
       const sku = this.sku.nativeElement.value
       const name = this.name.nativeElement.value
@@ -25,21 +25,59 @@ export class SearchComponent implements OnInit {
       const end = this.end.nativeElement.value
       const unixStart = new Date(start).getTime() / 1000
       const unixEnd = new Date(end).getTime() / 1000
+      let resource;
 
-      if(sku == null){
+      var searchArray = {}
 
-      }
 
-      const json = [{
-        'sku':sku,
-        'name':name,
-        'unixStart':unixStart,
-        'unixEnd':unixEnd
-      }]
-      console.log(json);
-      this.http.post('http://162.212.158.16:30653/api', json)
-      .toPromise()
+
+
+     if(sku != ""){
+        searchArray["sku"] = sku
+     }
+     if (name != "") {
+       searchArray["name"] = name
+     }
+     if (!isNaN(unixStart)) {
+       searchArray["start_date"] = unixStart
+     }
+     if (!isNaN(unixEnd)) {
+       searchArray["end_date"] = unixEnd
+     }
+      console.log(searchArray)
+        resource = `{
+        searchReport(inventory:"${searchArray}")
+        {
+
+        }
+      }`
+
+      // this.data = searchArray
+      // console.log(this.data)
+    //  console.log(this.http)
+    //  this.http.post('http://162.212.158.16:30653/api', resource)
+    //    .toPromise()
+    //    // .then(d => this.data)
+    //    .then((data: any) => {
+    //      console.log(data.data)
+    //      if (data.data !== null) {
+
+    //      }
+         // else {
+         //   this.showError = true
+         // }
+       //})
+
+      // const json = [{
+      //   'sku':sku,
+      //   'name':name,
+      //   'unixStart':unixStart,
+      //   'unixEnd':unixEnd
+      // }]
+      // console.log(json);
+      // this.http.post('http://162.212.158.16:30653/api', json)
+      // .toPromise()
       // swal("Record successfully inserted!");
   }
+  }
 
-}
