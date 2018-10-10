@@ -5,15 +5,12 @@ import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { ReportRoutes } from "./reports.routing";
 import { CdkTableModule } from '@angular/cdk/table';
-import { GaugeChartComponent } from 'angular-gauge-chart'
-import { DataTablesModule } from 'angular-datatables';
 import { EthyleneReportComponent } from "./ethylene-report/ethylene-report.component";
 import { FlashSaleReportComponent } from "./flash-sale-report/flash-sale-report.component";
 import { InventoryReportComponent } from "./inventory-report/inventory-report.component";
 import { SavingsReportComponent } from "./savings-report/savings-report.component";
 import { SensorReportComponent } from "./sensor-report/sensor-report.component";
 import { WasteReportComponent } from "./waste-report/waste-report.component";
-import { DataTableComponent } from "../data-table/data-table.component";
 import {
     MatDialogModule,
     MatCardModule,
@@ -32,6 +29,8 @@ import {
     MatNativeDateModule
 } from '@angular/material';
 import { GenericGraphComponent } from './generic-graph/generic-graph.component'
+import { ReportsTableComponent } from '../reports-table/reports-table.component';
+import { TemphumidReportComponent } from './temphumid-report/temphumid-report.component';
 
 @NgModule({
     imports: [
@@ -56,7 +55,6 @@ import { GenericGraphComponent } from './generic-graph/generic-graph.component'
         MatGridListModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        DataTablesModule,
     ],
     declarations: [
         EthyleneReportComponent,
@@ -65,9 +63,9 @@ import { GenericGraphComponent } from './generic-graph/generic-graph.component'
         SavingsReportComponent,
         SensorReportComponent,
         WasteReportComponent,
-        GaugeChartComponent,
-        DataTableComponent,
-        GenericGraphComponent
+        GenericGraphComponent,
+        ReportsTableComponent,
+        TemphumidReportComponent
     ]
 })
 

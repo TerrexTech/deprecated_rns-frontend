@@ -10,9 +10,9 @@ import swal from "sweetalert";
 var Food: Inventory[] = []
 
 @Component({
-  selector: 'app-data-table',
-  templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css'],
+  selector: 'app-reports-table',
+  templateUrl: './reports-table.component.html',
+  styleUrls: ['./reports-table.component.css'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0', visibility: 'hidden' })),
@@ -21,8 +21,8 @@ var Food: Inventory[] = []
     ]),
   ],
 })
+export class ReportsTableComponent implements OnInit {
 
-export class DataTableComponent implements OnInit {
   dtOptions: any = {};
   isExpansionDetailRow = (i: number, row: Object) => row.hasOwnProperty('detailRow');
   expandedElement: any;
@@ -149,56 +149,5 @@ export class DataTableComponent implements OnInit {
       this.selection.clear() :
       this.dataSource.data.forEach((row: any) => this.selection.select(row))
   }
+
 }
-
-
- //ngOnInit(): void {
-    // console.log
-    // this.http.get('./assets/mock_data2.JSON')
-    //   .map(res => res.json())
-    //   .map(body => body.data || {})
-    //   .subscribe(data => {
-    //     this.data = data;
-    //     console.log(data)
-    //     this.dtTrigger.next();
-    // });
-
-   // this.dtOptions = {
-      // ajax: './assets/mock_data2.JSON',
-      // columns: [{
-      //   title: 'ID',
-      //   data: 'id'
-      // }, {
-      //   title: 'First name',
-      //   data: 'firstName'
-      // }, {
-      //   title: 'Last name',
-      //   data: 'lastName'
-      // }],
-      // Use this attribute to enable the responsive extension
-      // responsive: true
-
-      //Allows for whole row to be clicked
-      // responsive: {
-      //       details: {
-      //         type: 'column',
-      //         target: 'tr',
-      //       },
-      //       responsive: true
-      //     },
-      //     columnDefs: [
-      //       {
-      //         className: 'control',
-      //         orderable: true,
-      //         targets: 0
-      //       }]
-     // };
-
-
-
-    // this.dataTable = {
-    //   headerRow: this.fields,
-    //   footerRow: this.fields,
-    //   dataRows: this.data
-    // };
-  //}

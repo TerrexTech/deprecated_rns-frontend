@@ -20,31 +20,52 @@ export class EthyleneReportComponent implements OnInit {
   @ViewChild('total') total: ElementRef
   @ViewChild('average') average: ElementRef
 
+  @ViewChild('sku') sku: ElementRef
+  @ViewChild('name') name: ElementRef
+  @ViewChild('start') start: ElementRef
+  @ViewChild('end') end: ElementRef
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
   }
 
-  loadTotalGraph() {
-    this.totalChart = new Chart('totalChart', {
-      type: 'bar',
+  onSubmit() {
+
+      const sku = this.sku.nativeElement.value
+      const name = this.name.nativeElement.value
+      const start = this.start.nativeElement.value
+      const end = this.end.nativeElement.value
+      const unixStart = new Date(start).getTime() / 1000
+      const unixEnd = new Date(end).getTime() / 1000
+
+      if(sku == null){
+
+      }
+
+      const json = [{
+        'sku':sku,
+        'name':name,
+        'unixStart':unixStart,
+        'unixEnd':unixEnd
+      }]
+      console.log(json);
+      this.http.post('http://162.212.158.16:30653/api', json)
+      .toPromise()
+      // swal("Record successfully inserted!");
+  }
+
+  loadEthyleneGraph() {
+    this.soldChart = new Chart('ethylene', {
+      type: 'line',
       data: {
         labels: [],
         datasets: [
           {
-            label: 'Total Weight',
+            label: 'Ethylene',
             data: [],
             backgroundColor: 'rgba(255, 99, 132, 1)',
-          },
-          {
-            label: 'Sold Weight',
-            data: [],
-            backgroundColor: 'rgba(25, 99, 132, 1)',
-          },
-          {
-            label: 'Waste Weight',
-            data: [],
-            backgroundColor: 'rgba(125, 30, 255, 1)',
+            fill: false
           }
         ]
       },
@@ -61,14 +82,14 @@ export class EthyleneReportComponent implements OnInit {
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Date'
+              labelString: 'Period'
             }
           }],
           yAxes: [{
             display: true,
             scaleLabel: {
               display: true,
-              labelString: 'Weight(KG)'
+              labelString: 'PPM'
             },
             ticks: {
               beginAtZero: true
@@ -78,63 +99,33 @@ export class EthyleneReportComponent implements OnInit {
       }
     });
 
-    this.getJSON()
-      .subscribe(dataArr => {
-        console.log(dataArr);
-        const metrics: any = [
-          [],
-          [],
-          []
-        ];
-        // total_weight: 195, sold_weight: 58, waste_weight: 49
-        Object.keys(dataArr)
-          .forEach(k => {
-            const weights = dataArr[k];
-            const date = new Date(weights.dates * 1000).toDateString();
-            this.totalChart.data.labels.push(date);
-            this.total.nativeElement.innerHTML = weights.total_weight;
-            metrics[0].push(weights.total_weight);
-            metrics[1].push(weights.sold_weight);
-            metrics[2].push(weights.waste_weight);
-          });
-
-        this.totalChart.data.datasets.forEach((dataset, index) =>
-          dataset.data = dataset.data.concat(metrics[index])
-        );
-
-        this.totalChart.update();
-
-        // Moving Graph
+    this.getJSON().subscribe(dataArr => {
+      console.log(dataArr);
+      const metrics: any = [
+        []
+      ];
+      // total_weight: 195, sold_weight: 58, waste_weight: 49
+      Object.keys(dataArr).forEach(k => {
+        const prods = dataArr[k];
+        const date = new Date(prods.dates * 1000).toDateString();
+        this.soldChart.data.labels.push(date);
+        metrics[0].push(prods.sold_weight);
       });
 
+      this.soldChart.data.datasets.forEach((dataset, index) =>
+        dataset.data = dataset.data.concat(metrics[index])
+      );
+      this.soldChart.update();
 
-    setInterval(() => {
-      this.getToday()
-        .subscribe(newDate => {
-          const newMetrics: any = [
-            [],
-            [],
-            []
-          ];
-          console.log(newDate)
-          Object.keys(newDate)
-            .forEach(k => {
-              const weights = newDate[k];
-              const date = new Date(weights.dates * 1000).toDateString();
-              this.totalChart.data.labels.push(date);
-              this.total.nativeElement.innerHTML = weights.total_weight;
-              newMetrics[0].push(weights.total_weight);
-              newMetrics[1].push(weights.sold_weight);
-              newMetrics[2].push(weights.waste_weight);
-            });
-        })
-      // this.totalChart.data.datasets.forEach((dataset, index) => {
-      //   console.log(index)
-      //   const metric = dataset.data.shift();
-      //   dataset.data.push(newMetrics[index]);
-      // });
-      this.totalChart.update();
-    }, 60000);
+      // Moving Graph
+      setInterval(() => {
+        this.soldChart.data.datasets.forEach((dataset, index) => {
+          const metric = dataset.data.shift();
+          dataset.data.push(metric + 1);
+        });
+        this.soldChart.update();
+      }, 40000);
+    });
   }
 
   getJSON(): any {

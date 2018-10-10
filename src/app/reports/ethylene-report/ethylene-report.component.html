@@ -1,23 +1,58 @@
 <div class="main-content">
   <div class="container-fluid">
     <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <div class="card mx-auto">
+          <div class="card-body">
+            <h6 class="text-center">Filter Report Results</h6>
+            <form>
+              <div class="row">
+                <div class="col-sm-6">
+                  <mat-form-field class="example-full-width">
+                    <input #sku matInput type="text" placeholder="SKU">
+                  </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                <mat-form-field class="example-full-width">
+                  <input #name matInput type="text" placeholder="Product Name">
+                </mat-form-field>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <mat-form-field class="example-full-width">
+                      <input #start matInput [matDatepicker]="picker" placeholder="Choose a start date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-sm-6">
+                    <mat-form-field class="example-full-width">
+                      <input #end matInput [matDatepicker]="picker2" placeholder="Choose an end date">
+                      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                      <mat-datepicker #picker2></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <a mat-raised-button color="warn" (click)="onSubmit()">Filter</a>
+                </div>
+                <div class="col-sm-6">
+                  <a mat-raised-button color="warn">Reset</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-lg-8 col-sm-8">
         <div class="card">
           <div class="card-body">
-            <form>
-              <mat-form-field class="col-sm-6 mx-auto">
-                <mat-select placeholder="Select a Fruit" >
-                  <!-- (selectionChange)="someMethod($event.value)" -->
-                  <mat-option>
-                    Apple
-                  </mat-option>
-                  <mat-option>
-                    Banana
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </form>
-            <canvas id="donationChart" width="400" height="400"></canvas>
+            <!-- <h6></h6> -->
+            <canvas id="ethylene" width="400" height="400"></canvas>
           </div>
         </div>
       </div>
@@ -25,46 +60,58 @@
         <div class="card">
           <div class="card-body">
             <h6 class="big-title">Report Information</h6>
-            <form>
-              <mat-form-field class="col-sm-12">
-                <input matInput [matDatepicker]="picker" placeholder="Choose a start date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-              </mat-form-field>
+            <br>
+            <div>
+              <p>Report Type: Ethylene</p>
               <br>
-              <mat-form-field class="col-sm-12">
-                <input matInput [matDatepicker]="picker2" placeholder="Choose an end date">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
+              <p>Product Name: </p>
               <br>
-              <mat-form-field class="col-sm-12">
-                <mat-select placeholder="Date Range">
-                  <mat-option>
-                    Weekly
-                  </mat-option>
-                  <mat-option>
-                    Bi-weekly
-                  </mat-option>
-                  <mat-option>
-                    1 Month
-                  </mat-option>
-                  <mat-option>
-                    3 months
-                  </mat-option>
-                  <mat-option>
-                    6 months
-                  </mat-option>
-                  <mat-option>
-                    1 year
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </form>
+              <p>Date Generated: </p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <app-data-table [fields]="[{ title: 'asdfsda', data: 'asdfsdf' }, {title: 'dfgdfg', data:'qqqq'}]"></app-data-table>
+    <app-reports-table
+    [displayedColumns]="['select', 'sku', 'name', 'sensor', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
+    [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"
+    ></app-reports-table>
   </div>
 </div>
+
+<!-- <form>
+  <mat-form-field class="col-sm-12">
+    <input matInput [matDatepicker]="picker" placeholder="Choose a start date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="col-sm-12">
+    <input matInput [matDatepicker]="picker2" placeholder="Choose an end date">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="col-sm-12">
+    <mat-select placeholder="Date Range">
+      <mat-option>
+        Weekly
+      </mat-option>
+      <mat-option>
+        Bi-weekly
+      </mat-option>
+      <mat-option>
+        1 Month
+      </mat-option>
+      <mat-option>
+        3 months
+      </mat-option>
+      <mat-option>
+        6 months
+      </mat-option>
+      <mat-option>
+        1 year
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form> -->

@@ -9,7 +9,6 @@ import { OverviewComponent } from "./overview/overview.component";
 import { DataTableComponent } from "../data-table/data-table.component";
 import { CdkTableModule } from '@angular/cdk/table';
 import { GaugeChartComponent } from 'angular-gauge-chart'
-import { DataTablesModule } from 'angular-datatables';
 
 import {
     MatDialogModule,
@@ -49,7 +48,6 @@ import { SensorComponent } from './sensor/sensor.component';
         MatPaginatorModule,
         MatButtonModule,
         MatGridListModule,
-        DataTablesModule
     ],
     declarations: [
         CarbonComponent,

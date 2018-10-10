@@ -56,6 +56,7 @@ export const ROUTES: RouteInfo[] = [{
             { path: 'inventory-report', title: 'Inventory Report', ab: 'SH' },
             { path: 'savings-report', title: 'Savings Report', ab: 'AD' },
             { path: 'sensor-report', title: 'Sensor Report', ab: 'SH' },
+            { path: 'temp-report', title: 'Temperature Report', ab: 'AD' },
             { path: 'waste-report', title: 'Waste Report', ab: 'AD' },
         ]
     },{

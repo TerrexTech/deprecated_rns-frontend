@@ -62,7 +62,7 @@
             <h6 class="big-title">Report Information</h6>
             <br>
             <div>
-              <p>Report Type: Savings</p>
+              <p>Report Type: Temperature/Humidity</p>
               <br>
               <p>Product Name: </p>
               <br>
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <app-reports-table [displayedColumns]="['select','sku', 'name', 'total_product', 'total_sold', 'sold_after_warning', 'saved_price']"
+    <app-reports-table [displayedColumns]="['select','sku', 'sensor', 'temperature', 'humidity', 'CO2', 'Ethylene', 'status', 'timestamp']"
       [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"></app-reports-table>
   </div>
 </div>

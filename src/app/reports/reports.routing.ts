@@ -6,6 +6,7 @@ import { InventoryReportComponent } from "./inventory-report/inventory-report.co
 import { SavingsReportComponent } from "./savings-report/savings-report.component";
 import { SensorReportComponent } from "./sensor-report/sensor-report.component";
 import { WasteReportComponent } from "./waste-report/waste-report.component";
+import { TemphumidReportComponent } from './temphumid-report/temphumid-report.component';
 
 
 export const ReportRoutes: Routes = [{
@@ -33,6 +34,10 @@ export const ReportRoutes: Routes = [{
     {
         path: 'waste-report',
         component: WasteReportComponent
+    },
+    {
+        path: 'temp-report',
+        component: TemphumidReportComponent
     }
     ]
 }];
