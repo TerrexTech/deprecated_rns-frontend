@@ -20,39 +20,9 @@ export class EthyleneReportComponent implements OnInit {
   @ViewChild('total') total: ElementRef
   @ViewChild('average') average: ElementRef
 
-  @ViewChild('sku') sku: ElementRef
-  @ViewChild('name') name: ElementRef
-  @ViewChild('start') start: ElementRef
-  @ViewChild('end') end: ElementRef
-
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
-  }
-
-  onSubmit() {
-
-      const sku = this.sku.nativeElement.value
-      const name = this.name.nativeElement.value
-      const start = this.start.nativeElement.value
-      const end = this.end.nativeElement.value
-      const unixStart = new Date(start).getTime() / 1000
-      const unixEnd = new Date(end).getTime() / 1000
-
-      if(sku == null){
-
-      }
-
-      const json = [{
-        'sku':sku,
-        'name':name,
-        'unixStart':unixStart,
-        'unixEnd':unixEnd
-      }]
-      console.log(json);
-      this.http.post('http://162.212.158.16:30653/api', json)
-      .toPromise()
-      // swal("Record successfully inserted!");
   }
 
   loadEthyleneGraph() {
@@ -135,26 +105,27 @@ export class EthyleneReportComponent implements OnInit {
     sendDate.end_date = this.getDays(1)[0]
     sendDate.start_date = this.getDays(1)[1]
 
-    const sendDate2 = new SendDate();
-    sendDate2.end_date = this.getDays(2)[0]
-    sendDate2.start_date = this.getDays(2)[1]
+    let resource = `{
+        login(start_date:"${sendDate.start_date}",end_date:"${sendDate.end_date}")
+        {
 
-    const sendDate3 = new SendDate()
-    sendDate3.end_date = this.getDays(3)[0]
-    sendDate3.start_date = this.getDays(3)[1]
+        }
+      }`
 
-    const sendDate4 = new SendDate()
-    sendDate4.end_date = this.getDays(4)[0]
-    sendDate4.start_date = this.getDays(4)[1]
+    console.log(this.http)
+    this.http.post('http://162.212.158.16:30653/api', resource)
+      .toPromise()
+      // .then(d => this.data)
+      .then((data: any) => {
+        console.log(data.data.login)
+        if (data.data.login !== null) {
 
-    sendDates = [sendDate, sendDate2, sendDate3, sendDate4]
+        }
+        // else {
+        //   this.showError = true
+        // }
+      })
 
-
-    return this.http.post(environment.apiUrl + '/total-inv', sendDates, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
   }
 
   getToday(): any {

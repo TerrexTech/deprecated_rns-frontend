@@ -31,6 +31,7 @@ import {
 import { GenericGraphComponent } from './generic-graph/generic-graph.component'
 import { ReportsTableComponent } from '../reports-table/reports-table.component';
 import { TemphumidReportComponent } from './temphumid-report/temphumid-report.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
     imports: [
@@ -65,7 +66,8 @@ import { TemphumidReportComponent } from './temphumid-report/temphumid-report.co
         WasteReportComponent,
         GenericGraphComponent,
         ReportsTableComponent,
-        TemphumidReportComponent
+        TemphumidReportComponent,
+        SearchComponent
     ]
 })
 

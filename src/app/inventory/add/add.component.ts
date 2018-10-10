@@ -29,7 +29,7 @@ export class AddComponent implements OnInit {
   weight: number
   price: number
   devId: string
-  location: string
+  lot: string
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,7 +52,8 @@ export class AddComponent implements OnInit {
       total_weight: ['', [Validators.required, Validators.minLength(1)]],
       price: ['', [Validators.required, Validators.minLength(1)]],
       device_id: ['', [Validators.required, Validators.minLength(1)]],
-      location: ['', [Validators.required, Validators.minLength(1)]]
+      lot: ['', [Validators.required, Validators.minLength(1)]],
+      prod_quantity: ['', [Validators.required, Validators.minLength(1)]]
     })
 
     this.returnUrl = this.route.snapshot.queryParams[''] || '/'
@@ -72,7 +73,8 @@ export class AddComponent implements OnInit {
         this.form.get('total_weight').setValue(data[0].total_weight);
         this.form.get('price').setValue(data[0].price);
         this.form.get('device_id').setValue(data[0].device_id);
-        this.form.get('location').setValue(data[0].location);
+        this.form.get('lot').setValue(data[0].lot);
+        this.form.get('prod_quantity').setValue(data[0].prod_quantity)
       })
   }
 

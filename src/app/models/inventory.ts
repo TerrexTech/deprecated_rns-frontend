@@ -7,7 +7,7 @@ export class Inventory {
     device_id: string
     total_weight: number
     price: number
-    location: string
+    lot: string
     date_arrived: Date
     expiry_date: Date
     timestamp: number
