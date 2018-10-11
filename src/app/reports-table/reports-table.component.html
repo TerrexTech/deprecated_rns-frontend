@@ -85,7 +85,7 @@
         </ng-container> -->
 
         <ng-container matColumnDef="expandedDetail">
-          <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+          <td class="one" mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
             <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div *ngFor="let column of displayedColumns | slice:1">
                 <p>{{column}}: {{element[column]}}</p>
