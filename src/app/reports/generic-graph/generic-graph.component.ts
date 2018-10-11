@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { environment } from '../../../config'
 import { SendDate } from '../../models'
-import Chart from 'chart.js'
+import {Chart} from 'chart.js'
 
 @Component({
   selector: 'app-generic-graph',

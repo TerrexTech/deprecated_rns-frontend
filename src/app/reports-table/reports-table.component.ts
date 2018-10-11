@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import swal from "sweetalert";
 import { SearchDataToTableService } from "../services/search-data-to-table/search-data-to-table.service";
+import MockUtils from "../reports/mocks";
 var Food: Inventory[] = []
 
 @Component({
@@ -30,6 +31,7 @@ export class ReportsTableComponent implements OnInit {
   @ViewChild('table') table: any
   @Input() displayedColumns: string[]
   @Input() jsonFields: string[]
+  ethyData: any
 
   //add device ID to shown rows
   dataSource = new MatTableDataSource()
@@ -40,30 +42,31 @@ export class ReportsTableComponent implements OnInit {
   @ViewChild("field") field: ElementRef
   @ViewChild("formDate") formDate: ElementRef
 
+
   selection = new SelectionModel<Inventory>(true, [])
 
   constructor(private http: Http, private loadInventoryJsonService: LoadInventoryJsonService,
      public dialog: MatDialog, private searchData:SearchDataToTableService) {
-    this.searchData.getMetData().subscribe(data => {
-      //console.log(data.Metric)
-      this.dataSource.data = data.Metric
-    })
-  }
+    }
 
   ngOnInit(): void {
-    this.loadInventoryJsonService.getJsonTest()
-      .subscribe(data => {
+            var mock = new MockUtils()
+            console.log(mock.genEthyData())
+            this.ethyData = mock.genEthyData()
+            this.dataSource.data = this.ethyData
+    // this.loadInventoryJsonService.getJsonTest()
+    //   .subscribe(data => {
         // console.log(data)
-        for(var elem in data){
-          if(data.hasOwnProperty(elem)){
-            data[elem].timestamp = new Date(data[elem].timestamp * 1000).toISOString().split("T")[0]
-            data[elem].date_arrived = new Date(data[elem].date_arrived * 1000).toISOString().split("T")[0]
-          }
-        }
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
+        // for(var elem in data){
+        //   if(data.hasOwnProperty(elem)){
+        //     data[elem].timestamp = new Date(data[elem].timestamp * 1000).toISOString().split("T")[0]
+        //     data[elem].date_arrived = new Date(data[elem].date_arrived * 1000).toISOString().split("T")[0]
+        //   }
+        // }
+       // console.log(data)
+        // this.dataSource.data = this.mock.genEthyData()
+        // Food = data
+      //})
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
   }

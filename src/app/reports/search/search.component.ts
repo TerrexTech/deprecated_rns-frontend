@@ -76,26 +76,25 @@ export class SearchComponent implements OnInit {
           .then((data: any) => {
             console.log(data)
             if (data !== null) {
-              console.log(data)
               this.searchData.setMetData(data)
             }
           })
 
-        console.log(this.http)
-        this.http.post('http://10.80.3.58:8080/inv-report', resource, {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-          .toPromise()
-          // .then(d => this.data)
-          .then((data: any) => {
-            console.log(data)
-            if (data !== null) {
-              console.log(data)
-              this.searchData.setInvData(data)
-            }
-          })
+        // console.log(this.http)
+        // this.http.post('http://10.80.3.58:8080/inv-report', resource, {
+        //   headers: {
+        //     "Content-Type": "application/json"
+        //   }
+        // })
+        //   .toPromise()
+        //   // .then(d => this.data)
+        //   .then((data: any) => {
+        //     console.log(data)
+        //     if (data !== null) {
+        //       console.log(data)
+        //       this.searchData.setInvData("Inv"+data)
+        //     }
+        //   })
 
         console.log(this.http)
         this.http.post('http://10.80.3.58:8080/dev-report', resource, {
@@ -108,7 +107,6 @@ export class SearchComponent implements OnInit {
           .then((data: any) => {
             console.log(data)
             if (data !== null) {
-              console.log(data)
               this.searchData.setDevData(data)
             }
           })

@@ -11,8 +11,7 @@
         <div class="card">
           <div class="card-body">
             <!-- <h6></h6> -->
-            <p>{{testData}}</p>
-            <canvas id="ethylene" width="400" height="400"></canvas>
+            <canvas id="ethylene"></canvas>
           </div>
         </div>
       </div>
@@ -26,7 +25,7 @@
               <br>
               <p>Product Name: </p>
               <br>
-              <p>Date Generated: </p>
+              <p>Date Generated: {{ date | date:'yyyy/MM/dd' }} </p>
               <br><br>
               <div class="row">
                 <button mat-raised-button class="mx-auto" color="warn" (click)="captureScreen()">Convert Report to PDF</button>
@@ -37,7 +36,8 @@
       </div>
     </div>
     <app-reports-table
-    [displayedColumns]="['sku', 'name', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
+    [jsonFields]="['sku', 'name', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
+    [displayedColumns]="['SKU', 'Name', 'Ethylene', 'Timestamp', 'Status', 'Projected Expiry', 'Trend (%)']"
     ></app-reports-table>
     </div>
   </div>
