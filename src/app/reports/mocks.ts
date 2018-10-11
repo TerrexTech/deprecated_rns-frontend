@@ -16,7 +16,7 @@ export default class MockUtils {
     const s2 = randomstring({ length: 3 })
     const s3 = randomstring({ length: 3 })
     const s4 = randomstring({ length: 2 })
-    return `${s1}-${s2}-${s3}-${s4}`
+    return `${s1}-${s2}-${s3}-${s4}`.toUpperCase()
   }
 
   genUUID(): string {
@@ -84,14 +84,20 @@ export default class MockUtils {
     const s1 = randomstring({ length: 2 })
     const i1 = this.genInt(0, 9999)
 
-    return `${s1}${i1}`
+    return `${s1}${i1}`.toUpperCase()
   }
 
   genEthyData():any {
-    var array = []
+    var array1 = []
+    console.log(localStorage.getItem("arr1") != null)
+    if localStorage.getItem("arr1") != null {
+      return JSON.parse(localStorage.getItem("arr1"))
+    } else {
+
+    const ethyleneArr = []
 
     for (let index = 0; index < 100; index++) {
-       array.push({
+       array1.push({
             "SKU": this.genSKU(),
             "Name": this.genName(),
             "Ethylene": this.genFloat(1, 80).toFixed(2),
@@ -101,6 +107,8 @@ export default class MockUtils {
             "Trend (%)": (this.genFloat(-1, 1) * 5).toFixed(0)
         })
     }
-    return array
+    localStorage.setItem("arr1", JSON.stringify(array1))
+  }
+    return array1
   }
 }

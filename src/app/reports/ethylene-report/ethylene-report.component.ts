@@ -7,6 +7,7 @@ import * as jspdf from 'jspdf';
 import * as html2canvas from 'html2canvas';
 import { SearchDataToTableService } from "../../services/search-data-to-table/search-data-to-table.service";
 import { DatePipe } from '@angular/common';
+import MockUtils from '../mocks'
 
 @Component({
   selector: 'app-ethylene-report',
@@ -15,7 +16,7 @@ import { DatePipe } from '@angular/common';
 })
 export class EthyleneReportComponent implements OnInit {
 
-  data: any = [1,2,3,2,5,2,1,3,4,2]
+  data: any = [1,59,68]
   testData:string
   totalChart: any
   ethyChart: any
@@ -39,45 +40,67 @@ export class EthyleneReportComponent implements OnInit {
   }
 
   loadEthyleneGraph() {
+    console.log("7&&&&&&&&&&&&&&&&&&&")
+    const arr1 = JSON.parse(localStorage.getItem("arr1"))
+    console.log(arr1.map(e => {
+      return e.Ethylene
+    }))
+    var mock = new MockUtils()
+          // console.log(mock.genFloat(30, 90))
+          // this.ethyData = mock.genFloat(30, 90)
+          // this.dataSource.data = this.ethyData
     this.ethyChart = new Chart('ethylene', {
       type: 'line',
+      // data: {
+      //   datasets: [
+      //     {
+      //       label: 'Ethylene level',
+      //       data: this.data,
+      //       backgroundColor: 'rgba(255, 99, 132, 1)',
+      //       fill: false
+      //     }
+      //   ]
+      // },
+      // options: {
+      //   responsive: true,
+      //   hover: {
+      //     mode: 'dataset'
+      //   },
+      //   legend: {
+      //     display: true
+      //   },
+      //   scales: {
+      //     xAxes: [{
+      //       display: true,
+      //       scaleLabel: {
+      //         display: true,
+      //         labelString: 'Period'
+      //       }
+      //     }],
+      //     yAxes: [{
+      //       display: true,
+      //       scaleLabel: {
+      //         display: true,
+      //         labelString: 'PPM'
+      //       },
+      //       ticks: {
+      //         beginAtZero: true
+      //       }
+      //     }]
+      //   }
+      // }
+
+
       data: {
-        datasets: [
-          {
-            label: 'Ethylene level',
-            data: this.data,
-            backgroundColor: 'rgba(255, 99, 132, 1)',
-            fill: false
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        hover: {
-          mode: 'dataset'
-        },
-        legend: {
-          display: true
-        },
-        scales: {
-          xAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Period'
-            }
-          }],
-          yAxes: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'PPM'
-            },
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
+        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
+        datasets: [{
+          label: 'Ethylene',
+          data: arr1.map(e => {
+            console.log(parseFloat(e.Ethylene))
+            return parseFloat(e.Ethylene)
+          }),
+          backgroundColor: "rgba(153,255,51,0.4)"
+        }]
       }
     });
 
