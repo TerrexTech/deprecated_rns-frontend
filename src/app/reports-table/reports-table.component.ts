@@ -7,6 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections'
 import { Observable, of } from 'rxjs';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import swal from "sweetalert";
+import { SearchDataToTableService } from "../services/search-data-to-table/search-data-to-table.service";
 var Food: Inventory[] = []
 
 @Component({
@@ -41,7 +42,12 @@ export class ReportsTableComponent implements OnInit {
 
   selection = new SelectionModel<Inventory>(true, [])
 
-  constructor(private http: Http, private loadInventoryJsonService: LoadInventoryJsonService, public dialog: MatDialog) {
+  constructor(private http: Http, private loadInventoryJsonService: LoadInventoryJsonService,
+     public dialog: MatDialog, private searchData:SearchDataToTableService) {
+    this.searchData.getData().subscribe(data => {
+      console.log(data)
+
+    })
   }
 
   ngOnInit(): void {
