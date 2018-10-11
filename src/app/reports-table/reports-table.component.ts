@@ -44,16 +44,16 @@ export class ReportsTableComponent implements OnInit {
 
   constructor(private http: Http, private loadInventoryJsonService: LoadInventoryJsonService,
      public dialog: MatDialog, private searchData:SearchDataToTableService) {
-    this.searchData.getData().subscribe(data => {
-      console.log(data)
-
+    this.searchData.getMetData().subscribe(data => {
+      //console.log(data.Metric)
+      this.dataSource.data = data.Metric
     })
   }
 
   ngOnInit(): void {
     this.loadInventoryJsonService.getJsonTest()
       .subscribe(data => {
-        console.log(data)
+        // console.log(data)
         for(var elem in data){
           if(data.hasOwnProperty(elem)){
             data[elem].timestamp = new Date(data[elem].timestamp * 1000).toISOString().split("T")[0]

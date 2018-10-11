@@ -30,7 +30,9 @@ export class DialogDataDialog implements OnInit {
       total_weight: ['', [Validators.required, Validators.minLength(1)]],
       price: ['', [Validators.required, Validators.minLength(1)]],
       device_id: ['', [Validators.required, Validators.minLength(1)]],
-      location: ['', [Validators.required, Validators.minLength(1)]]
+      location: ['', [Validators.required, Validators.minLength(1)]],
+      lot: ['', [Validators.required, Validators.minLength(1)]],
+      prod_quantity: ['', [Validators.required, Validators.minLength(1)]]
     })
     this.returnUrl = this.route.snapshot.queryParams[''] || '/'
     this.curField = this.data
@@ -45,6 +47,8 @@ export class DialogDataDialog implements OnInit {
     this.form.get('price').setValue(this.curField.data.price);
     this.form.get('device_id').setValue(this.curField.data.device_id);
     this.form.get('location').setValue(this.curField.data.location);
+    this.form.get('lot').setValue(this.curField.data.lot);
+    this.form.get('prod_quantity').setValue(this.curField.prod_quantity);
   }
 
   isFieldValid(field: string) {
@@ -56,22 +60,22 @@ export class DialogDataDialog implements OnInit {
   onSubmit() {
     this.formSubmitAttempt = true
     if (this.form.valid) {
-    const month = new Array()
-    month[0] = "January"
-    month[1] = "February"
-    month[2] = "March"
-    month[3] = "April"
-    month[4] = "May"
-    month[5] = "June"
-    month[6] = "July"
-    month[7] = "August"
-    month[8] = "September"
-    month[9] = "October"
-    month[10] = "November"
-    month[11] = "December"
-    this.formSubmitAttempt = true
-    const origDate = this.form.value.date_arrived
-    this.form.value.date_arrived = Math.floor(Date.parse(`${origDate.year}/${month[origDate.month]}/${origDate.day}`) / 1000)
+    // const month = new Array()
+    // month[0] = "January"
+    // month[1] = "February"
+    // month[2] = "March"
+    // month[3] = "April"
+    // month[4] = "May"
+    // month[5] = "June"
+    // month[6] = "July"
+    // month[7] = "August"
+    // month[8] = "September"
+    // month[9] = "October"
+    // month[10] = "November"
+    // month[11] = "December"
+    // this.formSubmitAttempt = true
+    // const origDate = this.form.value.date_arrived
+    // this.form.value.date_arrived = Math.floor(Date.parse(`${origDate.year}/${month[origDate.month]}/${origDate.day}`) / 1000)
     console.log("submitted");
      this.loadInv.updateRow(this.form.value)
     swal("Record successfully inserted!");

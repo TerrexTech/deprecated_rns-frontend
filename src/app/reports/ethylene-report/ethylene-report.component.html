@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-sm-12">
-        <app-search></app-search>
+        <app-search [endPoint]=1></app-search>
       </div>
     </div>
     <div id="testCapture">
@@ -37,8 +37,7 @@
       </div>
     </div>
     <app-reports-table
-    [displayedColumns]="['select', 'sku', 'name', 'sensor', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
-    [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"
+    [displayedColumns]="['sku', 'name', 'ethylene', 'timestamp', 'status', 'expiry', 'trend']"
     ></app-reports-table>
     </div>
   </div>

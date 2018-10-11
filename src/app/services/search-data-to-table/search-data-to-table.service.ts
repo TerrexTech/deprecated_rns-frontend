@@ -6,14 +6,31 @@ import { Subject } from 'rxjs/Subject';
   providedIn: 'root'
 })
 export class SearchDataToTableService {
-  public data: any
-  private subject = new Subject<any>();
+  private subject1 = new Subject<any>();
+  private subject2 = new Subject<any>();
+  private subject3 = new Subject<any>();
 
-  setData(data:any) {
-    this.subject.next(data);
+  setInvData(data:any) {
+    this.subject1.next(data);
   }
 
-  getData(): Observable<any> {
-    return this.subject.asObservable();
+  setMetData(data: any) {
+    this.subject2.next(data);
+  }
+
+  setDevData(data: any) {
+    this.subject3.next(data);
+  }
+
+  getInvData(): Observable<any> {
+    return this.subject1.asObservable()
+  }
+
+  getMetData(): Observable<any> {
+    return this.subject2.asObservable();
+  }
+
+  getDevData(): Observable<any> {
+    return this.subject3.asObservable();
   }
 }

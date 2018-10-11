@@ -25,10 +25,10 @@ export class EthyleneReportComponent implements OnInit {
   @ViewChild('average') average: ElementRef
 
   constructor(private http: HttpClient, private searchData: SearchDataToTableService) {
-    this.searchData.getData().subscribe(data => {
-      console.log(data)
-      this.testData = data.sku
-      console.log(this.testData)
+    this.searchData.getMetData().subscribe(data => {
+      //console.log(data)
+      // this.testData = data
+      // console.log(this.testData)
     })
    }
 
