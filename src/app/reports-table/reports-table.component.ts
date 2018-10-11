@@ -54,93 +54,18 @@ export class ReportsTableComponent implements OnInit {
     this.loadInventoryJsonService.getJsonTest()
       .subscribe(data => {
         console.log(data)
+        for(var elem in data){
+          if(data.hasOwnProperty(elem)){
+            data[elem].timestamp = new Date(data[elem].timestamp * 1000).toISOString().split("T")[0]
+            data[elem].date_arrived = new Date(data[elem].date_arrived * 1000).toISOString().split("T")[0]
+          }
+        }
+        console.log(data)
         this.dataSource.data = data
         Food = data
       })
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
-  }
-
-  getData(): void {
-    this.loadInventoryJsonService.getJSON()
-      .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
-  }
-
-  getSearchData(query, field) {
-    this.loadInventoryJsonService.getSearchJSON(query, field)
-      .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
-  }
-
-  resetData() {
-    this.loadInventoryJsonService.getJSON()
-      .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
-  }
-
-  //make method more efficient in future
-  removeSelectedRows() {
-
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, you will not be able to recover this imaginary file!",
-      icon: "warning",
-      buttons: ["Yes", "No"],
-      dangerMode: true,
-    })
-      .then((willDelete) => {
-        if (!willDelete) {
-          this.selection.selected.forEach(item => {
-            let index: number = Food.findIndex(d => d === item)
-            console.log("++++++++++++++++++==")
-            this.loadInventoryJsonService.deleteRow(item.item_id)
-          })
-          swal("Poof! Your imaginary file has been deleted!", {
-            icon: "success",
-          });
-        } else {
-          swal("Inventory not removed");
-        }
-      });
-  }
-
-  curField: any
-
-  // populateFields(e): Inventory {
-  //   console.log(e)
-  //   if (e != null) {
-  //     this.curField = Food.filter(i => i.item_id === e)[0]
-  //     this.dialog.open(DialogDataDialog, {
-  //       width: '500px',
-  //       data: {
-  //         data: this.curField
-  //       }
-  //     }).afterClosed().subscribe(result => {
-  //       this.loadInventoryJsonService.getJSON()
-  //         .subscribe(data => {
-  //           console.log(data)
-  //           this.dataSource.data = data
-  //           Food = data
-  //         })
-  //     })
-  //   }
-  //   return e
-  // }
-
-  onSearch() {
-    var query = this.query.nativeElement.value
-    var field = this.field.nativeElement.value
-    this.getSearchData(query, field)
   }
 
   isAllSelected() {
