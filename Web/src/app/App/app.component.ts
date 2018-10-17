@@ -6,9 +6,5 @@ import { Component } from '@angular/core'
   styleUrls: ['./app.component.css']
 })
 export class AppContainer {
-  public isCollapsed = true
-
- toggleMenu(): void {
-    this.isCollapsed = !this.isCollapsed
-  }
+  title = 'RipeNSense'
 }
