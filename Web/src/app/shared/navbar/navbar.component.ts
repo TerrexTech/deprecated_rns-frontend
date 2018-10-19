@@ -86,7 +86,7 @@ export class NavbarComponent implements OnInit {
         const html = document.getElementsByTagName('html')[0]
         setTimeout(() => {
             toggleButton.classList.add('toggled')
-        },500)
+        }, 500)
         const mainPanel: HTMLElement = document.querySelector('.main-panel')[0]
         if (window.innerWidth < 991) {
           mainPanel.style.position = 'fixed'
