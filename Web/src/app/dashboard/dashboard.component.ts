@@ -33,8 +33,8 @@ export class DashboardComponent implements OnInit {
 
   getDays(days?: number): any[] {
     let dates = []
-    const end_date = Math.round((new Date().getTime() / 1000) + (86400 * days))
-    const start_date = Math.round(new Date().getTime() / 1000) - (86400 * days)
+    const end_date = Math.round((new Date().getTime() / 1000) + (days * 86400))
+    const start_date = Math.round(new Date().getTime() / 1000) - (days * 86400)
 
     return dates = [
       end_date, start_date
@@ -61,8 +61,9 @@ export class DashboardComponent implements OnInit {
     sendDate4.start_date = this.getDays(4)[1]
 
     sendDates = [sendDate, sendDate2, sendDate3, sendDate4]
+    const url = '/total-inv'
 
-    return this.http.post(environment.apiUrl + '/total-inv', sendDates, {
+    return this.http.post(environment.apiUrl + url, sendDates, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -77,8 +78,9 @@ export class DashboardComponent implements OnInit {
     // sendDate.start_date = this.getDays(0)[1]
     console.log(sendDate)
     sendDates = [sendDate]
+    const url = '/total-inv'
 
-    return this.http.post(environment.apiUrl + '/total-inv', sendDates, {
+    return this.http.post(environment.apiUrl + url, sendDates, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -109,8 +111,9 @@ export class DashboardComponent implements OnInit {
 
     console.log('}}}}}}}}}}}}}}}}}}}}')
     console.log(sendDate)
+    const url = '/sold-inv'
 
-    return this.http.post(environment.apiUrl + '/sold-inv', sendDates, {
+    return this.http.post(environment.apiUrl + url, sendDates, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -118,8 +121,9 @@ export class DashboardComponent implements OnInit {
   }
 
   getDistJSON(): any {
+    const url = '/dist-inv'
 
-    return this.http.get(environment.apiUrl + '/dist-inv', {
+    return this.http.get(environment.apiUrl + url, {
       headers: {
         'Content-Type': 'application/json'
       }

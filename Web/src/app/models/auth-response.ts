@@ -1,5 +1,3 @@
-import { registerLocaleData } from "@angular/common"
-
 export interface AuthResponse {
     data: AuthActions
 }

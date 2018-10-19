@@ -49,6 +49,6 @@ import { DialogDataDialogComponent } from './dialog-data/dialog-data.component'
   providers: [],
   exports: [
   ],
-  entryComponents:[ DialogDataDialogComponent ]
+  entryComponents: [ DialogDataDialogComponent ]
 })
 export class EmployeeModule {}

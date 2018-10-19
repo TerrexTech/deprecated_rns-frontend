@@ -1,4 +1,4 @@
-export interface Query{
+export interface Query {
     query: string
     field: string
 }

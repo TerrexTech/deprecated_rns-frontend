@@ -33,16 +33,13 @@ export class UserAddComponent implements OnInit {
   message: string
   showError = false
 
-  constructor(
-    private element: ElementRef,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private http: HttpClient
-             )
-  {
-    this.http = http
-  }
+constructor(
+  private element: ElementRef,
+  private formBuilder: FormBuilder,
+  private route: ActivatedRoute,
+  private router: Router,
+  private http: HttpClient
+           ) { this.http = http }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({

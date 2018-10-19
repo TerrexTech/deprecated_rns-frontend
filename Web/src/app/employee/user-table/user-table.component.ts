@@ -21,18 +21,23 @@ export class UserTableComponent implements OnInit {
   displayedColumns = ['select', 'first_name', 'last_name', 'username', 'email', 'role', 'modify']
   ELEMENT_DATA: Employee[] = [
     {
-      first_name: 'Danny', last_name: 'Santhos', username: 'dsanthos', email: 'dsanthos@gmail.com', role: 'Corporate'
+      first_name: 'Danny', last_name: 'Santhos', username: 'dsanthos', password: 'test', email: 'dsanthos@gmail.com', role: 'Corporate'
     },
     {
-      first_name: 'Bob', last_name: 'Santhos', username: 'bsanthos', email: 'bsanthos@gmail.com', role: 'Corporate'    },
+      first_name: 'Bob', last_name: 'Santhos', username: 'bsanthos', password: 'test', email: 'bsanthos@gmail.com', role: 'Corporate'
+    },
     {
-      first_name: 'Manny', last_name: 'Santhos', username: 'msanthos', email: 'msanthos@gmail.com', role: 'Corporate'    },
+      first_name: 'Manny', last_name: 'Santhos', username: 'msanthos', password: 'test', email: 'msanthos@gmail.com', role: 'Corporate'
+    },
     {
-      first_name: 'Nanny', last_name: 'Santhos', username: 'nsanthos', email: 'nsanthos@gmail.com', role: 'Corporate'    },
+      first_name: 'Nanny', last_name: 'Santhos', username: 'nsanthos', password: 'test', email: 'nsanthos@gmail.com', role: 'Corporate'
+    },
     {
-      first_name: 'Tammy', last_name: 'Santhos', username: 'tsanthos', email: 'tsanthos@gmail.com', role: 'Corporate'    },
+      first_name: 'Tammy', last_name: 'Santhos', username: 'tsanthos', password: 'test', email: 'tsanthos@gmail.com', role: 'Corporate'
+    },
     {
-      first_name: 'Nando', last_name: 'Santhos', username: 'nsanthos', email: 'nsanthos@gmail.com', role: 'Corporate'    }
+      first_name: 'Nando', last_name: 'Santhos', username: 'nsanthos', password: 'test', email: 'nsanthos@gmail.com', role: 'Corporate'
+    }
   ]
   dataSource = new MatTableDataSource(this.ELEMENT_DATA)
   curField: any
@@ -76,7 +81,7 @@ export class UserTableComponent implements OnInit {
           swal('Inventory not removed')
         }
       })
-      .catch()
+      .catch(err => {console.log(err)})
   }
 
   isAllSelected(): boolean {
