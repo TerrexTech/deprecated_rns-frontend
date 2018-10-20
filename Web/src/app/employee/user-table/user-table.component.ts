@@ -77,11 +77,37 @@ export class UserTableComponent implements OnInit {
           swal('Poof! Your imaginary file has been deleted!', {
             icon: 'success'
           })
+          .then(log => {
+            console.log(log)
+
+            return true
+          })
+          .catch(err => {
+            console.log(err)
+
+            return false
+          })
         } else {
           swal('Inventory not removed')
+            .then(log => {
+              console.log(log)
+
+              return true
+            })
+            .catch(err => {
+              console.log(err)
+
+              return false
+            })
         }
+
+        return true
       })
-      .catch(err => {console.log(err)})
+      .catch(err => {
+        console.log(err)
+
+        return false
+      })
   }
 
   isAllSelected(): boolean {

@@ -6,8 +6,20 @@ import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { NgModule } from '@angular/core'
-import { RouterModule } from '@angular/router'
 import { LoginPageModule } from './login-page/login-page.module'
+import { EmployeeModule } from './employee/employee.module'
+import { InventoryModule } from './inventory/inventory.module'
+import { ReportsModule } from './reports/reports.module'
+import { SidebarModule } from './sidebar/sidebar.module'
+import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module'
+import { FooterModule } from './shared/footer/footer.module'
+import { NavbarModule } from './shared/navbar/navbar.module'
+import { DashboardModule } from './dashboard/dashboard.module'
+import { AdminLayoutComponent } from './layouts/admin/admin-layout.component'
+import { AuthLayoutComponent } from './layouts/auth/auth-layout.component'
+import { AppRoutingModule } from './app.routing'
+import { AuthGuard } from './_Auth/auth.guard'
+import { JWTService } from './_Auth/jwt.service'
 
 // Font-Awesome
 import fontawesome from '@fortawesome/fontawesome'
@@ -48,17 +60,27 @@ import {
 
 @NgModule({
   declarations: [
-    AppContainer
+    AdminLayoutComponent,
+    AppContainer,
+    AuthLayoutComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
+    DashboardModule,
+    EmployeeModule,
     FormsModule,
     HttpClientModule,
+    InventoryModule,
     HttpModule,
     NgbModule.forRoot(),
     LoginPageModule,
+    ReportsModule,
+    SidebarModule,
+    FooterModule,
+    NavbarModule,
     // Material Components Here
     MatButtonModule,
     MatCardModule,
@@ -79,10 +101,11 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    ReactiveFormsModule,
-    RouterModule
+    ReactiveFormsModule
   ],
   providers: [
+    AuthGuard,
+    JWTService
   ],
   bootstrap: [AppContainer]
 })

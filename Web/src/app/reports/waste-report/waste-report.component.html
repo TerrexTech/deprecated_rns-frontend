@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12 col-sm-12">
-          <app-search></app-search>
+          <component-search></component-search>
       </div>
     </div>
     <div class="row">
@@ -30,8 +30,8 @@
         </div>
       </div>
     </div>
-    <app-reports-table [displayedColumns]="['select','sku', 'name', 'total_product', 'total_sold', 'left_overs', 'wasted_price']"
-      [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"></app-reports-table>
+    <component-reports-table [displayedColumns]="['select','sku', 'name', 'total_product', 'total_sold', 'left_overs', 'wasted_price']"
+      [jsonFields]="['upc', 'sku', 'name', 'origin', 'location', 'date_arrived', 'expiry_date', 'sale_price', 'total_weight']"></component-reports-table>
   </div>
 </div>
 

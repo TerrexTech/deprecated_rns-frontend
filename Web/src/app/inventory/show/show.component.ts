@@ -93,9 +93,39 @@ export class ShowComponent implements OnInit {
           swal('Your fruit has been deleted!', {
             icon: 'success'
           })
+            .then(log => {
+              console.log(log)
+
+              return true
+            })
+            .catch(err => {
+              console.log(err)
+
+              return false
+            })
         } else {
           swal('Inventory not removed')
+            .then(log => {
+              console.log(log)
+
+              return true
+            })
+            .catch(err => {
+              console.log(err)
+
+              return false
+            })
         }
+      })
+      .then(log => {
+        console.log(log)
+
+        return true
+      })
+      .catch(err => {
+        console.log(err)
+
+        return false
       })
 }
 

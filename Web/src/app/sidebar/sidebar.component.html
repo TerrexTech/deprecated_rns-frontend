@@ -2,7 +2,7 @@
 <div class="logo">
 	<a href="https://www.creative-tim.com" class="simple-text logo-mini">
         <div class="logo-image-small">
-            <img src="./assets/img/angular2-logo-white.png"/>
+            <img src="./static/img/angular2-logo-white.png"/>
         </div>
 	</a>
 
@@ -28,12 +28,12 @@
       >
         <span>
           <span class="username-container">
-            {{user.firstName}} {{user.lastName}}
+            {{ user.firstName }} {{ user.lastName }}
             <b class="caret"></b>
           </span>
 
           <span class="user-role">
-            {{user.role}}
+            {{ user.role }}
           </span>
         </span>
       </a>
@@ -72,23 +72,23 @@
         [routerLink]="[routeDef.route.path]"
         *ngIf="!routeDef.route.children"
       >
-        <i class="{{routeDef.icon}}"></i>
-        <p>{{routeDef.route.title}}</p>
+        <i class="{{ routeDef.icon }}"></i>
+        <p>{{ routeDef.route.title }}</p>
       </a>
 
       <!--If submenu-->
       <a
         data-toggle="collapse"
-        href="#{{routeDef.route.title}}"
+        href="#{{ routeDef.route.title }}"
         *ngIf="routeDef.route.children"
       >
-        <i class="{{routeDef.icon}}"></i>
-        <p>{{routeDef.route.title}}<b class="caret"></b></p>
+        <i class="{{ routeDef.icon }}"></i>
+        <p>{{ routeDef.route.title }}<b class="caret"></b></p>
       </a>
 
       <!--Display the submenu items-->
       <div
-        id="{{routeDef.route.title}}"
+        id="{{ routeDef.route.title }}"
         class="collapse"
         *ngIf="routeDef.route.children"
       >
@@ -99,10 +99,10 @@
           >
             <a [routerLink]="['/' + routeDef.route.path, childitem.route.path]">
               <span class="sidebar-mini-icon">
-                {{childitem.ab}}
+                {{ childitem.ab }}
               </span>
               <span class="sidebar-normal">
-                {{childitem.route.title}}
+                {{ childitem.route.title }}
               </span>
             </a>
           </li>

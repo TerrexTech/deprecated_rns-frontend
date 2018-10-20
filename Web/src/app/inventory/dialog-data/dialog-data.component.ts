@@ -89,6 +89,16 @@ export class DialogDataDialogComponent implements OnInit {
     console.log('submitted')
     this.loadInv.updateRow(this.form.value)
     swal('Record successfully inserted!')
+      .then(log => {
+        console.log(log)
+
+        return true
+      })
+      .catch(err => {
+        console.log(err)
+
+        return false
+      })
   }
 }
 }

@@ -28,7 +28,7 @@ export class LoadInventoryJsonService {
 
   public getJsonTest(): any {
 
-    return this.http.get('./assets/MOCK_DATA.json')
+    return this.http.get('./static/MOCK_DATA.json')
   }
 
   public getDays(days?: number): any[] {
@@ -95,6 +95,11 @@ export class LoadInventoryJsonService {
     .then((data: any) => {
       console.log(data)
     })
+      .catch(err => {
+        console.log(err)
+
+        return false
+      })
   }
 
 }

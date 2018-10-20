@@ -74,8 +74,15 @@ export class SearchComponent implements OnInit {
         .then((data: any) => {
           console.log(data)
           if (data !== null) {
+
+            return true
           }
         })
+        .catch(err => {
+            console.log(err)
+
+            return false
+          })
 
       // console.log(this.http)
       // this.http.post('http://10.80.3.58:8080/inv-report', resource, {
@@ -105,6 +112,11 @@ export class SearchComponent implements OnInit {
           console.log(data)
           if (data !== null) {
           }
+        })
+        .catch(err => {
+          console.log(err)
+
+          return false
         })
 
     }

@@ -11,7 +11,8 @@ import { LoginPageComponent } from './login-page.component'
         FormsModule,
         FormsModule,
         HttpModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterModule
     ],
     declarations: [
         LoginPageComponent

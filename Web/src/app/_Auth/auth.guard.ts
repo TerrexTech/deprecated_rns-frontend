@@ -18,6 +18,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     if (localStorage.getItem('access_token')) {
+
       return true
     }
 
@@ -29,6 +30,16 @@ export class AuthGuard implements CanActivate {
         }
       }
     )
+    .then(log => {
+      console.log(log)
+
+      return true
+    })
+    .catch(err => {
+      console.log(err)
+
+      return false
+    })
 
     return false
   }

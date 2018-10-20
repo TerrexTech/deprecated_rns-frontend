@@ -67,14 +67,32 @@ export class LoginPageComponent implements OnInit {
             localStorage.setItem('access_token', data.data.login.access_token)
             localStorage.setItem('refresh_token', data.data.login.refresh_token)
             this.router.navigate([this.returnUrl])
+              .then(log => {
+                console.log(log)
+
+                return true
+              })
+              .catch(err => {
+                console.log(err)
+
+                return false
+              })
             this.showError = false
             this.reset()
+
+            return this.showError
           }
           else {
             this.showError = true
+
+            return this.showError
           }
         })
-        .catch()
+        .catch(err => {
+          console.log(err)
+
+          return this.showError
+        })
     }
   }
 
