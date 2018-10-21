@@ -21,10 +21,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "web/static/scss/paper-dashboard.scss",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "static/scss/paper-dashboard.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {}
         },

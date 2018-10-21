@@ -151,4 +151,134 @@ export class MockUtils {
 
     return array2
   }
+
+  genFlashData(): any {
+    const array3 = []
+    console.log(localStorage.getItem('arr3') !== undefined)
+    if (localStorage.getItem('arr3') !== undefined) {
+
+      return JSON.parse(localStorage.getItem('arr3'))
+    } else {
+
+      const flashArr = []
+
+      for (let index = 0; index < 100; index++) {
+        array3.push({
+          SKU: this.genSKU(),
+          'Product Name': this.genName(),
+          Avg_Total_Weight: this.genFloat(200, 500)
+            .toFixed(2),
+          Avg_Sold_Weight: this.genFloat(100, 200)
+            .toFixed(2)
+        })
+      }
+      localStorage.setItem('arr3', JSON.stringify(array3))
+    }
+
+    return array3
+  }
+
+  genSavingsData(): any {
+    const array4 = []
+    console.log(localStorage.getItem('arr4') !== undefined)
+    if (localStorage.getItem('arr4') !== undefined) {
+
+      return JSON.parse(localStorage.getItem('arr4'))
+    } else {
+
+      const savingsArr = []
+
+      for (let index = 0; index < 100; index++) {
+        array4.push({
+          SKU: this.genSKU(),
+          'Product Name': this.genName(),
+          Avg_Total_Weight: this.genFloat(200, 500)
+            .toFixed(2),
+          Avg_Sold_Weight: this.genFloat(100, 200)
+            .toFixed(2)
+        })
+      }
+      localStorage.setItem('arr4', JSON.stringify(array4))
+    }
+
+    return array4
+  }
+
+  genSensorData(): any {
+    const array5 = []
+    console.log(localStorage.getItem('arr5') !== undefined)
+    if (localStorage.getItem('arr5') !== undefined) {
+
+      return JSON.parse(localStorage.getItem('arr5'))
+    } else {
+
+      const sensorArr = []
+
+      for (let index = 0; index < 100; index++) {
+        array5.push({
+          SKU: this.genSKU(),
+          'Product Name': this.genName(),
+          Avg_Total_Weight: this.genFloat(200, 500)
+            .toFixed(2),
+          Avg_Sold_Weight: this.genFloat(100, 200)
+            .toFixed(2)
+        })
+      }
+      localStorage.setItem('arr2', JSON.stringify(array5))
+    }
+
+    return array5
+  }
+
+  genTempData(): any {
+    const array6 = []
+    console.log(localStorage.getItem('arr6') !== undefined)
+    if (localStorage.getItem('arr6') !== undefined) {
+
+      return JSON.parse(localStorage.getItem('arr6'))
+    } else {
+
+      const tempArr = []
+
+      for (let index = 0; index < 100; index++) {
+        array6.push({
+          SKU: this.genSKU(),
+          'Product Name': this.genName(),
+          Avg_Total_Weight: this.genFloat(200, 500)
+            .toFixed(2),
+          Avg_Sold_Weight: this.genFloat(100, 200)
+            .toFixed(2)
+        })
+      }
+      localStorage.setItem('arr2', JSON.stringify(array6))
+    }
+
+    return array6
+  }
+
+  genWasteData(): any {
+    const array7 = []
+    console.log(localStorage.getItem('arr7') !== undefined)
+    if (localStorage.getItem('arr7') !== undefined) {
+
+      return JSON.parse(localStorage.getItem('arr7'))
+    } else {
+
+      const wasteArr = []
+
+      for (let index = 0; index < 100; index++) {
+        array7.push({
+          SKU: this.genSKU(),
+          'Product Name': this.genName(),
+          Avg_Total_Weight: this.genFloat(200, 500)
+            .toFixed(2),
+          Avg_Sold_Weight: this.genFloat(100, 200)
+            .toFixed(2)
+        })
+      }
+      localStorage.setItem('arr2', JSON.stringify(array7))
+    }
+
+    return array7
+  }
 }
