@@ -11,7 +11,6 @@ import { EmployeeModule } from './employee/employee.module'
 import { InventoryModule } from './inventory/inventory.module'
 import { ReportsModule } from './reports/reports.module'
 import { SidebarModule } from './sidebar/sidebar.module'
-import { FixedPluginModule } from './shared/fixedplugin/fixedplugin.module'
 import { FooterModule } from './shared/footer/footer.module'
 import { NavbarModule } from './shared/navbar/navbar.module'
 import { DashboardModule } from './dashboard/dashboard.module'
@@ -20,6 +19,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component'
 import { AppRoutingModule } from './app.routing'
 import { AuthGuard } from './_Auth/auth.guard'
 import { JWTService } from './_Auth/jwt.service'
+import { MonitoringModule } from './monitoring/monitoring.module'
 
 // Font-Awesome
 import fontawesome from '@fortawesome/fontawesome'
@@ -80,6 +80,7 @@ import {
     ReportsModule,
     SidebarModule,
     FooterModule,
+    MonitoringModule,
     NavbarModule,
     // Material Components Here
     MatButtonModule,

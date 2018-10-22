@@ -4,6 +4,7 @@ import { AddComponent } from './inventory/add/add.component'
 import { UserTableComponent } from './employee/user-table/user-table.component'
 import { InventoryRoutes } from './inventory/inventory.routes'
 import { ReportsRoutes } from './reports/reports.routes'
+import { MonitoringRoutes } from './monitoring/monitoring.routing'
 
 export const AppRoutes = {
   root: {
@@ -39,7 +40,7 @@ export const AppRoutes = {
   monitoring: {
     path: 'monitoring',
     title: 'Monitoring',
-    component: AddComponent
+    children: MonitoringRoutes
   },
 
   login: {
