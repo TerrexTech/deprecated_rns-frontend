@@ -43,7 +43,7 @@ export class SensorReportComponent implements OnInit {
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
     this.ethyChart = new Chart('sensor', {
-      type: 'bar',
+      type: 'horizontalBar',
       // data: {
       //   datasets: [
       //     {

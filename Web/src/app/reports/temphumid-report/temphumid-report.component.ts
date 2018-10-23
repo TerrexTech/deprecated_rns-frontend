@@ -88,9 +88,9 @@ export class TemphumidReportComponent implements OnInit {
         datasets: [{
           label: 'Temperature',
           data: arr1.map(e => {
-            console.log(parseFloat(e))
+            console.log(parseFloat(e.Temperature))
 
-            return parseFloat(e)
+            return parseFloat(e.Temperature)
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         }]

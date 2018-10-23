@@ -10,6 +10,7 @@ import { TemperatureComponent } from './temperature/temperature.component'
 // import { DataTableComponent } from "../data-table/data-table.component"
 import { CdkTableModule } from '@angular/cdk/table'
 import { GaugeChartComponent } from 'angular-gauge-chart'
+import { ReportsTableModule } from '../reports-table/reports-table.module'
 
 import {
     MatButtonModule,
@@ -45,7 +46,8 @@ import {
         MatCheckboxModule,
         MatPaginatorModule,
         MatButtonModule,
-        MatGridListModule
+        MatGridListModule,
+        ReportsTableModule
     ],
     declarations: [
         CarbonComponent,

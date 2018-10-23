@@ -166,9 +166,9 @@ export class MockUtils {
         array3.push({
           SKU: this.genSKU(),
           'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
+          Total_Product: this.genFloat(100, 300)
             .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
+          Totla_Sold_After: this.genFloat(200, 400)
             .toFixed(2)
         })
       }
@@ -192,9 +192,9 @@ export class MockUtils {
         array4.push({
           SKU: this.genSKU(),
           'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
+          Total_Cost: this.genFloat(200, 500)
             .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
+          Total_Savings: this.genFloat(100, 200)
             .toFixed(2)
         })
       }
@@ -224,7 +224,7 @@ export class MockUtils {
             .toFixed(2)
         })
       }
-      localStorage.setItem('arr2', JSON.stringify(array5))
+      localStorage.setItem('arr5', JSON.stringify(array5))
     }
 
     return array5
@@ -244,13 +244,13 @@ export class MockUtils {
         array6.push({
           SKU: this.genSKU(),
           'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
+          Temperature: this.genFloat(200, 500)
             .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
+          Humidity: this.genFloat(100, 200)
             .toFixed(2)
         })
       }
-      localStorage.setItem('arr2', JSON.stringify(array6))
+      localStorage.setItem('arr6', JSON.stringify(array6))
     }
 
     return array6
@@ -276,7 +276,7 @@ export class MockUtils {
             .toFixed(2)
         })
       }
-      localStorage.setItem('arr2', JSON.stringify(array7))
+      localStorage.setItem('arr7', JSON.stringify(array7))
     }
 
     return array7

@@ -36,7 +36,7 @@ export class SavingsReportComponent implements OnInit {
     console.log('7&&&&&&&&&&&&&&&&&&&')
     const arr1 = JSON.parse(localStorage.getItem('arr4'))
     console.log(arr1.map(e => {
-      return e.Ethylene
+      return e
     }))
     const mock = new MockUtils()
     // console.log(mock.genFloat(30, 90))
@@ -88,9 +88,9 @@ export class SavingsReportComponent implements OnInit {
         datasets: [{
           label: 'Savings',
           data: arr1.map(e => {
-            console.log(parseFloat(e.Ethylene))
+            console.log(parseFloat(e))
 
-            return parseFloat(e.Ethylene)
+            return parseFloat(e.Total_Cost), parseFloat(e.Total_Savings)
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         }]

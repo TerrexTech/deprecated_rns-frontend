@@ -3,15 +3,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { CdkTableModule } from '@angular/cdk/table'
-import { EthyleneReportComponent } from './ethylene-report/ethylene-report.component'
-import { FlashSaleReportComponent } from './flash-sale-report/flash-sale-report.component'
-import { InventoryReportComponent } from './inventory-report/inventory-report.component'
-import { SavingsReportComponent } from './savings-report/savings-report.component'
-import { SensorReportComponent } from './sensor-report/sensor-report.component'
-import { WasteReportComponent } from './waste-report/waste-report.component'
-import { ReportsTableModule } from '../reports-table/reports-table.module'
-import { TemphumidReportComponent } from './temphumid-report/temphumid-report.component'
-import { SearchComponent } from './search/search.component'
+import { ReportsTableComponent } from './reports-table.component'
 import {
     MatButtonModule,
     MatCardModule,
@@ -51,19 +43,15 @@ import {
         MatButtonModule,
         MatGridListModule,
         MatDatepickerModule,
-        MatNativeDateModule,
-        ReportsTableModule
+        MatNativeDateModule
     ],
     declarations: [
-        EthyleneReportComponent,
-        FlashSaleReportComponent,
-        InventoryReportComponent,
-        SavingsReportComponent,
-        SensorReportComponent,
-        WasteReportComponent,
-        TemphumidReportComponent,
-        SearchComponent
+        ReportsTableComponent
+    ],
+    exports: [
+        ReportsTableComponent
     ]
+
 })
 
-export class ReportsModule { }
+export class ReportsTableModule { }

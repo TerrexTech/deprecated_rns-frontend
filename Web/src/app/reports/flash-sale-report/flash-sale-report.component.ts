@@ -90,7 +90,7 @@ export class FlashSaleReportComponent implements OnInit {
           data: arr1.map(e => {
             console.log(parseFloat(e))
 
-            return parseFloat(e)
+            return parseFloat(e.Total_Product), parseFloat(e.Total_Sold_After)
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         }]

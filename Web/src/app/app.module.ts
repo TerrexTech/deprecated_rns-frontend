@@ -57,12 +57,17 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material'
+import { AlertPopupComponent } from './alert-popup/alert-popup.component'
+import { ViewFlashsaleComponent } from './flash-sale/view-flashsale/view-flashsale.component'
+import { ReportsTableComponent } from './reports-table/reports-table.component'
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     AppContainer,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    AlertPopupComponent,
+    ViewFlashsaleComponent
   ],
   imports: [
     AppRoutingModule,
