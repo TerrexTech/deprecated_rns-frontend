@@ -1,0 +1,12 @@
+[
+    {
+        "sale_id": 1,
+        "store_id": 1,
+        "fruit_id": 1,
+        "init_date": 1512945463,
+        "end_date": 1512945463,
+        "orig_sale_price": 20,
+        "new_sale_price": 19,
+        "sale_reason": "Bad apple"
+    }
+]

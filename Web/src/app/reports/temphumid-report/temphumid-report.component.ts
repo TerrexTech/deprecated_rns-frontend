@@ -93,7 +93,16 @@ export class TemphumidReportComponent implements OnInit {
             return parseFloat(e.Temperature)
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
-        }]
+        },
+          {
+            label: 'Humidity',
+            data: arr1.map(e => {
+              console.log(parseFloat(e.Humidity))
+
+              return parseFloat(e.Humidity)
+            }),
+            backgroundColor: 'rgba(153,25,51,0.4)'
+          }]
       }
     })
 

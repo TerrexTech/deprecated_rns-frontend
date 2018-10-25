@@ -44,15 +44,6 @@ export class ShowComponent implements OnInit {
     this.dataSource.sort = this.sort
   }
 
-  getData(): void {
-    this.loadInventoryJsonService.getJSON()
-      .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        Food = data
-      })
-  }
-
   getSearchData(query, field): void {
     this.loadInventoryJsonService.getSearchJSON(query, field)
       .subscribe(data => {

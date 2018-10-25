@@ -51,8 +51,15 @@
             "karmaConfig": "config/test/karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "config/test/tsconfig.test.json",
-            "scripts": [],
-            "styles": [],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/jquery/dist/jquery.js"
+            ],
+            "styles": [
+              "./src/styles.css",
+              "./static/scss/paper-dashboard.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
             "assets": [
               "static"
             ]

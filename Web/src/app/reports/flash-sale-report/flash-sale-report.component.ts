@@ -86,14 +86,23 @@ export class FlashSaleReportComponent implements OnInit {
       data: {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
-          label: 'Flash Sale',
+          label: 'Total Product',
           data: arr1.map(e => {
             console.log(parseFloat(e))
 
-            return parseFloat(e.Total_Product), parseFloat(e.Total_Sold_After)
+            return parseFloat(e.Total_Product)
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
-        }]
+        },
+          {
+            label: 'Total Sold After',
+            data: arr1.map(e => {
+              console.log(parseFloat(e))
+
+              return parseFloat(e.Total_Sold_After)
+            }),
+            backgroundColor: 'rgba(153,25,51,0.4)'
+          }]
       }
     })
 

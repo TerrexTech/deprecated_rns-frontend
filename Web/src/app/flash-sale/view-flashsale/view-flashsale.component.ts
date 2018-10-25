@@ -1,11 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
-import { MatDialog, MatSort, MatSortable, MatTableDataSource } from '@angular/material'
+import { MatDialog, MatPaginator, MatSort, MatSortable, MatTableDataSource } from '@angular/material'
 import { Employee } from '../../models/employee'
 import { SelectionModel } from '@angular/cdk/collections'
 import swal from 'sweetalert'
 import { DialogDataDialogComponent } from '../dialog-data/dialog-data.component'
+import { FlashSale } from '../../models/flash-sale'
+import { Http } from '@angular/http'
 
-const Employees: any[] = []
+let flash_data: any[] = []
 @Component({
   selector: 'component-view-flashsale',
   templateUrl: './view-flashsale.component.html',
@@ -13,37 +15,37 @@ const Employees: any[] = []
 })
 export class ViewFlashsaleComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private http: Http) { }
   @ViewChild(MatSort) sort: MatSort
+  @ViewChild(MatPaginator) paginator: MatPaginator
+  dataSource = new MatTableDataSource()
   selection = new SelectionModel<Employee>(true, [])
 
-  displayedColumns = ['select', 'first_name', 'last_name', 'username', 'email', 'role', 'modify']
-  ELEMENT_DATA: Employee[] = [
-    {
-      first_name: 'Danny', last_name: 'Santhos', username: 'dsanthos', password: 'test', email: 'dsanthos@gmail.com', role: 'Corporate'
-    },
-    {
-      first_name: 'Bob', last_name: 'Santhos', username: 'bsanthos', password: 'test', email: 'bsanthos@gmail.com', role: 'Corporate'
-    },
-    {
-      first_name: 'Manny', last_name: 'Santhos', username: 'msanthos', password: 'test', email: 'msanthos@gmail.com', role: 'Corporate'
-    },
-    {
-      first_name: 'Nanny', last_name: 'Santhos', username: 'nsanthos', password: 'test', email: 'nsanthos@gmail.com', role: 'Corporate'
-    },
-    {
-      first_name: 'Tammy', last_name: 'Santhos', username: 'tsanthos', password: 'test', email: 'tsanthos@gmail.com', role: 'Corporate'
-    },
-    {
-      first_name: 'Nando', last_name: 'Santhos', username: 'nsanthos', password: 'test', email: 'nsanthos@gmail.com', role: 'Corporate'
-    }
-  ]
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA)
+  displayedColumns = ['select', 'sale_id', 'store_id', 'fruit_id', 'init_date',
+                      'end_date', 'orig_sale_price', 'new_sale_price', 'sale_reason', 'modify']
   curField: any
-  populateFields(e): Employee {
+
+  ngOnInit(): void {
+    this.getJSON()
+      .subscribe(data => {
+        console.log(data)
+        this.dataSource.data = data
+        flash_data = data
+      })
+    this.dataSource.paginator = this.paginator
+    this.dataSource.sort = this.sort
+
+  }
+
+  public getJSON(): any {
+
+    return this.http.get('./static/mock_flash.json')
+  }
+
+  populateFields(e): FlashSale {
     console.log(e)
     if (e !== undefined) {
-      this.curField = this.ELEMENT_DATA.filter(i => i.email === e)[0]
+      this.curField = flash_data.filter(i => i.sale_id === e)[0]
       console.log(this.curField)
       this.dialog.open(DialogDataDialogComponent, {
         data: {
@@ -69,7 +71,7 @@ export class ViewFlashsaleComponent implements OnInit {
       .then(willDelete => {
         if (!willDelete) {
           this.selection.selected.forEach(item => {
-            const index: number = Employees.findIndex(d => d === item)
+            const index: number = flash_data.findIndex(d => d === item)
             console.log('++++++++++++++++++==')
             // this.loadInventoryJsonService.deleteRow(item.item_id)
           })
@@ -123,7 +125,4 @@ export class ViewFlashsaleComponent implements OnInit {
       this.dataSource.data.forEach((row: any) => this.selection.select(row))
   }
 
-  ngOnInit(): void {
-    this.dataSource.sort = this.sort
-  }
 }

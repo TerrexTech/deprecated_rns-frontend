@@ -13,4 +13,9 @@ export class SensorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showPopup(): void {
+      const popup = document.getElementById('myPopup')
+      popup.classList.toggle('show')
+  }
+
 }
