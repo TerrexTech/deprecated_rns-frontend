@@ -1,10 +1,11 @@
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { LoginPageComponent } from './login-page/login-page.component'
 import { AddComponent } from './inventory/add/add.component'
-import { UserTableComponent } from './employee/user-table/user-table.component'
+import { EmployeeRoutes } from './employee/employee.routes'
 import { InventoryRoutes } from './inventory/inventory.routes'
 import { ReportsRoutes } from './reports/reports.routes'
 import { MonitoringRoutes } from './monitoring/monitoring.routing'
+import { FlashSaleRoutes } from './flash-sale/flash-sale.routes'
 
 export const AppRoutes = {
   root: {
@@ -22,7 +23,7 @@ export const AppRoutes = {
   employee: {
     title: 'Employees',
     path: 'employee/show-employees',
-    component: UserTableComponent
+    children: EmployeeRoutes
   },
 
   inventory: {
@@ -48,5 +49,11 @@ export const AppRoutes = {
     title: 'Login',
     isPublic: true,
     component: LoginPageComponent
+  },
+
+  flashsale: {
+    path: 'flash-sales',
+    title: 'Flash Sales',
+    children: FlashSaleRoutes
   }
 }

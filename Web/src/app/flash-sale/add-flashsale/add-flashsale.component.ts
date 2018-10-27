@@ -8,21 +8,22 @@ import { FlashSale } from '../../models/flash-sale'
 import { Http } from '@angular/http'
 
 let flash_data: any[] = []
-@Component({
-  selector: 'component-view-flashsale',
-  templateUrl: './view-flashsale.component.html',
-  styleUrls: ['./view-flashsale.component.css']
-})
-export class ViewFlashsaleComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private http: Http) { }
+@Component({
+  selector: 'component-add-flashsale',
+  templateUrl: './add-flashsale.component.html',
+  styleUrls: ['./add-flashsale.component.css']
+})
+export class AddFlashsaleComponent implements OnInit {
+
+constructor(public dialog: MatDialog, private http: Http) { }
   @ViewChild(MatSort) sort: MatSort
   @ViewChild(MatPaginator) paginator: MatPaginator
   dataSource = new MatTableDataSource()
   selection = new SelectionModel<Employee>(true, [])
 
-  displayedColumns = ['select', 'item_id', 'UPC', 'SKU', 'Name',
-                      'Origin', 'Device ID', 'Price', 'Sale Price', 'Ethylene', 'status', 'Timestamp', 'modify']
+  displayedColumns = ['select', 'sale_id', 'store_id', 'fruit_id', 'init_date',
+                      'end_date', 'orig_sale_price', 'new_sale_price', 'sale_reason', 'modify']
   curField: any
 
   ngOnInit(): void {
@@ -124,5 +125,4 @@ export class ViewFlashsaleComponent implements OnInit {
       this.selection.clear() :
       this.dataSource.data.forEach((row: any) => this.selection.select(row))
   }
-
 }

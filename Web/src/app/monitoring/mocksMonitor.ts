@@ -99,28 +99,23 @@ export class MockMonitor {
 
     genCarbonData(): any {
         const array1 = []
-        console.log(localStorage.getItem('arr1') !== undefined)
-        if (localStorage.getItem('arr1') !== undefined) {
+        console.log(localStorage.getItem('carbon') !== undefined)
+        if (localStorage.getItem('carbon') !== undefined) {
 
-            return JSON.parse(localStorage.getItem('arr1'))
+            return JSON.parse(localStorage.getItem('carbon'))
         } else {
 
             for (let index = 0; index < 100; index++) {
                 array1.push({
-                    SKU: this.genSKU(),
                     Name: this.genName(),
-                    Ethylene: this.genFloat(1, 80)
+                    Carbon: this.genFloat(1, 80)
                         .toFixed(2),
                     Timestamp: new Date(this.genArrivalDate())
                         .toISOString()
-                        .split('T')[0],
-                    Status: 'Warning',
-                    'Projected Expiry': new Date(this.genArrivalDate() * 1.0001).toISOString()
-                        .split('T')[0],
-                    'Trend (%)': (this.genFloat(-1, 1) * 5).toFixed(0)
+                        .split('T')[0]
                 })
             }
-            localStorage.setItem('arr1', JSON.stringify(array1))
+            localStorage.setItem('carbon', JSON.stringify(array1))
         }
 
         return array1
@@ -128,10 +123,10 @@ export class MockMonitor {
 
     genEthyleneData(): any {
         const array2 = []
-        console.log(localStorage.getItem('arr2') !== undefined)
-        if (localStorage.getItem('arr2') !== undefined) {
+        console.log(localStorage.getItem('ethylene') !== undefined)
+        if (localStorage.getItem('ethylene') !== undefined) {
 
-            return JSON.parse(localStorage.getItem('arr2'))
+            return JSON.parse(localStorage.getItem('aethylenerr2'))
         } else {
 
             const ethyleneArr = []
@@ -140,13 +135,14 @@ export class MockMonitor {
                 array2.push({
                     SKU: this.genSKU(),
                     'Product Name': this.genName(),
-                    Avg_Total_Weight: this.genFloat(200, 500)
+                    Ethylene: this.genFloat(1, 80)
                         .toFixed(2),
-                    Avg_Sold_Weight: this.genFloat(100, 200)
-                        .toFixed(2)
+                    Timestamp: new Date(this.genArrivalDate())
+                        .toISOString()
+                        .split('T')[0]
                 })
             }
-            localStorage.setItem('arr2', JSON.stringify(array2))
+            localStorage.setItem('ethylene', JSON.stringify(array2))
         }
 
         return array2
@@ -154,10 +150,10 @@ export class MockMonitor {
 
     genSensorData(): any {
         const array3 = []
-        console.log(localStorage.getItem('arr3') !== undefined)
-        if (localStorage.getItem('arr3') !== undefined) {
+        console.log(localStorage.getItem('sensor') !== undefined)
+        if (localStorage.getItem('sensor') !== undefined) {
 
-            return JSON.parse(localStorage.getItem('arr3'))
+            return JSON.parse(localStorage.getItem('sensor'))
         } else {
 
             const flashArr = []
@@ -166,13 +162,14 @@ export class MockMonitor {
                 array3.push({
                     SKU: this.genSKU(),
                     'Product Name': this.genName(),
-                    Avg_Total_Weight: this.genFloat(200, 500)
+                    Sensor: this.genFloat(1, 40)
                         .toFixed(2),
-                    Avg_Sold_Weight: this.genFloat(100, 200)
-                        .toFixed(2)
+                    Timestamp: new Date(this.genArrivalDate())
+                        .toISOString()
+                        .split('T')[0]
                 })
             }
-            localStorage.setItem('arr3', JSON.stringify(array3))
+            localStorage.setItem('sensor', JSON.stringify(array3))
         }
 
         return array3
@@ -180,10 +177,10 @@ export class MockMonitor {
 
     genTempData(): any {
         const array3 = []
-        console.log(localStorage.getItem('arr3') !== undefined)
-        if (localStorage.getItem('arr3') !== undefined) {
+        console.log(localStorage.getItem('temp') !== undefined)
+        if (localStorage.getItem('temp') !== undefined) {
 
-            return JSON.parse(localStorage.getItem('arr3'))
+            return JSON.parse(localStorage.getItem('temp'))
         } else {
 
             const flashArr = []
@@ -192,13 +189,16 @@ export class MockMonitor {
                 array3.push({
                     SKU: this.genSKU(),
                     'Product Name': this.genName(),
-                    Avg_Total_Weight: this.genFloat(200, 500)
+                    temp: this.genFloat(1, 80)
                         .toFixed(2),
-                    Avg_Sold_Weight: this.genFloat(100, 200)
-                        .toFixed(2)
+                    humid: this.genFloat(1, 80)
+                        .toFixed(2),
+                    Timestamp: new Date(this.genArrivalDate())
+                        .toISOString()
+                        .split('T')[0]
                 })
             }
-            localStorage.setItem('arr3', JSON.stringify(array3))
+            localStorage.setItem('temp', JSON.stringify(array3))
         }
 
         return array3

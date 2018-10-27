@@ -20,10 +20,12 @@ import {
 
 import { ViewFlashsaleComponent } from './view-flashsale/view-flashsale.component'
 import { DialogDataDialogComponent } from './dialog-data/dialog-data.component'
+import { AddFlashsaleComponent } from './add-flashsale/add-flashsale.component'
 
 @NgModule({
     declarations: [
-        ViewFlashsaleComponent
+        ViewFlashsaleComponent,
+        AddFlashsaleComponent
     ],
     imports: [
         CommonModule,

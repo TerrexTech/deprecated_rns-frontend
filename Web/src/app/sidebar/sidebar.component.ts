@@ -22,7 +22,17 @@ export class SidebarComponent implements OnInit {
     },
     {
       route: AppRoutes.employee,
-      icon: 'nc-icon nc-user-run'
+      icon: 'nc-icon nc-user-run',
+      children: [
+        {
+          route: AppRoutes.employee.children.add,
+          ab: 'AD'
+        },
+        {
+          route: AppRoutes.employee.children.show,
+          ab: 'SHS'
+        }
+      ]
     },
     {
       route: AppRoutes.inventory,
@@ -91,6 +101,20 @@ export class SidebarComponent implements OnInit {
         {
           route: AppRoutes.monitoring.children.temperature,
           ab: 'TH'
+        }
+      ]
+    },
+    {
+      route: AppRoutes.flashsale,
+      icon: 'nc-icon nc-box-2',
+      children: [
+        {
+          route: AppRoutes.flashsale.children.viewsales,
+          ab: 'FS'
+        },
+        {
+          route: AppRoutes.flashsale.children.addflashsales,
+          ab: 'AF'
         }
       ]
     }

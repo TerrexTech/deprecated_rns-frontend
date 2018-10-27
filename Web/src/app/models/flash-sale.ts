@@ -1,10 +1,14 @@
 export class FlashSale {
-    sale_id: number
-    store_id: number
-    fruit_id: number
-    init_date: number
-    end_date: number
-    orig_sale_price: number
-    new_sale_price: number
-    sale_reason: string
+    flash_id: number
+    item_id: number
+    upc: number
+    sku: number
+    name: string
+    origin: string
+    device_id: string
+    timestamp: number
+    ethylene: number
+    status: string
+    price: number
+    sale_price: number
 }

@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app.routing'
 import { AuthGuard } from './_Auth/auth.guard'
 import { JWTService } from './_Auth/jwt.service'
 import { MonitoringModule } from './monitoring/monitoring.module'
+import { FlashSaleModule } from './flash-sale/flash-sale.module'
 
 // Font-Awesome
 import fontawesome from '@fortawesome/fontawesome'
@@ -58,16 +59,13 @@ import {
   MatToolbarModule
 } from '@angular/material'
 import { AlertPopupComponent } from './alert-popup/alert-popup.component'
-import { ViewFlashsaleComponent } from './flash-sale/view-flashsale/view-flashsale.component'
-import { ReportsTableComponent } from './reports-table/reports-table.component'
 
 @NgModule({
   declarations: [
     AdminLayoutComponent,
     AppContainer,
     AuthLayoutComponent,
-    AlertPopupComponent,
-    ViewFlashsaleComponent
+    AlertPopupComponent
   ],
   imports: [
     AppRoutingModule,
@@ -77,6 +75,7 @@ import { ReportsTableComponent } from './reports-table/reports-table.component'
     DashboardModule,
     EmployeeModule,
     FormsModule,
+    FlashSaleModule,
     HttpClientModule,
     InventoryModule,
     HttpModule,
