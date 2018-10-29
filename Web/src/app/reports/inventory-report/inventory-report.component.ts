@@ -42,10 +42,8 @@ export class InventoryReportComponent implements OnInit {
     const arr2 = JSON.parse(localStorage.getItem('arr2'))
     console.log(arr2.map(e => {
 
-      return e.Avg_Total_Weight
+      return e
     }))
-    const mock = new MockUtils()
-    mock.genInvData()
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
@@ -95,18 +93,16 @@ export class InventoryReportComponent implements OnInit {
         datasets: [{
           label: 'Avg. Total Weight',
           data: arr2.map(e => {
-            console.log(parseFloat(e.Avg_Total_Weight))
 
-            return parseFloat(e.Avg_Total_Weight)
+            return parseFloat(e['Total Weight'])
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         },
           {
             label: 'Avg. Sold Weight',
             data: arr2.map(e => {
-              console.log(parseFloat(e.Avg_Sold_Weight))
 
-              return parseFloat(e.Avg_Sold_Weight)
+              return parseFloat(e['Sold Weight'])
             }),
             backgroundColor: 'rgba(153,25,51,0.4)'
           }]

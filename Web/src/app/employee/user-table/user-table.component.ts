@@ -62,7 +62,7 @@ export class UserTableComponent implements OnInit {
 
     swal({
       title: 'Are you sure?',
-      text: 'Once deleted, you will not be able to recover this imaginary file!',
+      text: 'Once deleted, this employee will be deleted.',
       icon: 'warning',
       buttons: ['Yes', 'No'],
       dangerMode: true
@@ -74,7 +74,7 @@ export class UserTableComponent implements OnInit {
             console.log('++++++++++++++++++==')
             // this.loadInventoryJsonService.deleteRow(item.item_id)
           })
-          swal('Poof! Your imaginary file has been deleted!', {
+          swal('Poof! The following employee has been deleted!', {
             icon: 'success'
           })
           .then(log => {
@@ -88,7 +88,7 @@ export class UserTableComponent implements OnInit {
             return false
           })
         } else {
-          swal('Inventory not removed')
+          swal('Employee not removed')
             .then(log => {
               console.log(log)
 

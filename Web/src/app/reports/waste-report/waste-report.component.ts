@@ -42,7 +42,7 @@ export class WasteReportComponent implements OnInit {
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
-    this.ethyChart = new Chart('ethylene', {
+    this.ethyChart = new Chart('waste', {
       type: 'line',
       // data: {
       //   datasets: [
@@ -86,13 +86,20 @@ export class WasteReportComponent implements OnInit {
       data: {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
-          label: 'Ethylene',
+          label: 'Total Product',
           data: arr1.map(e => {
-            console.log(parseFloat(e.Ethylene))
 
-            return parseFloat(e.Ethylene)
+            return parseFloat(e['Total Product (Kg)'])
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
+        },
+        {
+          label: 'Product left over',
+          data: arr1.map(e => {
+
+            return parseFloat(e['Product left over'])
+          }),
+          backgroundColor: 'rgba(153,55,51,0.4)'
         }]
       }
     })

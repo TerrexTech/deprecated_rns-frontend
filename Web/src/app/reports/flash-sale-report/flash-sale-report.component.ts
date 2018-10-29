@@ -34,8 +34,8 @@ export class FlashSaleReportComponent implements OnInit {
 
   loadFlashGraph(): void {
     console.log('7&&&&&&&&&&&&&&&&&&&')
-    const arr1 = JSON.parse(localStorage.getItem('arr3'))
-    console.log(arr1.map(e => {
+    const arr3 = JSON.parse(localStorage.getItem('arr3'))
+    console.log(arr3.map(e => {
       return e
     }))
     const mock = new MockUtils()
@@ -87,19 +87,19 @@ export class FlashSaleReportComponent implements OnInit {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           label: 'Total Product',
-          data: arr1.map(e => {
+          data: arr3.map(e => {
             console.log(parseFloat(e))
 
-            return parseFloat(e.Total_Product)
+            return parseFloat(e['Total Products (Kg)'])
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         },
           {
             label: 'Total Sold After',
-            data: arr1.map(e => {
+            data: arr3.map(e => {
               console.log(parseFloat(e))
 
-              return parseFloat(e.Total_Sold_After)
+              return parseFloat(e['Total sold after flash sale'])
             }),
             backgroundColor: 'rgba(153,25,51,0.4)'
           }]

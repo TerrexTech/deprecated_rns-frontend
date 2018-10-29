@@ -86,13 +86,31 @@ export class SensorReportComponent implements OnInit {
       data: {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
-          label: 'Sensor',
+          label: 'Total Sensors',
           data: arr1.map(e => {
             console.log(parseFloat(e))
 
-            return parseFloat(e)
+            return parseFloat(e.Sensor)
+          }),
+          backgroundColor: 'rgba(123,55,900,0.4)'
+        },
+        {
+          label: 'Working Sensors',
+          data: arr1.map(e => {
+            console.log(parseFloat(e))
+
+            return parseFloat(e['Working Sensors'])
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
+        },
+        {
+          label: 'Under Maintenance',
+          data: arr1.map(e => {
+            console.log(parseFloat(e))
+
+            return parseFloat(e['Under Maintenance'])
+          }),
+          backgroundColor: 'rgba(153,55,51,0.4)'
         }]
       }
     })

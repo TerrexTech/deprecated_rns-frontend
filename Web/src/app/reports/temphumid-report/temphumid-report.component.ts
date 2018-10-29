@@ -42,7 +42,7 @@ export class TemphumidReportComponent implements OnInit {
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
-    this.ethyChart = new Chart('temperature', {
+    this.ethyChart = new Chart('temp', {
       type: 'line',
       // data: {
       //   datasets: [
@@ -103,6 +103,34 @@ export class TemphumidReportComponent implements OnInit {
             }),
             backgroundColor: 'rgba(153,25,51,0.4)'
           }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'PPM'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 

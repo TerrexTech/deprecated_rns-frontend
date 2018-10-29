@@ -33,12 +33,12 @@ export class EthyleneReportComponent implements OnInit {
   }
 
   loadEthyleneGraph(): void {
+    const mock = new MockUtils()
     console.log('7&&&&&&&&&&&&&&&&&&&')
     const arr1 = JSON.parse(localStorage.getItem('arr1'))
     console.log(arr1.map(e => {
       return e.Ethylene
     }))
-    const mock = new MockUtils()
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData

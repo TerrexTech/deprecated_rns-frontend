@@ -100,7 +100,8 @@ export class MockUtils {
   genEthyData(): any {
     const array1 = []
     console.log(localStorage.getItem('arr1') !== undefined)
-    if (localStorage.getItem('arr1') !== undefined) {
+    if (localStorage.getItem('arr1') === undefined) {
+      console.log('here')
 
       return JSON.parse(localStorage.getItem('arr1'))
     } else {
@@ -120,6 +121,8 @@ export class MockUtils {
           'Trend (%)': (this.genFloat(-1, 1) * 5).toFixed(0)
         })
       }
+      console.log(array1)
+      console.log('complete')
       localStorage.setItem('arr1', JSON.stringify(array1))
     }
 
@@ -129,7 +132,7 @@ export class MockUtils {
   genInvData(): any {
     const array2 = []
     console.log(localStorage.getItem('arr2') !== undefined)
-    if (localStorage.getItem('arr2') !== undefined) {
+    if (localStorage.getItem('arr2') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr2'))
     } else {
@@ -139,11 +142,12 @@ export class MockUtils {
       for (let index = 0; index < 100; index++) {
         array2.push({
           SKU: this.genSKU(),
-          'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
+          Name: this.genName(),
+          'Total Weight': this.genFloat(200, 500)
                                 .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
-                               .toFixed(2)
+          'Sold Weight': this.genFloat(100, 200)
+                               .toFixed(2),
+          Price: this.genPrice()
         })
       }
       localStorage.setItem('arr2', JSON.stringify(array2))
@@ -155,7 +159,7 @@ export class MockUtils {
   genFlashData(): any {
     const array3 = []
     console.log(localStorage.getItem('arr3') !== undefined)
-    if (localStorage.getItem('arr3') !== undefined) {
+    if (localStorage.getItem('arr3') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr3'))
     } else {
@@ -165,11 +169,13 @@ export class MockUtils {
       for (let index = 0; index < 100; index++) {
         array3.push({
           SKU: this.genSKU(),
-          'Product Name': this.genName(),
-          Total_Product: this.genFloat(100, 300)
+          Name: this.genName(),
+          'Total Products (Kg)': this.genFloat(100, 300)
             .toFixed(2),
-          Totla_Sold_After: this.genFloat(200, 400)
-            .toFixed(2)
+          'Total sold after flash sale': this.genFloat(200, 400)
+            .toFixed(2),
+          '% sold': (this.genFloat(-1, 1) * 5).toFixed(0) ,
+          'Price ($)': this.genPrice()
         })
       }
       localStorage.setItem('arr3', JSON.stringify(array3))
@@ -181,7 +187,7 @@ export class MockUtils {
   genSavingsData(): any {
     const array4 = []
     console.log(localStorage.getItem('arr4') !== undefined)
-    if (localStorage.getItem('arr4') !== undefined) {
+    if (localStorage.getItem('arr4') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr4'))
     } else {
@@ -191,11 +197,11 @@ export class MockUtils {
       for (let index = 0; index < 100; index++) {
         array4.push({
           SKU: this.genSKU(),
-          'Product Name': this.genName(),
-          Total_Cost: this.genFloat(200, 500)
-            .toFixed(2),
-          Total_Savings: this.genFloat(100, 200)
-            .toFixed(2)
+          Name: this.genName(),
+          'Total Product (Kg)': this.genFloat(200, 500),
+          'Total Product Sold (Kg)': this.genFloat(100, 300),
+          'Product Sold after Warning': this.genFloat(50, 100),
+          'Price Saved ($)': this.genPrice()
         })
       }
       localStorage.setItem('arr4', JSON.stringify(array4))
@@ -207,7 +213,7 @@ export class MockUtils {
   genSensorData(): any {
     const array5 = []
     console.log(localStorage.getItem('arr5') !== undefined)
-    if (localStorage.getItem('arr5') !== undefined) {
+    if (localStorage.getItem('arr5') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr5'))
     } else {
@@ -216,12 +222,13 @@ export class MockUtils {
 
       for (let index = 0; index < 100; index++) {
         array5.push({
-          SKU: this.genSKU(),
-          'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
-            .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
-            .toFixed(2)
+           Sensor: 100,
+           'Working Sensors': 95,
+           'Under Maintenance': 5,
+          'Date Installed': this.genArrivalDate(),
+          'Last Maintenance': this.genArrivalDate(),
+           Status: this.genName(),
+          'Price ($)': this.genPrice()
         })
       }
       localStorage.setItem('arr5', JSON.stringify(array5))
@@ -233,7 +240,7 @@ export class MockUtils {
   genTempData(): any {
     const array6 = []
     console.log(localStorage.getItem('arr6') !== undefined)
-    if (localStorage.getItem('arr6') !== undefined) {
+    if (localStorage.getItem('arr6') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr6'))
     } else {
@@ -243,11 +250,17 @@ export class MockUtils {
       for (let index = 0; index < 100; index++) {
         array6.push({
           SKU: this.genSKU(),
-          'Product Name': this.genName(),
+          Sensor: this.genFloat(1, 10),
           Temperature: this.genFloat(200, 500)
             .toFixed(2),
           Humidity: this.genFloat(100, 200)
-            .toFixed(2)
+            .toFixed(2),
+          CO2: this.genFloat(10, 50)
+            .toFixed(2),
+          Ethylene: this.genFloat(10, 50)
+            .toFixed(2),
+          Status: this.genName(),
+          Timestamp: this.genArrivalDate()
         })
       }
       localStorage.setItem('arr6', JSON.stringify(array6))
@@ -259,7 +272,7 @@ export class MockUtils {
   genWasteData(): any {
     const array7 = []
     console.log(localStorage.getItem('arr7') !== undefined)
-    if (localStorage.getItem('arr7') !== undefined) {
+    if (localStorage.getItem('arr7') === undefined) {
 
       return JSON.parse(localStorage.getItem('arr7'))
     } else {
@@ -269,11 +282,12 @@ export class MockUtils {
       for (let index = 0; index < 100; index++) {
         array7.push({
           SKU: this.genSKU(),
-          'Product Name': this.genName(),
-          Avg_Total_Weight: this.genFloat(200, 500)
-            .toFixed(2),
-          Avg_Sold_Weight: this.genFloat(100, 200)
-            .toFixed(2)
+          Name: this.genName(),
+          'Total Product (Kg)': this.genFloat(200, 500),
+          'Total Product Sold (Kg)': this.genFloat(100, 300),
+          'Product left over': this.genFloat(50, 100),
+          '% left over': (this.genFloat(-1, 1) * 5).toFixed(0),
+          'Price wasted ($)': this.genPrice()
         })
       }
       localStorage.setItem('arr7', JSON.stringify(array7))

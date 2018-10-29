@@ -86,23 +86,32 @@ export class SavingsReportComponent implements OnInit {
       data: {
         labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
-          label: 'Total Cost',
+          label: 'Total Product',
           data: arr1.map(e => {
             console.log(parseFloat(e))
 
-            return parseFloat(e.Total_Cost)
+            return parseFloat(e['Total Product (Kg)'])
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         },
-          {
-            label: 'Total Savings',
-            data: arr1.map(e => {
-              console.log(parseFloat(e))
+        {
+          label: 'Total Product Sold',
+          data: arr1.map(e => {
+            console.log(parseFloat(e))
 
-              return parseFloat(e.Total_Savings)
-            }),
-            backgroundColor: 'rgba(153,25,51,0.4)'
-          }]
+            return parseFloat(e['Total Product Sold (Kg)'])
+          }),
+          backgroundColor: 'rgba(153,25,51,0.4)'
+        },
+        {
+          label: 'Savings',
+          data: arr1.map(e => {
+            console.log(parseFloat(e))
+
+            return parseFloat(e['Price Saved ($)'])
+          }),
+          backgroundColor: 'rgba(153,105,531,0.4)'
+        }]
       }
     })
 

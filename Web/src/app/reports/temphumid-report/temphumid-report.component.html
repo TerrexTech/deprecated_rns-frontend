@@ -22,16 +22,16 @@
             <div>
               <p>Report Type: Temperature/Humidity</p>
               <br>
-              <p>Product Name: </p>
+              <!-- <p>Product Name: </p> -->
               <br>
-              <p>Date Generated: </p>
+              <p>Date Generated: {{ date | date:'yyyy/MM/dd' }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
     <component-reports-table [displayedColumns]="['SKU', 'Sensor', 'Temperature', 'Humidity', 'CO2', 'Ethylene', 'Status', 'Timestamp']"
-      [jsonFields]=1></component-reports-table>
+      [jsonFields]=5></component-reports-table>
   </div>
 </div>
 

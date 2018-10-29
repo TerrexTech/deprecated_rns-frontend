@@ -26,6 +26,11 @@ export class ReportsTableComponent implements OnInit {
   expandedElement: any
   ethyData: any
   invData: any
+  flashData: any
+  savingsData: any
+  sensorData: any
+  tempData: any
+  wasteData: any
   dataSource = new MatTableDataSource()
   today: number = Date.now()
   dtOptions: any = {}
@@ -57,8 +62,43 @@ export class ReportsTableComponent implements OnInit {
     else if (this.jsonFields === 2) {
       const mock = new MockUtils()
       console.log(mock.genInvData())
-      this.ethyData = mock.genInvData()
+      this.invData = mock.genInvData()
       this.dataSource.data = this.invData
+    }
+
+    else if (this.jsonFields === 3) {
+      const mock = new MockUtils()
+      console.log(mock.genFlashData())
+      this.flashData = mock.genFlashData()
+      this.dataSource.data = this.flashData
+    }
+
+    else if (this.jsonFields === 4) {
+      const mock = new MockUtils()
+      console.log(mock.genSavingsData())
+      this.savingsData = mock.genSavingsData()
+      this.dataSource.data = this.savingsData
+    }
+
+    else if (this.jsonFields === 5) {
+      const mock = new MockUtils()
+      console.log(mock.genTempData())
+      this.tempData = mock.genTempData()
+      this.dataSource.data = this.tempData
+    }
+
+    else if (this.jsonFields === 6) {
+      const mock = new MockUtils()
+      console.log(mock.genSensorData())
+      this.sensorData = mock.genSensorData()
+      this.dataSource.data = this.sensorData
+    }
+
+    else if (this.jsonFields === 7) {
+      const mock = new MockUtils()
+      console.log(mock.genWasteData())
+      this.wasteData = mock.genWasteData()
+      this.dataSource.data = this.wasteData
     }
 
     // this.loadInventoryJsonService.getJsonTest()

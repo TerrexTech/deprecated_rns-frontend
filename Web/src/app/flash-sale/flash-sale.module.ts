@@ -25,7 +25,8 @@ import { AddFlashsaleComponent } from './add-flashsale/add-flashsale.component'
 @NgModule({
     declarations: [
         ViewFlashsaleComponent,
-        AddFlashsaleComponent
+        AddFlashsaleComponent,
+        DialogDataDialogComponent
     ],
     imports: [
         CommonModule,
@@ -47,9 +48,6 @@ import { AddFlashsaleComponent } from './add-flashsale/add-flashsale.component'
     ],
     providers: [],
     exports: [
-    ],
-    entryComponents: [
-        DialogDataDialogComponent
     ]
 })
 export class FlashSaleModule { }
