@@ -1,12 +1,14 @@
 [
     {
-        "sale_id": 1,
-        "store_id": 1,
-        "fruit_id": 1,
-        "init_date": 1512945463,
-        "end_date": 1512945463,
-        "orig_sale_price": 20,
-        "new_sale_price": 19,
-        "sale_reason": "Bad apple"
+        "upc": 600263794446913210129559,
+        "sku": 12345678,
+        "name": "Apple",
+        "origin": "Canada",
+        "device_id": "123456",
+        "price": 10,
+        "sale_price": 8,
+        "ethylene": 10,
+        "status": "bad",
+        "timestamp": "10/10/2010"
     }
 ]

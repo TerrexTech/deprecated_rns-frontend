@@ -22,16 +22,17 @@ constructor(public dialog: MatDialog, private http: Http) { }
   dataSource = new MatTableDataSource()
   selection = new SelectionModel<Employee>(true, [])
 
-  displayedColumns = ['select', 'sale_id', 'store_id', 'fruit_id', 'init_date',
-                      'end_date', 'orig_sale_price', 'new_sale_price', 'sale_reason', 'modify']
+  displayedColumns = ['select', 'upc', 'sku', 'name',
+                      'origin', 'device_id', 'price', 'sale_price', 'ethylene', 'status', 'timestamp', 'modify']
   curField: any
 
   ngOnInit(): void {
     this.getJSON()
       .subscribe(data => {
-        console.log(data)
-        this.dataSource.data = data
-        flash_data = data
+        console.log(JSON.parse(data._body))
+        const json = JSON.parse(data._body)
+        this.dataSource.data = json
+        flash_data = json
       })
     this.dataSource.paginator = this.paginator
     this.dataSource.sort = this.sort
@@ -46,7 +47,7 @@ constructor(public dialog: MatDialog, private http: Http) { }
   populateFields(e): FlashSale {
     console.log(e)
     if (e !== undefined) {
-      this.curField = flash_data.filter(i => i.sale_id === e)[0]
+      this.curField = flash_data.filter(i => i.upc === e)[0]
       console.log(this.curField)
       this.dialog.open(DialogDataDialogComponent, {
         data: {

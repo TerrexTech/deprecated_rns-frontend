@@ -53,7 +53,7 @@ export const AppRoutes = {
 
   flashsale: {
     path: 'flash-sales',
-    title: 'Flash Sales',
+    title: 'Flash-Sales',
     children: FlashSaleRoutes
   }
 }
