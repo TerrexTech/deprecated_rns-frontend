@@ -112,6 +112,34 @@ export class SavingsReportComponent implements OnInit {
           }),
           backgroundColor: 'rgba(153,105,531,0.4)'
         }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Products'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 

@@ -84,7 +84,6 @@ export class SensorReportComponent implements OnInit {
       // }
 
       data: {
-        labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
         datasets: [{
           label: 'Total Sensors',
           data: arr1.map(e => {
@@ -112,6 +111,34 @@ export class SensorReportComponent implements OnInit {
           }),
           backgroundColor: 'rgba(153,55,51,0.4)'
         }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Sensors'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 

@@ -27,8 +27,11 @@ export class OverviewComponent implements OnInit {
   fakeData(): void {
     const mockData = new MockMonitor()
     this.carbon = mockData.genFloat(100, 200)
+                          .toFixed(2)
     this.ethylene = mockData.genFloat(100, 200)
+                            .toFixed(2)
     this.temperature = mockData.genFloat(100, 200)
+                               .toFixed(2)
     this.sensor = 20
   }
 

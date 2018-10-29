@@ -24,7 +24,7 @@ export class CarbonComponent implements OnInit {
     console.log('7&&&&&&&&&&&&&&&&&&&')
     const arr1 = JSON.parse(localStorage.getItem('carbon'))
     console.log(arr1.map(e => {
-      return e.carbon
+      return e.Carbon
     }))
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
@@ -81,6 +81,34 @@ export class CarbonComponent implements OnInit {
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'PPM'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 

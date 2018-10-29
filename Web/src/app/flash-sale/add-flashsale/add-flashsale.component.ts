@@ -60,6 +60,16 @@ constructor(public dialog: MatDialog, private http: Http) { }
     return e
   }
 
+  addSelectedRows(): void {
+
+    this.selection.selected.forEach(item => {
+      const index: number = flash_data.findIndex(d => d === item)
+      console.log('++++++++++++++++++==')
+      // this.loadInventoryJsonService.deleteRow(item.item_id)
+    })
+
+  }
+
   removeSelectedRows(): void {
 
     swal({

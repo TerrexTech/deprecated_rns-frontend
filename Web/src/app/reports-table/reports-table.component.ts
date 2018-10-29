@@ -6,6 +6,7 @@ import { Inventory } from '../models/inventory'
 import { SelectionModel } from '@angular/cdk/collections'
 import { animate, state, style, transition, trigger } from '@angular/animations'
 import { MockUtils } from '../reports/mocks'
+import { MockMonitor } from '../monitoring/mocksMonitor'
 const Food: Inventory[] = []
 
 @Component({
@@ -31,6 +32,10 @@ export class ReportsTableComponent implements OnInit {
   sensorData: any
   tempData: any
   wasteData: any
+  carbonMon: any
+  ethyMon: any
+  sensorMon: any
+  tempMon: any
   dataSource = new MatTableDataSource()
   today: number = Date.now()
   dtOptions: any = {}
@@ -99,6 +104,34 @@ export class ReportsTableComponent implements OnInit {
       console.log(mock.genWasteData())
       this.wasteData = mock.genWasteData()
       this.dataSource.data = this.wasteData
+    }
+
+    else if (this.jsonFields === 8) {
+      const mock = new MockMonitor()
+      console.log(mock.genCarbonData())
+      this.carbonMon = mock.genCarbonData()
+      this.dataSource.data = this.carbonMon
+    }
+
+    else if (this.jsonFields === 9) {
+      const mock = new MockMonitor()
+      console.log(mock.genEthyleneData())
+      this.ethyData = mock.genEthyleneData()
+      this.dataSource.data = this.ethyData
+    }
+
+    else if (this.jsonFields === 10) {
+      const mock = new MockMonitor()
+      console.log(mock.genSensorData())
+      this.sensorMon = mock.genSensorData()
+      this.dataSource.data = this.sensorMon
+    }
+
+    else if (this.jsonFields === 11) {
+      const mock = new MockMonitor()
+      console.log(mock.genTempData())
+      this.tempMon = mock.genTempData()
+      this.dataSource.data = this.tempMon
     }
 
     // this.loadInventoryJsonService.getJsonTest()

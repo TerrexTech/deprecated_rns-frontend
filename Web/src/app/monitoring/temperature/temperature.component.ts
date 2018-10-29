@@ -23,7 +23,7 @@ export class TemperatureComponent implements OnInit {
 
   loadTempGraph(): void {
     console.log('7&&&&&&&&&&&&&&&&&&&')
-    const arr1 = JSON.parse(localStorage.getItem('temperature'))
+    const arr1 = JSON.parse(localStorage.getItem('temp'))
     console.log(arr1.map(e => {
       return e
     }))

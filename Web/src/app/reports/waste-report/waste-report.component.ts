@@ -43,7 +43,7 @@ export class WasteReportComponent implements OnInit {
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
     this.ethyChart = new Chart('waste', {
-      type: 'line',
+      type: 'bar',
       // data: {
       //   datasets: [
       //     {
@@ -101,6 +101,34 @@ export class WasteReportComponent implements OnInit {
           }),
           backgroundColor: 'rgba(153,55,51,0.4)'
         }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Waste'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 

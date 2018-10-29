@@ -122,6 +122,9 @@
             <ng-container matColumnDef="modify">
               <th mat-header-cell *matHeaderCellDef mat-sort-header>Modify</th>
               <td mat-cell *matCellDef="let element">
+                <a id="addBtn" class="btn btn-warning btn-link btn-icon btn-md edit" (click)="addSelectedRows()">
+                  <i class="fa fa-edit"></i>
+                </a>
                 <a id="editBtn" class="btn btn-warning btn-link btn-icon btn-md edit" (click)="populateFields(element.sale_id)">
                   <i class="fa fa-edit"></i>
                 </a>

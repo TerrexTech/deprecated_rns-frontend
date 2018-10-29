@@ -25,12 +25,12 @@ export class EthyleneComponent implements OnInit {
     console.log('7&&&&&&&&&&&&&&&&&&&')
     const arr1 = JSON.parse(localStorage.getItem('ethylene'))
     console.log(arr1.map(e => {
-      return e.carbon
+      return e.Ethylene
     }))
     // console.log(mock.genFloat(30, 90))
     // this.ethyData = mock.genFloat(30, 90)
     // this.dataSource.data = this.ethyData
-    this.ethyleneChart = new Chart('carbon', {
+    this.ethyleneChart = new Chart('ethylene', {
       type: 'line',
       // data: {
       //   datasets: [
@@ -82,6 +82,34 @@ export class EthyleneComponent implements OnInit {
           }),
           backgroundColor: 'rgba(153,255,51,0.4)'
         }]
+      },
+      options: {
+        responsive: true,
+        hover: {
+          mode: 'dataset'
+        },
+        legend: {
+          display: true
+        },
+        scales: {
+          xAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'Period'
+            }
+          }],
+          yAxes: [{
+            display: true,
+            scaleLabel: {
+              display: true,
+              labelString: 'PPM'
+            },
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
       }
     })
 
