@@ -117,6 +117,16 @@ export class SidebarComponent implements OnInit {
           ab: 'AF'
         }
       ]
+    },
+    {
+      route: AppRoutes.warning,
+      icon: 'nc-icon nc-box-2',
+      children: [
+        {
+          route: AppRoutes.warning,
+          ab: 'WA'
+        }
+      ]
     }
   ]
 

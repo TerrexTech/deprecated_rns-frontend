@@ -4,6 +4,7 @@ import { Employee } from '../../models/employee'
 import { SelectionModel } from '@angular/cdk/collections'
 import swal from 'sweetalert'
 import { DialogDataDialogComponent } from '../dialog-data/dialog-data.component'
+import { AddDialogDataComponent } from '../add-dialog-data/add-dialog-data.component'
 import { FlashSale } from '../../models/flash-sale'
 import { Http } from '@angular/http'
 
@@ -23,6 +24,7 @@ export class ViewFlashsaleComponent implements OnInit {
 
   displayedColumns = ['select', 'upc', 'sku', 'name',
                       'origin', 'device_id', 'price', 'sale_price', 'ethylene', 'status', 'timestamp', 'modify']
+  // displayedColumns = ['select', 'sku', 'name', 'leftover waste', 'status', 'projected expiry', 'modify']
   curField: any
 
   ngOnInit(): void {
@@ -41,6 +43,11 @@ export class ViewFlashsaleComponent implements OnInit {
   public getJSON(): any {
 
     return this.http.get('./static/mock_flash.json')
+  }
+
+  addNewFlashSale(): void {
+    this.dialog.open(AddDialogDataComponent, {
+    })
   }
 
   populateFields(e): FlashSale {

@@ -20,13 +20,15 @@ import {
 
 import { ViewFlashsaleComponent } from './view-flashsale/view-flashsale.component'
 import { DialogDataDialogComponent } from './dialog-data/dialog-data.component'
+import { AddDialogDataComponent } from './add-dialog-data/add-dialog-data.component'
 import { AddFlashsaleComponent } from './add-flashsale/add-flashsale.component'
 
 @NgModule({
     declarations: [
         ViewFlashsaleComponent,
         AddFlashsaleComponent,
-        DialogDataDialogComponent
+        DialogDataDialogComponent,
+        AddDialogDataComponent
     ],
     imports: [
         CommonModule,
@@ -48,6 +50,10 @@ import { AddFlashsaleComponent } from './add-flashsale/add-flashsale.component'
     ],
     providers: [],
     exports: [
+    ],
+    entryComponents: [
+        DialogDataDialogComponent,
+        AddDialogDataComponent
     ]
 })
 export class FlashSaleModule { }

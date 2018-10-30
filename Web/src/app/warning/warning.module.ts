@@ -46,6 +46,9 @@ import { DialogDataDialogComponent } from './dialog-data/dialog-data.component'
     ],
     providers: [],
     exports: [
+    ],
+    entryComponents: [
+        DialogDataDialogComponent
     ]
 })
 export class WarningModule { }

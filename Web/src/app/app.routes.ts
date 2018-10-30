@@ -6,6 +6,7 @@ import { InventoryRoutes } from './inventory/inventory.routes'
 import { ReportsRoutes } from './reports/reports.routes'
 import { MonitoringRoutes } from './monitoring/monitoring.routing'
 import { FlashSaleRoutes } from './flash-sale/flash-sale.routes'
+import { WarningComponent } from './warning/warning.component'
 
 export const AppRoutes = {
   root: {
@@ -55,5 +56,11 @@ export const AppRoutes = {
     path: 'flash-sales',
     title: 'Flash-Sales',
     children: FlashSaleRoutes
+  },
+
+  warning: {
+    path: 'warning',
+    title: 'Warnings',
+    component: WarningComponent
   }
 }

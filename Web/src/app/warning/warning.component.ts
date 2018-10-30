@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatDialog, MatPaginator, MatSort, MatSortable, MatTableDataSource } from '@angular/material'
-import { Employee } from '../models/employee'
+import { Warning } from '../models/warning'
 import { SelectionModel } from '@angular/cdk/collections'
 import swal from 'sweetalert'
 import { DialogDataDialogComponent } from './dialog-data/dialog-data.component'
-import { FlashSale } from '../models/flash-sale'
 import { Http } from '@angular/http'
 
 let flash_data: any[] = []
@@ -20,7 +19,7 @@ export class WarningComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort
   @ViewChild(MatPaginator) paginator: MatPaginator
   dataSource = new MatTableDataSource()
-  selection = new SelectionModel<Employee>(true, [])
+  selection = new SelectionModel<Warning>(true, [])
 
   displayedColumns = ['select', 'sku', 'name', 'leftover waste', 'status', 'projected expiry']
   curField: any
@@ -45,23 +44,19 @@ export class WarningComponent implements OnInit {
 
   populateFields(): void {
     // console.log(e)
-
     // if (e !== undefined) {
     //   // this.curField = flash_data.filter(i => i.sku === e)[0]
       this.selection.selected.forEach(item => {
-        this.curField = flash_data.findIndex(d => d === item)
+        console.log(item)
+        this.curField = item
+        // this.curField = flash_data.findIndex(d => d === item.sku)
+        console.log(this.curField)
       })
-      console.log(this.curField)
       this.dialog.open(DialogDataDialogComponent, {
         data: {
           data: this.curField
         }
       })
-      // this.formDate.nativeElement.value = this.curField.date_arrived
-      console.log()
-    //  }
-
-    // return e
   }
 
   removeSelectedRows(): void {
