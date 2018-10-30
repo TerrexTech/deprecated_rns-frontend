@@ -25,14 +25,28 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         exclude: [
           utils.resolvePath('src/styles.css')
         ],
-        test: /\.s?css$/,
+        test: /\.css$/,
         loader: 'happypack/loader?id=scss'
       },
+
+      // {
+      //   include: [
+      //     utils.resolvePath('src/static/scss/paper-dashboard.scss')
+      //   ],
+      //   test: /\.scss$/,
+      //   use: [{
+      //     loader: 'sass-loader',
+      //     options: {
+      //       outputStyle: 'expanded'
+      //     }
+      //   }]
+      // },
 
       // Global stylesheet
       {
         include: [
-          utils.resolvePath('src/styles.css')
+          utils.resolvePath('src/styles.css'),
+          utils.resolvePath('src/static/scss/paper-dashboard.scss')
         ],
         test: /\.s?css$/,
         use: [

@@ -21,6 +21,7 @@ import { AuthGuard } from './_Auth/auth.guard'
 import { JWTService } from './_Auth/jwt.service'
 import { MonitoringModule } from './monitoring/monitoring.module'
 import { FlashSaleModule } from './flash-sale/flash-sale.module'
+import { WarningModule } from './warning/warning.module'
 
 // Font-Awesome
 import fontawesome from '@fortawesome/fontawesome'
@@ -106,7 +107,8 @@ import { AlertPopupComponent } from './alert-popup/alert-popup.component'
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    WarningModule
   ],
   providers: [
     AuthGuard,
